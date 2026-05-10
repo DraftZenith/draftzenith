@@ -67,7 +67,7 @@ function AuthorPage() {
         <div>
           <SectionEyebrow>Featured Books</SectionEyebrow>
           <ul className="mt-8 space-y-6">
-            {author.books.map((b, i) => (
+            {author.books.map((b: { title: string; year: string }, i: number) => (
               <li key={i} className="flex items-baseline justify-between border-b border-border pb-4">
                 <span className="font-serif text-2xl">{b.title}</span>
                 <span className="text-sm text-muted-foreground">{b.year}</span>
@@ -78,7 +78,7 @@ function AuthorPage() {
         <div>
           <SectionEyebrow>The Interview</SectionEyebrow>
           <div className="mt-8 space-y-8">
-            {author.interview.map((qa, i) => (
+            {author.interview.map((qa: { q: string; a: string }, i: number) => (
               <div key={i}>
                 <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Q.</p>
                 <p className="font-serif text-xl mb-4">{qa.q}</p>
