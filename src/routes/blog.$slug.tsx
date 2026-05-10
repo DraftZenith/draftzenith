@@ -102,7 +102,7 @@ function PostPage() {
           </aside>
 
           <div className="lg:col-span-7 space-y-7 font-serif text-xl leading-relaxed text-foreground/90">
-            {post.body.map((para, i) => (
+            {post.body.map((para: string, i: number) => (
               <p key={i} className={i === 0 ? "first-letter:font-serif first-letter:text-7xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.85] first-letter:text-primary" : ""}>{para}</p>
             ))}
             <hr className="border-border my-10" />
