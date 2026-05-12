@@ -3,6 +3,15 @@ import { ArrowRight, ArrowUpRight, BookOpen, Star, TrendingUp, Award, Users, Spa
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { POSTS, AUTHORS, TRENDING_BOOKS, TESTIMONIALS } from "@/data/content";
 import hero from "@/assets/hero.jpg";
+import collection1 from "@/assets/collection-1.jpg";
+import collection2 from "@/assets/collection-2.jpg";
+import collection3 from "@/assets/collection-3.jpg";
+import mood1 from "@/assets/mood-1.jpg";
+import mood2 from "@/assets/mood-2.jpg";
+import mood3 from "@/assets/mood-3.jpg";
+import mood4 from "@/assets/mood-4.jpg";
+import mood5 from "@/assets/mood-5.jpg";
+import mood6 from "@/assets/mood-6.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -317,9 +326,9 @@ function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { tag: "Winter Reading", title: "Books to read by lamp light", count: "6 titles · 1,840 pages", img: editorPicks[0].image, slug: editorPicks[0].slug },
-              { tag: "Debut Voices", title: "First novels worth your weekend", count: "6 titles · 1,612 pages", img: editorPicks[1].image, slug: editorPicks[1].slug },
-              { tag: "Modern Romance", title: "Love stories with grown-up stakes", count: "6 titles · 1,944 pages", img: editorPicks[2].image, slug: editorPicks[2].slug },
+              { tag: "Winter Reading", title: "Books to read by lamp light", count: "6 titles · 1,840 pages", img: collection1, slug: editorPicks[0].slug },
+              { tag: "Debut Voices", title: "First novels worth your weekend", count: "6 titles · 1,612 pages", img: collection2, slug: editorPicks[1].slug },
+              { tag: "Modern Romance", title: "Love stories with grown-up stakes", count: "6 titles · 1,944 pages", img: collection3, slug: editorPicks[2].slug },
             ].map((c) => (
               <Link
                 key={c.title}
