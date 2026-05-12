@@ -420,10 +420,15 @@ function Index() {
           <p className="text-muted-foreground">A curated mood board from our editors and photographers — saved, reblogged, and pinned by readers around the world.</p>
         </div>
         <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
-          {POSTS.concat(POSTS).map((p, i) => (
+          {[
+            mood1, POSTS[0].image, mood2, POSTS[1].image,
+            collection1, mood3, POSTS[2].image, mood4,
+            collection2, POSTS[3].image, mood5, mood6,
+            POSTS[4].image, collection3, POSTS[5].image,
+          ].map((src, i) => (
             <div key={i} className="mb-4 break-inside-avoid overflow-hidden group">
               <img
-                src={p.image}
+                src={src}
                 alt=""
                 loading="lazy"
                 className="w-full object-cover transition-transform duration-1000 group-hover:scale-110"
