@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BookOpen, Star, TrendingUp, Award, Users, Sparkles, Quote, Feather, Library, Bookmark, Globe } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
-import { POSTS, AUTHORS, TRENDING_BOOKS, TESTIMONIALS, CATEGORIES } from "@/data/content";
+import { POSTS, AUTHORS, TRENDING_BOOKS, TESTIMONIALS } from "@/data/content";
 import hero from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
@@ -23,7 +22,6 @@ const STATS = [
   { value: "24K", label: "Subscribers", sub: "Saturday morning readers", icon: Users },
 ];
 
-const GENRE_ART: Record<string, string> = {};
 const POPULAR_GENRES = ["Fantasy", "Romance", "Thriller", "Mystery", "Self-Help", "Writing Tips"] as const;
 
 const SUCCESS_STORIES = [
