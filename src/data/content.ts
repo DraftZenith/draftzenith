@@ -7,6 +7,10 @@ import post6 from "@/assets/post-6.jpg";
 import author1 from "@/assets/author-1.jpg";
 import author2 from "@/assets/author-2.jpg";
 import author3 from "@/assets/author-3.jpg";
+import book1 from "@/assets/book-1.jpg";
+import book2 from "@/assets/book-2.jpg";
+import book3 from "@/assets/book-3.jpg";
+import book4 from "@/assets/book-4.jpg";
 
 export const CATEGORIES = [
   "Fantasy", "Romance", "Thriller", "Mystery", "Self-Help",
@@ -184,10 +188,10 @@ export const AUTHORS: Author[] = [
 ];
 
 export const TRENDING_BOOKS = [
-  { title: "The Lantern Country", author: "Maren Holloway", genre: "Fantasy", image: post4 },
-  { title: "All the Quiet Hours", author: "Imani Carter", genre: "Romance", image: post5 },
-  { title: "The Long Returning", author: "Edmund Vale", genre: "Thriller", image: post6 },
-  { title: "Salt & Cinder", author: "Maren Holloway", genre: "Fantasy", image: post1 },
+  { title: "The Lantern Country", author: "Maren Holloway", genre: "Fantasy", image: book1 },
+  { title: "All the Quiet Hours", author: "Imani Carter", genre: "Romance", image: book2 },
+  { title: "The Long Returning", author: "Edmund Vale", genre: "Thriller", image: book3 },
+  { title: "Salt & Cinder", author: "Maren Holloway", genre: "Fantasy", image: book4 },
 ];
 
 export const TESTIMONIALS = [
