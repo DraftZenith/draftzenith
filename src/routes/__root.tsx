@@ -77,10 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
       { name: "author", content: "Draft Zenith" },
       { property: "og:title", content: "Draft Zenith — Where Stories Rise" },
-      { property: "og:description", content: "Premium book discovery, author spotlights, and modern publishing insights." },
+      { property: "og:description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Draft Zenith — Where Stories Rise" },
+      { name: "twitter:description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0617353a-d3cb-42a7-bd54-77e7997e2da0" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0617353a-d3cb-42a7-bd54-77e7997e2da0" },
     ],
     links: [
       {
