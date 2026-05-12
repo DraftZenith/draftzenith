@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, ArrowUpRight, BookOpen, Star, TrendingUp, Award, Users, Sparkles, Quote, Feather, Library, Bookmark, Globe } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { POSTS, AUTHORS, TRENDING_BOOKS, TESTIMONIALS } from "@/data/content";
 import hero from "@/assets/hero.jpg";
