@@ -78,6 +78,7 @@ function BlogIndex() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search articles…"
+              aria-label="Search articles"
               className="bg-transparent px-3 py-2.5 flex-1 outline-none text-sm"
             />
           </div>
@@ -114,8 +115,8 @@ function BlogIndex() {
             <SectionEyebrow>The Letter</SectionEyebrow>
             <h3 className="font-serif text-2xl mt-4">Saturday mornings, in your inbox.</h3>
             <form className="mt-5 flex border border-border focus-within:border-primary">
-              <input type="email" placeholder="email" className="bg-transparent px-3 py-2.5 text-sm flex-1 outline-none" />
-              <button className="bg-primary text-primary-foreground px-4 text-xs uppercase tracking-wider">Join</button>
+              <input type="email" placeholder="email" aria-label="Email address for newsletter" className="bg-transparent px-3 py-2.5 text-sm flex-1 outline-none" />
+              <button type="submit" className="bg-primary text-primary-foreground px-4 text-xs uppercase tracking-wider">Join</button>
             </form>
           </div>
           <div>

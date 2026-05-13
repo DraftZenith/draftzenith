@@ -12,13 +12,39 @@ export const Route = createFileRoute("/authors/$slug")({
   head: ({ loaderData }) => {
     const a = loaderData?.author;
     if (!a) return {};
+    const desc = a.bio.length > 155 ? a.bio.slice(0, 152).trimEnd() + "…" : a.bio;
     return {
       meta: [
         { title: `${a.name} — Draft Zenith` },
-        { name: "description", content: a.bio },
+        { name: "description", content: desc },
         { property: "og:title", content: a.name },
-        { property: "og:description", content: a.bio },
+        { property: "og:description", content: desc },
         { property: "og:image", content: a.image },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: a.name,
+            jobTitle: a.role,
+            description: desc,
+            image: a.image,
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: a.interview.map((qa: { q: string; a: string }) => ({
+              "@type": "Question",
+              name: qa.q,
+              acceptedAnswer: { "@type": "Answer", text: qa.a },
+            })),
+          }),
+        },
       ],
     };
   },
@@ -55,9 +81,9 @@ function AuthorPage() {
             <h1 className="font-serif text-5xl md:text-7xl leading-[0.95]">{author.name}</h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">{author.bio}</p>
             <div className="flex gap-3 pt-2">
-              {author.social.twitter && <a href={author.social.twitter} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Twitter size={14} /></a>}
-              {author.social.instagram && <a href={author.social.instagram} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Instagram size={14} /></a>}
-              {author.social.website && <a href={author.social.website} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Globe size={14} /></a>}
+              {author.social.twitter && <a href={author.social.twitter} aria-label={`${author.name} on Twitter`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Twitter size={14} /></a>}
+              {author.social.instagram && <a href={author.social.instagram} aria-label={`${author.name} on Instagram`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Instagram size={14} /></a>}
+              {author.social.website && <a href={author.social.website} aria-label={`${author.name} website`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Globe size={14} /></a>}
             </div>
           </div>
         </div>

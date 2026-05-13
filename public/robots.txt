@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zenith-scribe-collective.lovable.app/sitemap.xml

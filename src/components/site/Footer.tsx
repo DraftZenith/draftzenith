@@ -14,11 +14,16 @@ export function Footer() {
             A modern publishing company for the next generation of readers and authors. Premium discovery, editorial care, and quiet excellence.
           </p>
           <div className="flex gap-3">
-            {[Instagram, Twitter, Linkedin, Mail].map((Icon, i) => (
+            {[
+              { Icon: Instagram, label: "Instagram" },
+              { Icon: Twitter, label: "Twitter" },
+              { Icon: Linkedin, label: "LinkedIn" },
+              { Icon: Mail, label: "Email" },
+            ].map(({ Icon, label }) => (
               <a
-                key={i}
+                key={label}
                 href="#"
-                aria-label="social"
+                aria-label={`Draft Zenith on ${label}`}
                 className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition-colors"
               >
                 <Icon size={16} />
@@ -28,7 +33,7 @@ export function Footer() {
         </div>
 
         <div className="md:col-span-2 space-y-4">
-          <h4 className="text-xs uppercase tracking-[0.2em] text-primary">Explore</h4>
+          <h3 className="text-xs uppercase tracking-[0.2em] text-primary">Explore</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li><Link to="/blog" className="underline-gold">Journal</Link></li>
             <li><Link to="/authors" className="underline-gold">Authors</Link></li>
@@ -39,7 +44,7 @@ export function Footer() {
         </div>
 
         <div className="md:col-span-3 space-y-4">
-          <h4 className="text-xs uppercase tracking-[0.2em] text-primary">Categories</h4>
+          <h3 className="text-xs uppercase tracking-[0.2em] text-primary">Categories</h3>
           <ul className="grid grid-cols-2 gap-y-2 text-sm text-muted-foreground">
             {CATEGORIES.slice(0, 8).map((c) => (
               <li key={c}>
@@ -52,7 +57,7 @@ export function Footer() {
         </div>
 
         <div className="md:col-span-3 space-y-4">
-          <h4 className="text-xs uppercase tracking-[0.2em] text-primary">The Letter</h4>
+          <h3 className="text-xs uppercase tracking-[0.2em] text-primary">The Letter</h3>
           <p className="text-sm text-muted-foreground">
             Saturday mornings. One essay, three books, zero noise.
           </p>
@@ -60,6 +65,7 @@ export function Footer() {
             <input
               type="email"
               placeholder="you@inbox.com"
+              aria-label="Email address for newsletter"
               className="bg-transparent px-3 py-2.5 text-sm flex-1 outline-none"
             />
             <button type="submit" className="bg-primary text-primary-foreground px-4 text-xs uppercase tracking-wider">
