@@ -51,25 +51,25 @@ function SubmitPage() {
               <Field label="Email" name="email" type="email" required />
 
               <div className="space-y-3">
-                <label className="block text-xs uppercase tracking-[0.3em] text-primary">Genre</label>
-                <select className="w-full bg-transparent border border-border focus:border-primary outline-none px-4 py-3.5 transition">
+                <label htmlFor="submit-genre" className="block text-xs uppercase tracking-[0.3em] text-primary">Genre</label>
+                <select id="submit-genre" name="genre" className="w-full bg-transparent border border-border focus:border-primary outline-none px-4 py-3.5 transition">
                   {CATEGORIES.map((c) => <option key={c} className="bg-background">{c}</option>)}
                 </select>
               </div>
 
               <div className="space-y-3">
-                <label className="block text-xs uppercase tracking-[0.3em] text-primary">Synopsis</label>
-                <textarea rows={6} placeholder="Tell us, in your own voice, what this book is about." className="w-full bg-transparent border border-border focus:border-primary outline-none px-4 py-3.5 transition resize-none" />
+                <label htmlFor="submit-synopsis" className="block text-xs uppercase tracking-[0.3em] text-primary">Synopsis</label>
+                <textarea id="submit-synopsis" name="synopsis" rows={6} placeholder="Tell us, in your own voice, what this book is about." className="w-full bg-transparent border border-border focus:border-primary outline-none px-4 py-3.5 transition resize-none" />
               </div>
 
               <Field label="Amazon / Kindle link" name="amazon" placeholder="https://" />
 
               <div className="space-y-3">
-                <label className="block text-xs uppercase tracking-[0.3em] text-primary">Book cover</label>
-                <label className="flex flex-col items-center justify-center border border-dashed border-border hover:border-primary cursor-pointer py-12 transition group">
+                <label htmlFor="submit-cover" className="block text-xs uppercase tracking-[0.3em] text-primary">Book cover</label>
+                <label htmlFor="submit-cover" className="flex flex-col items-center justify-center border border-dashed border-border hover:border-primary cursor-pointer py-12 transition group">
                   <Upload size={28} className="text-muted-foreground group-hover:text-primary transition" />
                   <span className="mt-3 text-sm text-muted-foreground">Click to upload (JPG / PNG, max 5MB)</span>
-                  <input type="file" className="hidden" />
+                  <input id="submit-cover" name="cover" type="file" aria-label="Book cover file" className="hidden" />
                 </label>
               </div>
 

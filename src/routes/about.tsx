@@ -51,7 +51,7 @@ function AboutPage() {
           ].map((v) => (
             <div key={v.n} className="space-y-4">
               <div className="font-serif text-5xl text-primary">{v.n}</div>
-              <h3 className="font-serif text-2xl">{v.t}</h3>
+              <h2 className="font-serif text-2xl">{v.t}</h2>
               <p className="text-muted-foreground leading-relaxed">{v.d}</p>
             </div>
           ))}
