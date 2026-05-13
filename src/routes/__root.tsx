@@ -74,6 +74,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Draft Zenith — Where Stories Rise" },
+      { name: "google-site-verification", content: "fCkebHvtuCj0GllNbaDqwVyL_JJSge4z_Atup7_iJ-4" },
       { name: "description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
       { name: "author", content: "Draft Zenith" },
       { property: "og:title", content: "Draft Zenith — Where Stories Rise" },
