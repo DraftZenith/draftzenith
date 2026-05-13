@@ -274,6 +274,7 @@ function Index() {
                   className="group relative block bg-background overflow-hidden aspect-[4/5]"
                 >
                   <img src={sample.image} alt={g} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                   <div className="absolute inset-0 p-5 flex flex-col justify-end">
                     <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-2 opacity-80">Genre</div>
