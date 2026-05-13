@@ -13,14 +13,30 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData?.post;
     if (!p) return {};
+    const fullTitle = `${p.title} — Draft Zenith`;
+    const title = fullTitle.length > 60 ? p.title.slice(0, 57).trimEnd() + "…" : fullTitle;
     return {
       meta: [
-        { title: `${p.title} — Draft Zenith` },
+        { title },
         { name: "description", content: p.excerpt },
         { property: "og:title", content: p.title },
         { property: "og:description", content: p.excerpt },
         { property: "og:image", content: p.image },
         { property: "og:type", content: "article" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: p.title,
+            description: p.excerpt,
+            image: p.image,
+            datePublished: p.date,
+            author: { "@type": "Person", name: p.author },
+          }),
+        },
       ],
     };
   },

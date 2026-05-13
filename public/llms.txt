@@ -1,0 +1,12 @@
+# Draft Zenith
+
+> A premium modern publishing company for book discovery, indie author promotion, and editorial essays on writing, reading, and the craft of storytelling.
+
+## Pages
+
+- [Home](/): Featured essays, trending books, curated collections, and editor spotlights.
+- [The Journal](/blog): Long-form essays, reviews, and craft notes from Draft Zenith editors.
+- [Authors](/authors): Profiles of indie authors, editors, and contributors.
+- [Services](/services): Book promotion, Pinterest marketing, author spotlights, and visibility campaigns.
+- [Submit](/submit): Submit a book to our editors for spotlight consideration.
+- [About](/about): The story, mission, and values behind Draft Zenith.
