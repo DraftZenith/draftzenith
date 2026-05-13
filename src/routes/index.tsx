@@ -71,6 +71,7 @@ function Index() {
           className="absolute inset-0 w-full h-full object-cover"
           width={1920}
           height={1080}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/30 to-background" />
         <div className="container-luxe relative z-10 pb-24 pt-40 grid md:grid-cols-12 gap-10 items-end">
@@ -273,8 +274,7 @@ function Index() {
                   search={{ category: g }}
                   className="group relative block bg-background overflow-hidden aspect-[4/5]"
                 >
-                  <img src={sample.image} alt={g} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-
+                  <img src={sample.image} alt={`${g} books`} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                   <div className="absolute inset-0 p-5 flex flex-col justify-end">
                     <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-2 opacity-80">Genre</div>
