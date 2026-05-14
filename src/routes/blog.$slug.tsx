@@ -48,14 +48,17 @@ export const Route = createFileRoute("/blog/$slug")({
       </div>
     </SiteLayout>
   ),
-  errorComponent: ({ error }) => (
+  errorComponent: ({ error }) => {
+    console.error("blog route error:", error);
+    return (
     <SiteLayout>
       <div className="container-luxe py-40 text-center">
         <h1 className="font-serif text-3xl">Something broke.</h1>
-        <p className="mt-4 text-muted-foreground">{error.message}</p>
+        <p className="mt-4 text-muted-foreground">We couldn't load this article. Please try again or head back to the journal.</p>
       </div>
     </SiteLayout>
-  ),
+    );
+  },
   component: PostPage,
 });
 

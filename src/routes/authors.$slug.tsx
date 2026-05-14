@@ -56,9 +56,12 @@ export const Route = createFileRoute("/authors/$slug")({
       </div>
     </SiteLayout>
   ),
-  errorComponent: ({ error }) => (
-    <SiteLayout><div className="container-luxe py-40 text-center"><p>{error.message}</p></div></SiteLayout>
-  ),
+  errorComponent: ({ error }) => {
+    console.error("author route error:", error);
+    return (
+      <SiteLayout><div className="container-luxe py-40 text-center"><h1 className="font-serif text-3xl">Something went wrong.</h1><p className="mt-4 text-muted-foreground">We couldn't load this author profile. Please try again later.</p></div></SiteLayout>
+    );
+  },
   component: AuthorPage,
 });
 
