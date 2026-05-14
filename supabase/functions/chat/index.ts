@@ -36,7 +36,63 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages } = await req.json();
+    const body = await req.json().catch(() => null);
+    const rawMessages = body?.messages;
+
+    // Validate structure
+    if (!Array.isArray(rawMessages)) {
+      return new Response(JSON.stringify({ error: "Invalid request: messages must be an array." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const MAX_MESSAGES = 20;
+    const MAX_PER_MESSAGE = 2000;
+    const MAX_TOTAL = 10000;
+
+    if (rawMessages.length === 0 || rawMessages.length > MAX_MESSAGES) {
+      return new Response(JSON.stringify({ error: `Messages must be between 1 and ${MAX_MESSAGES}.` }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const messages: Array<{ role: "user" | "assistant"; content: string }> = [];
+    let total = 0;
+    for (const m of rawMessages) {
+      if (!m || typeof m !== "object") {
+        return new Response(JSON.stringify({ error: "Invalid message format." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      // Strip any client-supplied system messages to prevent prompt injection
+      if (m.role !== "user" && m.role !== "assistant") continue;
+      if (typeof m.content !== "string" || m.content.length === 0) continue;
+      if (m.content.length > MAX_PER_MESSAGE) {
+        return new Response(JSON.stringify({ error: `Each message must be ${MAX_PER_MESSAGE} characters or fewer.` }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      total += m.content.length;
+      if (total > MAX_TOTAL) {
+        return new Response(JSON.stringify({ error: `Total payload exceeds ${MAX_TOTAL} characters.` }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      messages.push({ role: m.role, content: m.content });
+    }
+
+    if (messages.length === 0) {
+      return new Response(JSON.stringify({ error: "No valid messages provided." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -48,7 +104,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...(messages ?? [])],
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
         stream: true,
       }),
     });
