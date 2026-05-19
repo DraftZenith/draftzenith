@@ -29,14 +29,34 @@ export function Footer() {
           </p>
           <div className="flex gap-3">
             {[
-              { Icon: Instagram, label: "Instagram" },
-              { Icon: PinterestIcon, label: "Pinterest" },
-              { Icon: Mail, label: "Email" },
-            ].map(({ Icon, label }) => (
+              {
+                Icon: Instagram,
+                label: "Instagram",
+                href: "https://www.instagram.com/draft.zenith/",
+                external: true,
+              },
+              {
+                Icon: PinterestIcon,
+                label: "Pinterest",
+                href: "https://www.pinterest.com/Draftzenith/",
+                external: true,
+              },
+              {
+                Icon: Mail,
+                label: "Join the Letter",
+                href: "/#newsletter",
+                external: false,
+              },
+            ].map(({ Icon, label, href, external }) => (
               <a
                 key={label}
-                href="#"
-                aria-label={`Draft Zenith on ${label}`}
+                href={href}
+                {...(external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                aria-label={
+                  external ? `Draft Zenith on ${label}` : "Join the Draft Zenith newsletter"
+                }
                 className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition-colors"
               >
                 <Icon size={16} />

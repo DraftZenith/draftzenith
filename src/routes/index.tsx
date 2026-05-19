@@ -522,7 +522,7 @@ function Index() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="container-luxe pb-28">
+      <section id="newsletter" className="container-luxe pb-28 scroll-mt-24">
         <div className="relative overflow-hidden bg-card border border-border p-10 md:p-20 noise-bg">
           <div className="relative grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-5">
