@@ -12,6 +12,10 @@ import mood3 from "@/assets/mood-3.jpg";
 import mood4 from "@/assets/mood-4.jpg";
 import mood5 from "@/assets/mood-5.jpg";
 import mood6 from "@/assets/mood-6.jpg";
+import fantasyCastle from "@/assets/fantasy-castle.jpg";
+import book1 from "@/assets/book-1.jpg";
+import book2 from "@/assets/book-2.jpg";
+import book3 from "@/assets/book-3.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,18 +44,21 @@ const SUCCESS_STORIES = [
     book: "Northwater",
     quote: "After our spotlight, Northwater hit #3 in literary fiction on Kindle. Draft Zenith readers don't just click — they finish the book and tell their friends.",
     metric: "12,400 copies sold in 30 days",
+    cover: book1,
   },
   {
     name: "Hana Okafor",
     book: "The Salt House",
     quote: "I'd been writing for nine years before Draft Zenith found me. The week of the feature changed the trajectory of my career — and my mortgage.",
     metric: "4 publishing offers received",
+    cover: book2,
   },
   {
     name: "Clara Bishop",
     book: "Penumbra Press",
     quote: "We've worked with every major literary site. None send the kind of attentive, paying readers Draft Zenith does. It's not even close.",
     metric: "3.2× ROI on co-published titles",
+    cover: book3,
   },
 ];
 
@@ -403,9 +410,21 @@ function Index() {
                 <Quote size={28} className="text-primary mb-5 opacity-80" />
                 <blockquote className="font-serif text-lg leading-snug text-balance">"{s.quote}"</blockquote>
                 <figcaption className="mt-7 pt-6 border-t border-border space-y-1">
-                  <div className="font-medium">{s.name}</div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Author of {s.book}</div>
-                  <div className="text-xs text-primary mt-3">{s.metric}</div>
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={s.cover}
+                      alt={`${s.book} book cover`}
+                      loading="lazy"
+                      width={80}
+                      height={120}
+                      className="w-16 h-24 object-cover shrink-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.8)] ring-1 ring-border"
+                    />
+                    <div className="space-y-1 min-w-0">
+                      <div className="font-medium">{s.name}</div>
+                      <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Author of {s.book}</div>
+                      <div className="text-xs text-primary mt-2">{s.metric}</div>
+                    </div>
+                  </div>
                 </figcaption>
               </figure>
             ))}
@@ -422,7 +441,7 @@ function Index() {
         </div>
         <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
           {[
-            mood1, POSTS[0].image, mood2, POSTS[1].image,
+            mood1, fantasyCastle, mood2, POSTS[1].image,
             collection1, mood3, POSTS[2].image, mood4,
             collection2, POSTS[3].image, mood5, mood6,
             POSTS[4].image, collection3, POSTS[5].image,
