@@ -277,7 +277,7 @@ export function ChatWidget() {
                     ) : isUser ? (
                       <p className="whitespace-pre-wrap">{m.content}</p>
                     ) : (
-                      <div className="prose prose-sm prose-invert max-w-none prose-p:my-1.5 prose-p:leading-relaxed prose-strong:text-primary prose-strong:font-medium prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-ul:my-1.5 prose-ol:my-1.5 prose-li:my-0.5">
+                      <div className="[&_p]:my-1.5 [&_p]:leading-relaxed [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_strong]:text-primary [&_strong]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-primary/40 hover:[&_a]:decoration-primary [&_ul]:my-1.5 [&_ul]:pl-4 [&_ul]:list-disc [&_ol]:my-1.5 [&_ol]:pl-4 [&_ol]:list-decimal [&_li]:my-0.5 [&_em]:italic [&_em]:font-serif">
                         <ReactMarkdown>{m.content}</ReactMarkdown>
                       </div>
                     )}
