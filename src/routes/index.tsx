@@ -80,36 +80,32 @@ function Index() {
           height={1080}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/30 to-background" />
-        <div className="container-luxe relative z-10 pb-24 pt-40 grid md:grid-cols-12 gap-10 items-end">
-          <div className="md:col-span-8 space-y-8 animate-fade-up">
-            <SectionEyebrow>Issue No. 27 · A Modern Publishing Company</SectionEyebrow>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance">
-              Where the next great <em className="gold-text-gradient not-italic">storytellers</em> are read first.
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+        <div className="container-luxe relative z-10 pb-20 md:pb-24 pt-36 md:pt-40 grid md:grid-cols-12 gap-10 items-end">
+          <div className="md:col-span-8 space-y-7 animate-fade-up">
+            <SectionEyebrow>Draft Zenith · Reader Discovery</SectionEyebrow>
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] text-balance max-w-3xl">
+              Where the right readers discover the right <em className="text-primary">books</em>.
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Draft Zenith is an editorial home for indie authors, ambitious readers, and the quiet revolution rebuilding publishing from the inside out.
+            <p className="text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
+              Draft Zenith connects books with the readers most likely to care about them, through research-led discovery, reader engagement, and thoughtful editorial storytelling.
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link to="/blog" className="group inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
-                Explore Articles <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+              <Link to="/blog" className="group inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
+                Explore Draft Zenith <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
               </Link>
-              <Link to="/submit" className="inline-flex items-center gap-3 border border-border hover:border-primary px-6 py-3.5 text-sm uppercase tracking-wider font-medium transition">
-                Submit Your Book
-              </Link>
-              <Link to="/authors" className="inline-flex items-center gap-3 px-2 py-3.5 text-sm uppercase tracking-wider font-medium text-foreground/80 hover:text-primary transition underline-gold">
-                Discover Authors
+              <Link to="/services" className="inline-flex items-center justify-center gap-3 border border-foreground/30 hover:border-primary hover:text-primary px-6 py-3.5 text-sm uppercase tracking-wider font-medium transition">
+                For Authors
               </Link>
             </div>
           </div>
-          <div className="md:col-span-4 hidden md:flex flex-col items-end gap-4 text-right">
-            <div className="text-xs uppercase tracking-[0.3em] text-primary">Featured this week</div>
-            <div className="font-serif text-2xl leading-tight max-w-xs">
-              "{featured.title}"
+          <div className="md:col-span-4 hidden md:block">
+            <div className="ml-auto max-w-xs border-l border-primary/40 pl-5 space-y-3">
+              <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">Featured in the Journal</div>
+              <Link to="/blog/$slug" params={{ slug: featured.slug }} className="block font-serif text-xl leading-snug text-foreground/90 hover:text-primary transition">
+                {featured.title}
+              </Link>
             </div>
-            <Link to="/blog/$slug" params={{ slug: featured.slug }} className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-primary underline-gold">
-              Read the essay <ArrowUpRight size={14} />
-            </Link>
           </div>
         </div>
       </section>
