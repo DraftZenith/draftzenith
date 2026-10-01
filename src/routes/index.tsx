@@ -29,12 +29,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const STATS = [
-  { value: "1,200+", label: "Books Featured", sub: "Across ten genres", icon: BookOpen },
-  { value: "480K", label: "Readers Reached", sub: "In 64 countries", icon: Globe },
-  { value: "320+", label: "Authors Spotlighted", sub: "Indie & emerging voices", icon: Feather },
-  { value: "24K", label: "Subscribers", sub: "Saturday morning readers", icon: Users },
-];
 
 const POPULAR_GENRES = ["Fantasy", "Romance", "Thriller", "Mystery", "Self-Help", "Writing Tips"] as const;
 
