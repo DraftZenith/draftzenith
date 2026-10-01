@@ -110,43 +110,42 @@ function Index() {
         </div>
       </section>
 
-      {/* MARQUEE-LIKE BAR */}
-      <div className="border-y border-border bg-card/40">
-        <div className="container-luxe py-5 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          <span>As read by editors at</span>
-          <span className="font-serif text-foreground/70 normal-case tracking-tight text-base">Penumbra Press</span>
-          <span className="font-serif text-foreground/70 normal-case tracking-tight text-base">North Atlantic Books</span>
-          <span className="font-serif text-foreground/70 normal-case tracking-tight text-base">The Atelier Review</span>
-          <span className="font-serif text-foreground/70 normal-case tracking-tight text-base">Lantern House</span>
-          <span className="font-serif text-foreground/70 normal-case tracking-tight text-base">Quill & Quire</span>
-        </div>
-      </div>
-
-      {/* AUTHORITY / STATS */}
-      <section className="container-luxe py-24">
-        <div className="grid md:grid-cols-12 gap-10 items-end mb-14">
-          <div className="md:col-span-7 space-y-4">
-            <SectionEyebrow>Trusted by modern indie authors</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl leading-tight text-balance">
-              A quietly powerful platform for the books that deserve to be read.
+      {/* THE DRAFT ZENITH APPROACH */}
+      <section className="border-t border-border">
+        <div className="container-luxe py-24 md:py-32 grid md:grid-cols-12 gap-12 md:gap-10">
+          <div className="md:col-span-7 space-y-8">
+            <SectionEyebrow>The Draft Zenith Approach</SectionEyebrow>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-balance max-w-2xl">
+              Books deserve more than visibility. They deserve the <em className="text-primary">right readers</em>.
             </h2>
+            <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl">
+              Draft Zenith begins with the readers, not the promotion. We research where the people most likely to care about a book already gather, then build thoughtful paths for discovery, conversation, and continued connection.
+            </p>
+            <Link to="/services" className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition underline-gold">
+              See how reader engagement works <ArrowRight size={14} />
+            </Link>
           </div>
-          <p className="md:col-span-5 text-muted-foreground leading-relaxed">
-            Three years in, Draft Zenith has become the editorial layer between extraordinary indie work and the readers who care enough to finish it. The numbers tell part of the story.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
-          {STATS.map((s) => {
-            const Icon = s.icon;
-            return (
-              <div key={s.label} className="bg-background p-8 md:p-10 group hover:bg-card transition-colors duration-500">
-                <Icon size={20} className="text-primary mb-6 transition-transform duration-500 group-hover:-translate-y-1" />
-                <div className="font-serif text-4xl md:text-5xl gold-text-gradient mb-3">{s.value}</div>
-                <div className="text-sm uppercase tracking-[0.2em] text-foreground/90">{s.label}</div>
-                <div className="text-xs text-muted-foreground mt-2">{s.sub}</div>
-              </div>
-            );
-          })}
+          <aside className="md:col-span-4 md:col-start-9 md:pt-16">
+            <div className="border-t border-primary/50 pt-6">
+              <p className="font-serif italic text-muted-foreground mb-6">How we read a book before anyone else does</p>
+              <ol className="divide-y divide-border">
+                {[
+                  ["The book", "Its themes, genre, and voice."],
+                  ["The readers", "Who it was actually written for."],
+                  ["The gathering places", "Where those readers already talk about books."],
+                  ["The conversation", "Discovery that leads to discussion, and connection that lasts."],
+                ].map(([title, note], i) => (
+                  <li key={title} className="py-4 flex gap-5">
+                    <span className="font-serif text-sm text-primary tabular-nums pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <div className="font-serif text-lg text-foreground">{title}</div>
+                      <div className="text-sm text-muted-foreground mt-1">{note}</div>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </aside>
         </div>
       </section>
 
