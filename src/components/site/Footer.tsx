@@ -39,7 +39,7 @@ export function Footer() {
               The Publishing House
             </div>
             <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight text-balance">
-              Where stories rise <span className="italic text-primary/90">, read with care.</span>
+              Where stories rise, <span className="italic text-primary/90">read with care.</span>
             </h2>
           </div>
           <Link
