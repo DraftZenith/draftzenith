@@ -6,9 +6,9 @@ import { ArrowUpRight } from "lucide-react";
 export const Route = createFileRoute("/authors")({
   head: () => ({
     meta: [
-      { title: "Authors — Draft Zenith" },
+      { title: "Authors | Draft Zenith" },
       { name: "description", content: "Meet the writers, editors, and indie voices shaping the next chapter of publishing." },
-      { property: "og:title", content: "Authors — Draft Zenith" },
+      { property: "og:title", content: "Authors | Draft Zenith" },
       { property: "og:description", content: "The writers and editors at the heart of Draft Zenith." },
     ],
   }),

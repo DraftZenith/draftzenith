@@ -39,7 +39,7 @@ export function Footer() {
               The Publishing House
             </div>
             <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight text-balance">
-              Where stories rise <span className="italic text-primary/90">— quietly, and on purpose.</span>
+              Where stories rise <span className="italic text-primary/90">, read with care.</span>
             </h2>
           </div>
           <Link
@@ -60,7 +60,7 @@ export function Footer() {
             Draft<span className="text-primary">·</span>Zenith
           </Link>
           <p className="text-muted-foreground max-w-sm leading-[1.75] text-[15px]">
-            A modern publishing company for the next generation of readers and authors. Premium discovery, editorial care, and quiet excellence — issued from our studio to your nightstand.
+            A reader-focused editorial platform. We research where a book's readers gather, then help them find it.
           </p>
           <div className="flex items-center gap-2 text-xs text-muted-foreground/80">
             <MapPin size={12} className="text-primary/70" />
@@ -148,7 +148,7 @@ export function Footer() {
             <h3 className="font-serif text-2xl leading-tight">The Letter</h3>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            One essay, three books, zero noise — delivered with the morning light.
+            One essay, three books, nothing else. Every Saturday morning.
           </p>
           <form className="group flex border border-border/80 focus-within:border-primary transition-colors duration-500">
             <input

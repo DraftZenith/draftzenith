@@ -7,9 +7,9 @@ import { CATEGORIES } from "@/data/content";
 export const Route = createFileRoute("/submit")({
   head: () => ({
     meta: [
-      { title: "Submit Your Book — Draft Zenith" },
-      { name: "description", content: "Share your work with our editors. Indie authors welcome — we read every submission personally." },
-      { property: "og:title", content: "Submit Your Book — Draft Zenith" },
+      { title: "Submit Your Book | Draft Zenith" },
+      { name: "description", content: "Share your work with our editors. Indie authors welcome. We read every submission personally." },
+      { property: "og:title", content: "Submit Your Book | Draft Zenith" },
       { property: "og:description", content: "Submit your book to our editors for spotlight consideration." },
     ],
   }),
@@ -28,7 +28,7 @@ function SubmitPage() {
             Tell us about your book.
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl">
-            Every submission is read by a real editor — usually within seven days. We respond either way.
+            Every submission is read by a real editor, usually within seven days. We respond either way.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ function SubmitPage() {
           <div className="border border-border p-8 bg-card/40">
             <SectionEyebrow>What happens next</SectionEyebrow>
             <ol className="mt-6 space-y-5 text-sm text-muted-foreground">
-              {["A real editor reads your submission.", "We respond within seven days — yes or no.", "Selected titles are featured across the journal, newsletter, and social.", "We help you reach the readers who'll love your work."].map((s, i) => (
+              {["A real editor reads your submission.", "We respond within seven days, yes or no.", "Selected titles are featured across the journal, newsletter, and social.", "We help you reach the readers who'll love your work."].map((s, i) => (
                 <li key={i} className="flex gap-4">
                   <span className="font-serif text-2xl text-primary leading-none">{String(i + 1).padStart(2, "0")}</span>
                   <span className="pt-1">{s}</span>

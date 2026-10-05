@@ -19,7 +19,7 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData?.post;
     if (!p) return {};
-    const fullTitle = `${p.title} — Draft Zenith`;
+    const fullTitle = `${p.title} | Draft Zenith`;
     const title = fullTitle.length > 60 ? p.title.slice(0, 57).trimEnd() + "…" : fullTitle;
     return {
       meta: [
@@ -170,7 +170,7 @@ function PostPage() {
                       "{pullQuote}"
                     </p>
                     <footer className="mt-4 text-xs uppercase tracking-[0.3em] text-primary not-italic font-sans">
-                      — {post.author}
+                      {post.author}
                     </footer>
                   </blockquote>
                 )}

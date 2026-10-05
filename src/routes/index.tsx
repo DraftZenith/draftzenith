@@ -20,9 +20,9 @@ import book3 from "@/assets/book-3.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Draft Zenith — Where Stories Rise" },
+      { title: "Draft Zenith | Where Stories Rise" },
       { name: "description", content: "Premium book discovery, indie author spotlights, and modern publishing essays for readers who care about craft." },
-      { property: "og:title", content: "Draft Zenith — Where Stories Rise" },
+      { property: "og:title", content: "Draft Zenith | Where Stories Rise" },
       { property: "og:description", content: "Premium book discovery, indie author spotlights, and modern publishing essays." },
     ],
   }),
@@ -36,14 +36,14 @@ const SUCCESS_STORIES = [
   {
     name: "Theodore Reyes",
     book: "Northwater",
-    quote: "After our spotlight, Northwater hit #3 in literary fiction on Kindle. Draft Zenith readers don't just click — they finish the book and tell their friends.",
+    quote: "After our spotlight, Northwater hit #3 in literary fiction on Kindle. Draft Zenith readers finish the book and tell their friends.",
     metric: "12,400 copies sold in 30 days",
     cover: book1,
   },
   {
     name: "Hana Okafor",
     book: "The Salt House",
-    quote: "I'd been writing for nine years before Draft Zenith found me. The week of the feature changed the trajectory of my career — and my mortgage.",
+    quote: "I'd been writing for nine years before Draft Zenith found me. The week of the feature changed the trajectory of my career, and my mortgage.",
     metric: "4 publishing offers received",
     cover: book2,
   },
@@ -456,7 +456,7 @@ function Index() {
         <div className="space-y-3 mb-12 max-w-2xl">
           <SectionEyebrow>Visual Diary</SectionEyebrow>
           <h2 className="font-serif text-4xl md:text-5xl">A library, in pictures</h2>
-          <p className="text-muted-foreground">A curated mood board from our editors and photographers — saved, reblogged, and pinned by readers around the world.</p>
+          <p className="text-muted-foreground">A curated mood board from our editors and photographers, saved, reblogged, and pinned by readers around the world.</p>
         </div>
         <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
           {[
@@ -525,7 +525,7 @@ function Index() {
             <div className="space-y-5">
               <Library size={22} className="text-primary" />
               <SectionEyebrow>For Readers</SectionEyebrow>
-              <h3 className="font-serif text-3xl md:text-4xl text-balance leading-tight">Join a community that takes books — and readers — seriously.</h3>
+              <h3 className="font-serif text-3xl md:text-4xl text-balance leading-tight">Join a community that takes books and readers seriously.</h3>
               <p className="text-muted-foreground">Editor-curated reading lists, member-only essays, and quiet conversations with the authors you love.</p>
             </div>
             <div className="flex flex-wrap gap-4">

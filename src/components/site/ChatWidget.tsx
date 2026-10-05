@@ -22,8 +22,8 @@ type QuickPrompt = {
 };
 
 const QUICK_PROMPTS: QuickPrompt[] = [
-  { label: "Submit my book", prompt: "I'd like to submit my book for a feature — how does the process work?", icon: Feather },
-  { label: "Recommend a read", prompt: "Recommend a book I'll fall in love with — ask me what I'm in the mood for.", icon: BookOpen },
+  { label: "Submit my book", prompt: "I'd like to submit my book for a feature. How does the process work?", icon: Feather },
+  { label: "Recommend a read", prompt: "Recommend a book I'll fall in love with. Ask me what I'm in the mood for.", icon: BookOpen },
   { label: "Discover authors", prompt: "Introduce me to a few indie authors I should be reading right now.", icon: Compass },
   { label: "Promotion options", prompt: "Walk me through Draft Zenith's promotion options for indie authors.", icon: Megaphone },
   { label: "Writing tips", prompt: "Share a piece of writing advice from the Draft Zenith Journal.", icon: PenLine },
@@ -33,7 +33,7 @@ const QUICK_PROMPTS: QuickPrompt[] = [
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Welcome to Draft Zenith. I'm **Zenith** — your editorial concierge. Whether you're hunting for your next unforgettable read or quietly building your author career, I'm here to help. Where shall we begin?",
+    "Welcome to Draft Zenith. I'm **Zenith**, your editorial concierge. I can help you find your next read or think through how to reach readers for your own book. Where shall we begin?",
 };
 
 const AMBIENT_NUDGES = [
@@ -173,7 +173,7 @@ export function ChatWidget() {
           >
             <span className="absolute inset-0 rounded-2xl rounded-br-sm bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
             <p className="relative font-serif italic text-sm leading-snug text-foreground/95">{nudge}</p>
-            <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith — concierge</p>
+            <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · concierge</p>
             <span
               role="button"
               tabIndex={0}

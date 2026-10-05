@@ -37,7 +37,7 @@ export const POSTS: Post[] = [
   {
     slug: "the-quiet-rise-of-indie-fantasy",
     title: "The Quiet Rise of Indie Fantasy",
-    excerpt: "Why the most ambitious worldbuilding of the decade is happening outside the Big Five — and how readers are finally finding it.",
+    excerpt: "Why the most ambitious worldbuilding of the decade is happening outside the Big Five, and how readers are finally finding it.",
     category: "Fantasy",
     image: post4,
     author: "Maren Holloway",
@@ -47,7 +47,7 @@ export const POSTS: Post[] = [
     featured: true,
     body: [
       "For years, the conversation around literary fantasy was dominated by a small handful of imprints. Today, the most daring sentences, the strangest magic systems, and the most lived-in worlds are arriving from independent authors who refuse to compromise.",
-      "What changed isn't the talent — it's the distribution. Direct-to-reader platforms, premium newsletters, and a renewed editorial focus on craft have made it possible for a debut author in a small town to reach a global audience without losing their voice.",
+      "What changed isn't the talent. It's the distribution. Direct-to-reader platforms, premium newsletters, and a renewed editorial focus on craft have made it possible for a debut author in a small town to reach a global audience without losing their voice.",
       "At Draft Zenith we've spent the last year reading, listening, and watching this shift unfold. The titles below are the ones we keep returning to: books that feel like rooms you can walk into, written by people who treat storytelling as a vocation.",
       "If there is a single throughline, it is patience. These authors are not optimizing for the algorithm. They are building, slowly and with intent, the kind of work readers will press into the hands of friends a decade from now.",
     ],
@@ -63,14 +63,14 @@ export const POSTS: Post[] = [
     date: "Apr 24, 2026",
     readMinutes: 7,
     body: [
-      "The romances that linger are not the ones with the most dramatic gestures. They are the ones that respect the reader's intelligence — the slow accumulation of glances, the small concession, the line of dialogue that recasts every page that came before.",
+      "The romances that linger are not the ones with the most dramatic gestures. They are the ones that respect the reader's intelligence: the slow accumulation of glances, the small concession, the line of dialogue that recasts every page that came before.",
       "We spoke to seven editors and a dozen readers to understand why certain titles are passed from hand to hand for years. The pattern is clear: restraint, specificity, and a willingness to let the characters be inconvenient to one another.",
     ],
   },
   {
     slug: "the-thriller-rules-no-one-talks-about",
     title: "The Thriller Rules No One Talks About",
-    excerpt: "Pacing isn't speed — it's pressure. A working novelist breaks down the invisible scaffolding behind a perfect page-turner.",
+    excerpt: "Pacing isn't speed. It's pressure. A working novelist breaks down the invisible scaffolding behind a perfect page-turner.",
     category: "Thriller",
     image: post6,
     author: "Edmund Vale",
@@ -79,7 +79,7 @@ export const POSTS: Post[] = [
     readMinutes: 11,
     body: [
       "A great thriller is a contract. The author promises that nothing on the page is wasted, and the reader, in turn, agrees to keep turning. Break the contract once and the spell is gone.",
-      "What follows is a working list — not a theory — of the techniques I rely on whenever a manuscript begins to sag in the middle.",
+      "What follows is a working list (not a theory) of the techniques I rely on whenever a manuscript begins to sag in the middle.",
     ],
   },
   {
@@ -93,7 +93,7 @@ export const POSTS: Post[] = [
     date: "Apr 11, 2026",
     readMinutes: 5,
     body: [
-      "Every Friday our editors compare notes on the indie titles that surprised them most. These five did not just stand out — they stayed with us long after the last page.",
+      "Every Friday our editors compare notes on the indie titles that surprised them most. These five stood out, and they stayed with us long after the last page.",
     ],
   },
   {
@@ -121,7 +121,7 @@ export const POSTS: Post[] = [
     date: "Mar 27, 2026",
     readMinutes: 6,
     body: [
-      "The most successful indie launches we tracked this year had one thing in common: the author had been quietly cultivating a small, attentive audience for months — sometimes years — before publication.",
+      "The most successful indie launches we tracked this year had one thing in common: the author had spent time cultivating a small, attentive audience for months, sometimes years, before publication.",
     ],
   },
 ];
@@ -195,7 +195,7 @@ export const TRENDING_BOOKS = [
 ];
 
 export const TESTIMONIALS = [
-  { quote: "Draft Zenith doesn't just review books — it reframes them. Every issue makes me a better reader.", name: "Hana Okafor", role: "Bookseller, Lagos" },
+  { quote: "Draft Zenith reads books closely and writes about them honestly. Every issue makes me a better reader.", name: "Hana Okafor", role: "Bookseller, Lagos" },
   { quote: "I sold more copies in the month after my spotlight than in the year before. The audience is real.", name: "Theodore Reyes", role: "Indie author of 'Northwater'" },
   { quote: "The most beautifully edited book newsletter on the internet, full stop.", name: "Clara Bishop", role: "Editor, Penumbra Press" },
 ];

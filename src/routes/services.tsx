@@ -13,9 +13,9 @@ const SERVICES = [
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Draft Zenith" },
+      { title: "Services | Draft Zenith" },
       { name: "description", content: "Premium publishing services for serious indie authors: book promotion, Pinterest marketing, spotlights, and visibility campaigns." },
-      { property: "og:title", content: "Services — Draft Zenith" },
+      { property: "og:title", content: "Services | Draft Zenith" },
       { property: "og:description", content: "Premium publishing services for serious indie authors." },
     ],
   }),

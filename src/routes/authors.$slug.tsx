@@ -15,7 +15,7 @@ export const Route = createFileRoute("/authors/$slug")({
     const desc = a.bio.length > 155 ? a.bio.slice(0, 152).trimEnd() + "…" : a.bio;
     return {
       meta: [
-        { title: `${a.name} — Draft Zenith` },
+        { title: `${a.name} | Draft Zenith` },
         { name: "description", content: desc },
         { property: "og:title", content: a.name },
         { property: "og:description", content: desc },
