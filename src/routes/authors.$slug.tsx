@@ -19,7 +19,6 @@ export const Route = createFileRoute("/authors/$slug")({
         { name: "description", content: desc },
         { property: "og:title", content: a.name },
         { property: "og:description", content: desc },
-        { property: "og:image", content: a.image },
       ],
       scripts: [
         {
@@ -30,7 +29,6 @@ export const Route = createFileRoute("/authors/$slug")({
             name: a.name,
             jobTitle: a.role,
             description: desc,
-            image: a.image,
           }),
         },
         {
