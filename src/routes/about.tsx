@@ -5,10 +5,10 @@ import hero from "@/assets/post-3.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Draft Zenith" },
+      { title: "About | Draft Zenith" },
       { name: "description", content: "Draft Zenith is a modern publishing company connecting indie authors with the readers who'll love them most." },
       { property: "og:title", content: "About Draft Zenith" },
-      { property: "og:description", content: "A modern publishing company built for the next generation of readers and writers." },
+      { property: "og:description", content: "A reader-focused editorial platform for books, authors, and the readers they are written for." },
     ],
   }),
   component: AboutPage,
@@ -37,7 +37,7 @@ function AboutPage() {
         <div className="md:col-span-8 space-y-6 font-serif text-2xl md:text-3xl leading-snug text-balance">
           <p>We exist to connect serious readers with the indie authors writing the books that should be on their shelves.</p>
           <p className="text-muted-foreground text-xl leading-relaxed font-sans">
-            Draft Zenith began as a Saturday newsletter for friends. Today it is a small, fully independent publishing company — a journal, an author platform, and a marketing studio in one.
+            Draft Zenith began as a Saturday newsletter for friends. Today it is a small, fully independent publishing company: a journal, an author platform, and a marketing studio in one.
           </p>
         </div>
       </section>
@@ -60,7 +60,7 @@ function AboutPage() {
 
       <section className="container-luxe py-28 text-center max-w-3xl space-y-6">
         <SectionEyebrow>Join us</SectionEyebrow>
-        <h2 className="font-serif text-4xl md:text-6xl text-balance">Whether you read or write — there's a chair for you here.</h2>
+        <h2 className="font-serif text-4xl md:text-6xl text-balance">Whether you read or write, there's a chair for you here.</h2>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Link to="/submit" className="bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider hover:bg-primary/90 transition">Submit your book</Link>
           <Link to="/blog" className="border border-border hover:border-primary px-6 py-3.5 text-sm uppercase tracking-wider transition">Read the journal</Link>

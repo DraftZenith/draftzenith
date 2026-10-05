@@ -14,9 +14,9 @@ export const Route = createFileRoute("/blog")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "The Journal — Draft Zenith" },
+      { title: "The Journal | Draft Zenith" },
       { name: "description", content: "Essays, reviews, and craft notes on books, authors, writing, and modern publishing." },
-      { property: "og:title", content: "The Journal — Draft Zenith" },
+      { property: "og:title", content: "The Journal | Draft Zenith" },
       { property: "og:description", content: "Essays, reviews, and craft notes for readers and writers." },
     ],
   }),
@@ -201,7 +201,7 @@ function BlogIndex() {
       <section className="container-luxe py-16 grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 space-y-12">
           {filtered.length === 0 && (
-            <p className="text-muted-foreground">No essays match that filter — yet.</p>
+            <p className="text-muted-foreground">No essays match that filter yet.</p>
           )}
           {(isFiltered ? filtered : restOfFeed).map((p) => (
             <Link

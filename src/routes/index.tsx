@@ -20,9 +20,9 @@ import book3 from "@/assets/book-3.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Draft Zenith — Where Stories Rise" },
+      { title: "Draft Zenith | Where Stories Rise" },
       { name: "description", content: "Premium book discovery, indie author spotlights, and modern publishing essays for readers who care about craft." },
-      { property: "og:title", content: "Draft Zenith — Where Stories Rise" },
+      { property: "og:title", content: "Draft Zenith | Where Stories Rise" },
       { property: "og:description", content: "Premium book discovery, indie author spotlights, and modern publishing essays." },
     ],
   }),
@@ -36,14 +36,14 @@ const SUCCESS_STORIES = [
   {
     name: "Theodore Reyes",
     book: "Northwater",
-    quote: "After our spotlight, Northwater hit #3 in literary fiction on Kindle. Draft Zenith readers don't just click — they finish the book and tell their friends.",
+    quote: "After our spotlight, Northwater hit #3 in literary fiction on Kindle. Draft Zenith readers finish the book and tell their friends.",
     metric: "12,400 copies sold in 30 days",
     cover: book1,
   },
   {
     name: "Hana Okafor",
     book: "The Salt House",
-    quote: "I'd been writing for nine years before Draft Zenith found me. The week of the feature changed the trajectory of my career — and my mortgage.",
+    quote: "I'd been writing for nine years before Draft Zenith found me. The week of the feature changed the trajectory of my career, and my mortgage.",
     metric: "4 publishing offers received",
     cover: book2,
   },
@@ -388,29 +388,31 @@ function Index() {
         <div className="flex items-end justify-between mb-12">
           <div className="space-y-3">
             <SectionEyebrow>The Voices</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl">Authors in residence</h2>
+            <h2 className="font-serif text-4xl md:text-5xl">Authors we're following</h2>
           </div>
           <Link to="/authors" className="hidden md:inline-flex items-center gap-2 text-sm uppercase tracking-wider underline-gold">
             All authors <ArrowRight size={14} />
           </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-10">
-          {AUTHORS.map((a) => (
-            <Link
-              to="/authors/$slug"
-              params={{ slug: a.slug }}
-              key={a.slug}
-              className="group block"
-            >
-              <div className="aspect-[4/5] overflow-hidden mb-5">
-                <img src={a.image} alt={a.name} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-2">{a.role.split(" · ")[0]}</div>
-              <h3 className="font-serif text-2xl group-hover:text-primary transition-colors">{a.name}</h3>
-              <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{a.bio}</p>
-            </Link>
+        <ol className="border-t border-border">
+          {AUTHORS.map((a, i) => (
+            <li key={a.slug} className="border-b border-border">
+              <Link
+                to="/authors/$slug"
+                params={{ slug: a.slug }}
+                className="group grid grid-cols-[2.5rem_1fr] md:grid-cols-12 gap-x-4 md:gap-x-8 gap-y-2 py-8 md:py-10"
+              >
+                <span className="font-serif text-primary tabular-nums md:col-span-1 pt-1">{String(i + 1).padStart(2, "0")}</span>
+                <div className="md:col-span-4">
+                  <h3 className="font-serif text-2xl md:text-3xl group-hover:text-primary transition-colors">{a.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{a.role.split(" · ")[1] ?? a.role}{a.books[0] && <> · <em className="font-serif">{a.books[0].title}</em></>}</p>
+                </div>
+                <p className="col-start-2 md:col-start-auto md:col-span-5 text-muted-foreground leading-relaxed">{a.bio}</p>
+                <span className="col-start-2 md:col-start-auto md:col-span-2 md:text-right text-sm text-foreground/80 group-hover:text-primary transition md:pt-1">Read profile →</span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* SUCCESS STORIES */}
@@ -456,7 +458,7 @@ function Index() {
         <div className="space-y-3 mb-12 max-w-2xl">
           <SectionEyebrow>Visual Diary</SectionEyebrow>
           <h2 className="font-serif text-4xl md:text-5xl">A library, in pictures</h2>
-          <p className="text-muted-foreground">A curated mood board from our editors and photographers — saved, reblogged, and pinned by readers around the world.</p>
+          <p className="text-muted-foreground">A curated mood board from our editors and photographers, saved, reblogged, and pinned by readers around the world.</p>
         </div>
         <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
           {[
@@ -525,7 +527,7 @@ function Index() {
             <div className="space-y-5">
               <Library size={22} className="text-primary" />
               <SectionEyebrow>For Readers</SectionEyebrow>
-              <h3 className="font-serif text-3xl md:text-4xl text-balance leading-tight">Join a community that takes books — and readers — seriously.</h3>
+              <h3 className="font-serif text-3xl md:text-4xl text-balance leading-tight">Join a community that takes books and readers seriously.</h3>
               <p className="text-muted-foreground">Editor-curated reading lists, member-only essays, and quiet conversations with the authors you love.</p>
             </div>
             <div className="flex flex-wrap gap-4">
