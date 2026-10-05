@@ -143,6 +143,36 @@ function Index() {
         </div>
       </section>
 
+      {/* PRINCIPLES */}
+      <section className="container-luxe pb-24 md:pb-32">
+        <div className="border-t border-border pt-16 md:pt-20 grid md:grid-cols-12 gap-12 md:gap-10">
+          <div className="md:col-span-5 space-y-6">
+            <SectionEyebrow>Our Principles</SectionEyebrow>
+            <h2 className="font-serif text-3xl sm:text-4xl leading-[1.1] text-balance">
+              Reader discovery starts with research.
+            </h2>
+            <p className="text-foreground/80 leading-relaxed max-w-md">
+              Every book has a particular audience. Draft Zenith researches the themes, communities, conversations, and interests surrounding a book before creating paths for readers to discover and engage with it.
+            </p>
+          </div>
+          <ol className="md:col-span-6 md:col-start-7 border-t border-border">
+            {[
+              ["Research first", "Reader acquisition begins with understanding where relevant readers already gather."],
+              ["Real engagement", "Create opportunities for genuine discovery, discussion, and reader response rather than simply placing promotional links."],
+              ["Lasting connection", "Give interested readers a way to stay connected with a book and discover an author's future work."],
+            ].map(([title, text], i) => (
+              <li key={title} className="grid grid-cols-[3rem_1fr] sm:grid-cols-[4rem_1fr] gap-4 py-8 border-b border-border">
+                <span className="font-serif text-2xl sm:text-3xl text-primary tabular-nums leading-none">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="font-serif text-xl sm:text-2xl text-foreground">{title}</h3>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">{text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* FEATURED ESSAY (Cover Story) */}
       <section className="container-luxe pb-28">
         <div className="grid md:grid-cols-12 gap-10 items-center">
