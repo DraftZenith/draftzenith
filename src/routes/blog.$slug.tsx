@@ -118,7 +118,7 @@ function PostPage() {
               <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed font-serif italic">{post.excerpt}</p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground pt-4">
                 {author && (
-                  <img src={author.image} alt={author.name} className="w-10 h-10 rounded-full object-cover border border-border" loading="lazy" />
+                  <span aria-hidden className="w-10 h-10 grid place-items-center border border-border font-serif text-sm text-primary">{author.name.split(" ").map((n) => n[0]).join("")}</span>
                 )}
                 <div>
                   <div className="text-foreground">By <Link to="/authors/$slug" params={{ slug: post.authorSlug }} className="underline-gold">{post.author}</Link></div>
@@ -200,7 +200,7 @@ function PostPage() {
                 <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">About the author</p>
                 {author && (
                   <div className="flex items-start gap-4">
-                    <img src={author.image} alt={author.name} loading="lazy" className="w-16 h-16 rounded-full object-cover border border-border shrink-0" />
+                    <span aria-hidden className="w-12 h-12 grid place-items-center border border-border font-serif text-primary shrink-0">{author.name.split(" ").map((n) => n[0]).join("")}</span>
                     <div className="min-w-0">
                       <p className="font-serif text-xl leading-tight">{author.name}</p>
                       <p className="text-xs text-muted-foreground mt-1">{author.role}</p>

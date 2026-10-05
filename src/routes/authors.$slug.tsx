@@ -75,19 +75,14 @@ function AuthorPage() {
         <Link to="/authors" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground hover:text-primary mb-10">
           <ArrowLeft size={14} /> All authors
         </Link>
-        <div className="grid md:grid-cols-12 gap-12 items-end">
-          <div className="md:col-span-5 overflow-hidden">
-            <img src={author.image} alt={author.name} className="w-full aspect-[4/5] object-cover" />
-          </div>
-          <div className="md:col-span-7 space-y-6">
-            <SectionEyebrow>{author.role}</SectionEyebrow>
-            <h1 className="font-serif text-5xl md:text-7xl leading-[0.95]">{author.name}</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">{author.bio}</p>
-            <div className="flex gap-3 pt-2">
-              {author.social.twitter && <a href={author.social.twitter} aria-label={`${author.name} on Twitter`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Twitter size={14} /></a>}
-              {author.social.instagram && <a href={author.social.instagram} aria-label={`${author.name} on Instagram`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Instagram size={14} /></a>}
-              {author.social.website && <a href={author.social.website} aria-label={`${author.name} website`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Globe size={14} /></a>}
-            </div>
+        <div className="max-w-3xl space-y-6">
+          <SectionEyebrow>{author.role}</SectionEyebrow>
+          <h1 className="font-serif text-5xl md:text-7xl leading-[0.95]">{author.name}</h1>
+          <p className="text-lg text-foreground/80 leading-relaxed max-w-2xl">{author.bio}</p>
+          <div className="flex gap-3 pt-2">
+            {author.social.twitter && <a href={author.social.twitter} aria-label={`${author.name} on Twitter`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Twitter size={14} /></a>}
+            {author.social.instagram && <a href={author.social.instagram} aria-label={`${author.name} on Instagram`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Instagram size={14} /></a>}
+            {author.social.website && <a href={author.social.website} aria-label={`${author.name} website`} className="w-10 h-10 grid place-items-center border border-border hover:border-primary hover:text-primary transition"><Globe size={14} /></a>}
           </div>
         </div>
       </section>

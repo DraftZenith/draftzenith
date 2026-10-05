@@ -388,29 +388,31 @@ function Index() {
         <div className="flex items-end justify-between mb-12">
           <div className="space-y-3">
             <SectionEyebrow>The Voices</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl">Authors in residence</h2>
+            <h2 className="font-serif text-4xl md:text-5xl">Authors we're following</h2>
           </div>
           <Link to="/authors" className="hidden md:inline-flex items-center gap-2 text-sm uppercase tracking-wider underline-gold">
             All authors <ArrowRight size={14} />
           </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-10">
-          {AUTHORS.map((a) => (
-            <Link
-              to="/authors/$slug"
-              params={{ slug: a.slug }}
-              key={a.slug}
-              className="group block"
-            >
-              <div className="aspect-[4/5] overflow-hidden mb-5">
-                <img src={a.image} alt={a.name} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-2">{a.role.split(" · ")[0]}</div>
-              <h3 className="font-serif text-2xl group-hover:text-primary transition-colors">{a.name}</h3>
-              <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{a.bio}</p>
-            </Link>
+        <ol className="border-t border-border">
+          {AUTHORS.map((a, i) => (
+            <li key={a.slug} className="border-b border-border">
+              <Link
+                to="/authors/$slug"
+                params={{ slug: a.slug }}
+                className="group grid grid-cols-[2.5rem_1fr] md:grid-cols-12 gap-x-4 md:gap-x-8 gap-y-2 py-8 md:py-10"
+              >
+                <span className="font-serif text-primary tabular-nums md:col-span-1 pt-1">{String(i + 1).padStart(2, "0")}</span>
+                <div className="md:col-span-4">
+                  <h3 className="font-serif text-2xl md:text-3xl group-hover:text-primary transition-colors">{a.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{a.role.split(" · ")[1] ?? a.role}{a.books[0] && <> · <em className="font-serif">{a.books[0].title}</em></>}</p>
+                </div>
+                <p className="col-start-2 md:col-start-auto md:col-span-5 text-muted-foreground leading-relaxed">{a.bio}</p>
+                <span className="col-start-2 md:col-start-auto md:col-span-2 md:text-right text-sm text-foreground/80 group-hover:text-primary transition md:pt-1">Read profile →</span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* SUCCESS STORIES */}
