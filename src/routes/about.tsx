@@ -8,7 +8,7 @@ export const Route = createFileRoute("/about")({
       { title: "About | Draft Zenith" },
       { name: "description", content: "Draft Zenith is a modern publishing company connecting indie authors with the readers who'll love them most." },
       { property: "og:title", content: "About Draft Zenith" },
-      { property: "og:description", content: "A modern publishing company built for the next generation of readers and writers." },
+      { property: "og:description", content: "A reader-focused editorial platform for books, authors, and the readers they are written for." },
     ],
   }),
   component: AboutPage,

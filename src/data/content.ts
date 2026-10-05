@@ -99,7 +99,7 @@ export const POSTS: Post[] = [
   {
     slug: "writing-the-second-draft",
     title: "Writing the Second Draft Without Losing the First",
-    excerpt: "On revision as architecture: keeping the wild electricity of a first draft while quietly fixing everything that's broken.",
+    excerpt: "On revision as architecture: keeping the wild electricity of a first draft while fixing everything that's broken.",
     category: "Writing Tips",
     image: post2,
     author: "Edmund Vale",
