@@ -1,66 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BookOpen, Star, TrendingUp, Award, Users, Sparkles, Quote, Feather, Library, Bookmark, Globe } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
-import { POSTS, AUTHORS, TRENDING_BOOKS, TESTIMONIALS } from "@/data/content";
+import { POSTS, TRENDING_BOOKS } from "@/data/content";
 import hero from "@/assets/hero.jpg";
-import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
-import collection3 from "@/assets/collection-3.jpg";
-import mood1 from "@/assets/mood-1.jpg";
-import mood2 from "@/assets/mood-2.jpg";
-import mood3 from "@/assets/mood-3.jpg";
-import mood4 from "@/assets/mood-4.jpg";
-import mood5 from "@/assets/mood-5.jpg";
-import mood6 from "@/assets/mood-6.jpg";
-import fantasyCastle from "@/assets/fantasy-castle.jpg";
-import book1 from "@/assets/book-1.jpg";
-import book2 from "@/assets/book-2.jpg";
-import book3 from "@/assets/book-3.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Draft Zenith | Where Stories Rise" },
-      { name: "description", content: "Premium book discovery, indie author spotlights, and modern publishing essays for readers who care about craft." },
+      { name: "description", content: "Draft Zenith helps books find the readers they were written for, through research-led discovery and genuine reader engagement." },
       { property: "og:title", content: "Draft Zenith | Where Stories Rise" },
-      { property: "og:description", content: "Premium book discovery, indie author spotlights, and modern publishing essays." },
+      { property: "og:description", content: "Research-led reader discovery and engagement for authors and their books." },
     ],
   }),
   component: Index,
 });
 
 
-const POPULAR_GENRES = ["Fantasy", "Romance", "Thriller", "Mystery", "Self-Help", "Writing Tips"] as const;
-
-const SUCCESS_STORIES = [
-  {
-    name: "Theodore Reyes",
-    book: "Northwater",
-    quote: "After our spotlight, Northwater hit #3 in literary fiction on Kindle. Draft Zenith readers finish the book and tell their friends.",
-    metric: "12,400 copies sold in 30 days",
-    cover: book1,
-  },
-  {
-    name: "Hana Okafor",
-    book: "The Salt House",
-    quote: "I'd been writing for nine years before Draft Zenith found me. The week of the feature changed the trajectory of my career, and my mortgage.",
-    metric: "4 publishing offers received",
-    cover: book2,
-  },
-  {
-    name: "Clara Bishop",
-    book: "Penumbra Press",
-    quote: "We've worked with every major literary site. None send the kind of attentive, paying readers Draft Zenith does. It's not even close.",
-    metric: "3.2× ROI on co-published titles",
-    cover: book3,
-  },
-];
 
 function Index() {
   const featured = POSTS.find((p) => p.featured) ?? POSTS[0];
-  const recent = POSTS.filter((p) => p.slug !== featured.slug).slice(0, 4);
-  const trendingWeek = POSTS.slice(0, 5);
-  const editorPicks = POSTS.slice(1, 4);
+  const others = POSTS.filter((p) => p.slug !== featured.slug);
+  const journalLead = others[0];
+  const journalRest = others.slice(1, 3);
 
   return (
     <SiteLayout>
@@ -104,48 +66,10 @@ function Index() {
         </div>
       </section>
 
-      {/* THE DRAFT ZENITH APPROACH */}
-      <section className="border-t border-border">
-        <div className="container-luxe py-24 md:py-32 grid md:grid-cols-12 gap-12 md:gap-10">
-          <div className="md:col-span-7 space-y-8">
-            <SectionEyebrow>The Draft Zenith Approach</SectionEyebrow>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-balance max-w-2xl">
-              Books deserve more than visibility. They deserve the <em className="text-primary">right readers</em>.
-            </h2>
-            <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl">
-              Draft Zenith begins with the readers, not the promotion. We research where the people most likely to care about a book already gather, then build thoughtful paths for discovery, conversation, and continued connection.
-            </p>
-            <Link to="/services" className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition underline-gold">
-              See how reader engagement works <ArrowRight size={14} />
-            </Link>
-          </div>
-          <aside className="md:col-span-4 md:col-start-9 md:pt-16">
-            <div className="border-t border-primary/50 pt-6">
-              <p className="font-serif italic text-muted-foreground mb-6">How we read a book before anyone else does</p>
-              <ol className="divide-y divide-border">
-                {[
-                  ["The book", "Its themes, genre, and voice."],
-                  ["The readers", "Who it was actually written for."],
-                  ["The gathering places", "Where those readers already talk about books."],
-                  ["The conversation", "Discovery that leads to discussion, and connection that lasts."],
-                ].map(([title, note], i) => (
-                  <li key={title} className="py-4 flex gap-5">
-                    <span className="font-serif text-sm text-primary tabular-nums pt-0.5">{String(i + 1).padStart(2, "0")}</span>
-                    <div>
-                      <div className="font-serif text-lg text-foreground">{title}</div>
-                      <div className="text-sm text-muted-foreground mt-1">{note}</div>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </aside>
-        </div>
-      </section>
 
       {/* PRINCIPLES */}
-      <section className="container-luxe pb-24 md:pb-32">
-        <div className="border-t border-border pt-16 md:pt-20 grid md:grid-cols-12 gap-12 md:gap-10">
+      <section className="container-luxe py-24 md:py-32">
+        <div className="grid md:grid-cols-12 gap-12 md:gap-10">
           <div className="md:col-span-5 space-y-6">
             <SectionEyebrow>Our Principles</SectionEyebrow>
             <h2 className="font-serif text-3xl sm:text-4xl leading-[1.1] text-balance">
@@ -173,401 +97,169 @@ function Index() {
         </div>
       </section>
 
-      {/* FEATURED ESSAY (Cover Story) */}
-      <section className="container-luxe pb-28">
-        <div className="grid md:grid-cols-12 gap-10 items-center">
-          <div className="md:col-span-7 relative group overflow-hidden">
-            <img src={featured.image} alt={featured.title} loading="lazy" className="w-full aspect-[4/3] object-cover transition-transform duration-1000 group-hover:scale-105" />
-            <div className="absolute top-5 left-5 bg-background/80 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.25em] text-primary border border-border">
-              Cover Story
-            </div>
-          </div>
-          <div className="md:col-span-5 space-y-6">
-            <SectionEyebrow>The Cover Story</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl leading-tight text-balance">{featured.title}</h2>
-            <p className="text-muted-foreground leading-relaxed text-lg">{featured.excerpt}</p>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <span>{featured.author}</span>
-              <span className="w-1 h-1 rounded-full bg-primary" />
-              <span>{featured.readMinutes} min read</span>
-              <span className="w-1 h-1 rounded-full bg-primary" />
-              <span>{featured.category}</span>
-            </div>
-            <Link to="/blog/$slug" params={{ slug: featured.slug }} className="inline-flex items-center gap-3 border-b border-primary pb-1 text-sm uppercase tracking-wider hover:text-primary transition">
-              Continue reading <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* TRENDING THIS WEEK — editorial ranked list */}
-      <section className="bg-card border-y border-border py-28">
-        <div className="container-luxe">
-          <div className="grid md:grid-cols-12 gap-10 items-end mb-14">
-            <div className="md:col-span-8 space-y-3">
-              <SectionEyebrow><TrendingUp size={12} className="mr-1 inline" /> Trending This Week</SectionEyebrow>
-              <h2 className="font-serif text-4xl md:text-5xl">The essays our readers can't stop sending</h2>
-            </div>
-            <Link to="/blog" className="md:col-span-4 md:text-right inline-flex md:justify-end items-center gap-2 text-sm uppercase tracking-wider underline-gold">
-              See the full ranking <ArrowRight size={14} />
-            </Link>
+      {/* HOW DRAFT ZENITH WORKS */}
+      <section className="bg-card border-y border-border">
+        <div className="container-luxe py-24 md:py-32">
+          <div className="max-w-2xl space-y-5 mb-16">
+            <SectionEyebrow>How Draft Zenith Works</SectionEyebrow>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-balance">
+              Three stages, built around the reader.
+            </h2>
           </div>
-          <div className="grid lg:grid-cols-12 gap-10">
-            {/* Lead trending */}
-            <Link
-              to="/blog/$slug"
-              params={{ slug: trendingWeek[0].slug }}
-              className="lg:col-span-7 group block hover-lift"
-            >
-              <div className="relative overflow-hidden mb-6 aspect-[5/4]">
-                <img src={trendingWeek[0].image} alt={trendingWeek[0].title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute top-5 left-5 bg-primary text-primary-foreground px-3 py-1.5 text-[10px] uppercase tracking-[0.25em] font-medium">
-                  No. 01 This Week
-                </div>
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-3">{trendingWeek[0].category}</div>
-              <h3 className="font-serif text-3xl md:text-4xl leading-tight text-balance group-hover:text-primary transition-colors mb-3">{trendingWeek[0].title}</h3>
-              <p className="text-muted-foreground line-clamp-2">{trendingWeek[0].excerpt}</p>
-            </Link>
-            {/* Ranked list */}
-            <ol className="lg:col-span-5 space-y-px bg-border border border-border">
-              {trendingWeek.slice(1).map((p, i) => (
-                <li key={p.slug} className="bg-card hover:bg-background transition-colors duration-500">
-                  <Link to="/blog/$slug" params={{ slug: p.slug }} className="group flex gap-5 p-5 items-start">
-                    <div className="font-serif text-3xl gold-text-gradient w-10 shrink-0">{String(i + 2).padStart(2, "0")}</div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-1.5">{p.category}</div>
-                      <div className="font-serif text-lg md:text-xl leading-snug group-hover:text-primary transition-colors text-balance">{p.title}</div>
-                      <div className="text-xs text-muted-foreground mt-2">{p.author} · {p.readMinutes} min</div>
-                    </div>
-                    <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
-                  </Link>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* LATEST DISPATCHES */}
-      <section className="container-luxe py-28">
-        <div className="flex items-end justify-between mb-12">
-          <div className="space-y-3">
-            <SectionEyebrow>From the Journal</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl">Latest dispatches</h2>
-          </div>
-          <Link to="/blog" className="hidden md:inline-flex items-center gap-2 text-sm uppercase tracking-wider text-foreground/80 hover:text-primary underline-gold">
-            All articles <ArrowRight size={14} />
-          </Link>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {recent.map((p) => (
-            <Link
-              key={p.slug}
-              to="/blog/$slug"
-              params={{ slug: p.slug }}
-              className="group block hover-lift"
-            >
-              <div className="overflow-hidden mb-5 aspect-[4/5]">
-                <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-3">{p.category}</div>
-              <h3 className="font-serif text-2xl leading-tight mb-3 text-balance group-hover:text-primary transition-colors">{p.title}</h3>
-              <p className="text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
-              <div className="text-xs text-muted-foreground mt-4">{p.author} · {p.readMinutes} min</div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* POPULAR GENRES */}
-      <section className="bg-card border-y border-border py-28">
-        <div className="container-luxe">
-          <div className="grid md:grid-cols-12 gap-10 items-end mb-14">
-            <div className="md:col-span-7 space-y-3">
-              <SectionEyebrow>Browse by Craft</SectionEyebrow>
-              <h2 className="font-serif text-4xl md:text-5xl">Popular genres our editors are reading</h2>
-            </div>
-            <p className="md:col-span-5 text-muted-foreground">Each genre is curated by a working editor who actually reads in it. No algorithms, no sponsored slots.</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border border border-border">
-            {POPULAR_GENRES.map((g, i) => {
-              const sample = POSTS.find((p) => p.category === g) ?? POSTS[i % POSTS.length];
-              return (
-                <Link
-                  key={g}
-                  to="/blog"
-                  search={{ category: g }}
-                  className="group relative block bg-background overflow-hidden aspect-[4/5]"
-                >
-                  <img src={sample.image} alt={`${g} books`} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-                  <div className="absolute inset-0 p-5 flex flex-col justify-end">
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-primary mb-2 opacity-80">Genre</div>
-                    <div className="font-serif text-2xl leading-tight group-hover:text-primary transition-colors">{g}</div>
-                    <div className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                      Explore <ArrowUpRight size={12} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* TRENDING BOOKS */}
-      <section className="container-luxe py-28">
-        <div className="flex items-end justify-between mb-12">
-          <div className="space-y-3">
-            <SectionEyebrow><Bookmark size={12} className="mr-1 inline" /> On Our Nightstand</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl">Books our editors are passing around</h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {TRENDING_BOOKS.map((b, i) => (
-            <div key={i} className="group">
-              <div className="aspect-[3/4] overflow-hidden mb-4 relative">
-                <img src={b.image} alt={b.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                <div className="absolute top-3 left-3 bg-background/80 backdrop-blur px-2 py-1 text-[10px] uppercase tracking-wider text-primary">
-                  #{String(i + 1).padStart(2, "0")}
-                </div>
-              </div>
-              <h3 className="font-serif text-xl leading-tight">{b.title}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{b.author}</p>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-primary mt-2">{b.genre}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* EDITOR'S PICKS / CURATED COLLECTIONS */}
-      <section className="bg-card border-y border-border py-28">
-        <div className="container-luxe">
-          <div className="grid md:grid-cols-12 gap-10 items-end mb-14">
-            <div className="md:col-span-8 space-y-3">
-              <SectionEyebrow><Award size={12} className="mr-1 inline" /> Editor's Picks</SectionEyebrow>
-              <h2 className="font-serif text-4xl md:text-5xl">Three quiet collections, hand-curated this season</h2>
-            </div>
-            <p className="md:col-span-4 text-muted-foreground">Six titles each, gathered around a single thread. Updated quarterly by our editors-at-large.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <ol className="grid md:grid-cols-3 border-t border-border">
             {[
-              { tag: "Winter Reading", title: "Books to read by lamp light", count: "6 titles · 1,840 pages", img: collection1, slug: editorPicks[0].slug },
-              { tag: "Debut Voices", title: "First novels worth your weekend", count: "6 titles · 1,612 pages", img: collection2, slug: editorPicks[1].slug },
-              { tag: "Modern Romance", title: "Love stories with grown-up stakes", count: "6 titles · 1,944 pages", img: collection3, slug: editorPicks[2].slug },
-            ].map((c) => (
-              <Link
-                key={c.title}
-                to="/blog/$slug"
-                params={{ slug: c.slug }}
-                className="group block hover-lift bg-background border border-border overflow-hidden"
-              >
-                <div className="aspect-[5/4] overflow-hidden relative">
-                  <img src={c.img} alt={c.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-2.5 py-1 text-[10px] uppercase tracking-[0.25em]">
-                    {c.tag}
-                  </div>
+              ["Find the right readers", "Research where relevant readers are already discussing the themes, subjects and interests connected to a book."],
+              ["Start genuine conversations", "Introduce the book in relevant reader spaces and create opportunities for discussion and discovery rather than generic promotion."],
+              ["Build lasting reader interest", "Turn genuine reader interest into meaningful feedback, recommendations and an audience the author can continue to reach."],
+            ].map(([title, text], i) => (
+              <li key={title} className={`pt-8 pb-10 md:pr-10 ${i > 0 ? "border-t md:border-t-0 md:border-l border-border md:pl-10" : ""}`}>
+                <span className="font-serif text-sm text-primary tabular-nums">Stage {String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-serif text-2xl md:text-[1.7rem] leading-snug mt-4">{title}</h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* EDITORIAL FEATURE */}
+      <section className="container-luxe py-24 md:py-32">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-14 items-end">
+          <div className="md:col-span-7 overflow-hidden">
+            <img src={featured.image} alt={featured.title} loading="lazy" className="w-full aspect-[4/3] object-cover" />
+          </div>
+          <div className="md:col-span-5 space-y-6 md:pb-4">
+            <SectionEyebrow>The Feature</SectionEyebrow>
+            <h2 className="font-serif text-3xl md:text-5xl leading-[1.08] text-balance">{featured.title}</h2>
+            <p className="text-foreground/80 leading-relaxed text-lg">{featured.excerpt}</p>
+            <p className="text-sm text-muted-foreground">By {featured.author} · {featured.readMinutes} min read · {featured.category}</p>
+            <Link to="/blog/$slug" params={{ slug: featured.slug }} className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition underline-gold">
+              Read the feature <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* THE JOURNAL */}
+      <section className="border-t border-border">
+        <div className="container-luxe py-24 md:py-28">
+          <div className="flex items-end justify-between gap-6 mb-12">
+            <div className="space-y-3">
+              <SectionEyebrow>The Journal</SectionEyebrow>
+              <h2 className="font-serif text-3xl md:text-4xl">Recent writing</h2>
+            </div>
+            <Link to="/blog" className="hidden sm:inline-flex items-center gap-2 text-sm underline-gold">
+              All articles <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-12 gap-10 md:gap-14">
+            {journalLead && (
+              <Link to="/blog/$slug" params={{ slug: journalLead.slug }} className="group md:col-span-7 block">
+                <div className="overflow-hidden mb-6">
+                  <img src={journalLead.image} alt={journalLead.title} loading="lazy" className="w-full aspect-[16/10] object-cover" />
                 </div>
-                <div className="p-7 space-y-3">
-                  <h3 className="font-serif text-2xl leading-tight text-balance group-hover:text-primary transition-colors">{c.title}</h3>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{c.count}</p>
-                  <div className="flex items-center gap-2 text-sm text-foreground/90 underline-gold pt-1">
-                    Open the collection <ArrowRight size={14} />
-                  </div>
-                </div>
+                <p className="text-xs text-primary mb-3">{journalLead.category}</p>
+                <h3 className="font-serif text-2xl md:text-3xl leading-snug group-hover:text-primary transition-colors">{journalLead.title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed max-w-xl">{journalLead.excerpt}</p>
               </Link>
+            )}
+            <div className="md:col-span-5 border-t border-border md:border-t-0">
+              {journalRest.map((p) => (
+                <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="group block py-8 border-b border-border first:md:pt-0">
+                  <p className="text-xs text-primary mb-3">{p.category}</p>
+                  <h3 className="font-serif text-xl md:text-2xl leading-snug group-hover:text-primary transition-colors">{p.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.excerpt}</p>
+                  <p className="mt-4 text-xs text-muted-foreground">{p.author} · {p.readMinutes} min read</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SELECTED BOOKS */}
+      <section className="bg-card border-y border-border">
+        <div className="container-luxe py-24 md:py-28">
+          <div className="grid md:grid-cols-12 gap-10 mb-14">
+            <div className="md:col-span-5 space-y-3">
+              <SectionEyebrow>Selected Books</SectionEyebrow>
+              <h2 className="font-serif text-3xl md:text-4xl">On our desk</h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+            {TRENDING_BOOKS.map((b) => (
+              <div key={b.title}>
+                <div className="aspect-[3/4] overflow-hidden mb-4">
+                  <img src={b.image} alt={`${b.title} cover`} loading="lazy" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-serif text-lg leading-tight">{b.title}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{b.author} · {b.genre}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURED AUTHORS */}
-      <section className="container-luxe py-28">
-        <div className="flex items-end justify-between mb-12">
-          <div className="space-y-3">
-            <SectionEyebrow>The Voices</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl">Authors we're following</h2>
+      {/* FOR AUTHORS */}
+      <section className="container-luxe py-24 md:py-32">
+        <div className="grid md:grid-cols-12 gap-12 md:gap-10">
+          <div className="md:col-span-7 space-y-7">
+            <SectionEyebrow>For Authors</SectionEyebrow>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-balance">
+              Bring your book to the readers who are already looking for it.
+            </h2>
+            <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl">
+              We help authors identify the reader communities where their book belongs, create genuine engagement around it, and build reader interest that lasts beyond launch week.
+            </p>
+            <Link to="/services" className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
+              Work with Draft Zenith <ArrowRight size={16} />
+            </Link>
           </div>
-          <Link to="/authors" className="hidden md:inline-flex items-center gap-2 text-sm uppercase tracking-wider underline-gold">
-            All authors <ArrowRight size={14} />
+          <div className="md:col-span-4 md:col-start-9 md:pt-14">
+            <p className="font-serif italic text-muted-foreground mb-4">What working together looks like</p>
+            <ul className="border-t border-border divide-y divide-border text-foreground/90">
+              <li className="py-4">Research into where your book's readers gather</li>
+              <li className="py-4">Introductions in relevant reader spaces</li>
+              <li className="py-4">Feedback and conversation from real readers</li>
+              <li className="py-4">An audience you can reach again</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL AUTHOR CTA */}
+      <section className="border-t border-border">
+        <div className="container-luxe py-24 md:py-32 text-center max-w-3xl">
+          <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] text-balance">
+            Your book already has readers. Let's find them.
+          </h2>
+          <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl mx-auto">
+            Tell us about your book and who you wrote it for. We'll reply personally with how we would approach it.
+          </p>
+          <Link to="/submit" className="mt-10 inline-flex items-center gap-3 border border-foreground/30 hover:border-primary hover:text-primary px-7 py-4 text-sm uppercase tracking-wider font-medium transition">
+            Talk to Draft Zenith <ArrowRight size={16} />
           </Link>
-        </div>
-        <ol className="border-t border-border">
-          {AUTHORS.map((a, i) => (
-            <li key={a.slug} className="border-b border-border">
-              <Link
-                to="/authors/$slug"
-                params={{ slug: a.slug }}
-                className="group grid grid-cols-[2.5rem_1fr] md:grid-cols-12 gap-x-4 md:gap-x-8 gap-y-2 py-8 md:py-10"
-              >
-                <span className="font-serif text-primary tabular-nums md:col-span-1 pt-1">{String(i + 1).padStart(2, "0")}</span>
-                <div className="md:col-span-4">
-                  <h3 className="font-serif text-2xl md:text-3xl group-hover:text-primary transition-colors">{a.name}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{a.role.split(" · ")[1] ?? a.role}{a.books[0] && <> · <em className="font-serif">{a.books[0].title}</em></>}</p>
-                </div>
-                <p className="col-start-2 md:col-start-auto md:col-span-5 text-muted-foreground leading-relaxed">{a.bio}</p>
-                <span className="col-start-2 md:col-start-auto md:col-span-2 md:text-right text-sm text-foreground/80 group-hover:text-primary transition md:pt-1">Read profile →</span>
-              </Link>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* SUCCESS STORIES */}
-      <section className="bg-card border-y border-border py-28 relative overflow-hidden noise-bg">
-        <div className="container-luxe relative">
-          <div className="grid md:grid-cols-12 gap-10 items-end mb-14">
-            <div className="md:col-span-8 space-y-3">
-              <SectionEyebrow><Sparkles size={12} className="mr-1 inline" /> Author Success Stories</SectionEyebrow>
-              <h2 className="font-serif text-4xl md:text-5xl text-balance">When the right readers find a book, careers change.</h2>
-            </div>
-            <p className="md:col-span-4 text-muted-foreground">Three indie authors, three months after their Draft Zenith spotlight.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {SUCCESS_STORIES.map((s) => (
-              <figure key={s.name} className="bg-background border border-border p-8 hover-lift relative">
-                <Quote size={28} className="text-primary mb-5 opacity-80" />
-                <blockquote className="font-serif text-lg leading-snug text-balance">"{s.quote}"</blockquote>
-                <figcaption className="mt-7 pt-6 border-t border-border space-y-1">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={s.cover}
-                      alt={`${s.book} book cover`}
-                      loading="lazy"
-                      width={80}
-                      height={120}
-                      className="w-16 h-24 object-cover shrink-0 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.8)] ring-1 ring-border"
-                    />
-                    <div className="space-y-1 min-w-0">
-                      <div className="font-medium">{s.name}</div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Author of {s.book}</div>
-                      <div className="text-xs text-primary mt-2">{s.metric}</div>
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PINTEREST GRID */}
-      <section className="container-luxe py-28">
-        <div className="space-y-3 mb-12 max-w-2xl">
-          <SectionEyebrow>Visual Diary</SectionEyebrow>
-          <h2 className="font-serif text-4xl md:text-5xl">A library, in pictures</h2>
-          <p className="text-muted-foreground">A curated mood board from our editors and photographers, saved, reblogged, and pinned by readers around the world.</p>
-        </div>
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
-          {[
-            mood1, fantasyCastle, mood2, POSTS[1].image,
-            collection1, mood3, POSTS[2].image, mood4,
-            collection2, POSTS[3].image, mood5, mood6,
-            POSTS[4].image, collection3, POSTS[5].image,
-          ].map((src, i) => (
-            <div key={i} className="mb-4 break-inside-avoid overflow-hidden group">
-              <img
-                src={src}
-                alt=""
-                loading="lazy"
-                className="w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                style={{ aspectRatio: i % 3 === 0 ? "3/4" : i % 3 === 1 ? "1/1" : "4/5" }}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="bg-card border-y border-border py-28">
-        <div className="container-luxe">
-          <div className="space-y-3 mb-12">
-            <SectionEyebrow>The Word</SectionEyebrow>
-            <h2 className="font-serif text-4xl md:text-5xl max-w-2xl">From booksellers, editors, and authors we admire</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t, i) => (
-              <figure key={i} className="border border-border p-8 bg-background hover-lift">
-                <div className="flex gap-1 text-primary mb-5">
-                  {Array.from({ length: 5 }).map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
-                </div>
-                <blockquote className="font-serif text-xl leading-snug text-balance">"{t.quote}"</blockquote>
-                <figcaption className="mt-6 text-sm">
-                  <div className="font-medium">{t.name}</div>
-                  <div className="text-muted-foreground text-xs uppercase tracking-wider mt-1">{t.role}</div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DUAL CTA BANNER */}
-      <section className="container-luxe py-28">
-        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
-          <div className="bg-background p-10 md:p-14 group hover:bg-card transition-colors duration-500 flex flex-col justify-between gap-10">
-            <div className="space-y-5">
-              <Feather size={22} className="text-primary" />
-              <SectionEyebrow>For Authors</SectionEyebrow>
-              <h3 className="font-serif text-3xl md:text-4xl text-balance leading-tight">Get your book in front of readers who finish what they start.</h3>
-              <p className="text-muted-foreground">Our editors review every submission personally. If your book is right for our audience, we'll tell you within ten days.</p>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/submit" className="group/btn inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
-                Submit your book <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition" />
-              </Link>
-              <Link to="/services" className="inline-flex items-center gap-3 px-2 py-3.5 text-sm uppercase tracking-wider underline-gold">
-                Get featured
-              </Link>
-            </div>
-          </div>
-          <div className="bg-background p-10 md:p-14 group hover:bg-card transition-colors duration-500 flex flex-col justify-between gap-10">
-            <div className="space-y-5">
-              <Library size={22} className="text-primary" />
-              <SectionEyebrow>For Readers</SectionEyebrow>
-              <h3 className="font-serif text-3xl md:text-4xl text-balance leading-tight">Join a community that takes books and readers seriously.</h3>
-              <p className="text-muted-foreground">Editor-curated reading lists, member-only essays, and quiet conversations with the authors you love.</p>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/authors" className="group/btn inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
-                Discover authors <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition" />
-              </Link>
-              <Link to="/blog" className="inline-flex items-center gap-3 px-2 py-3.5 text-sm uppercase tracking-wider underline-gold">
-                Explore articles
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* NEWSLETTER */}
-      <section id="newsletter" className="container-luxe pb-28 scroll-mt-24">
-        <div className="relative overflow-hidden bg-card border border-border p-10 md:p-20 noise-bg">
-          <div className="relative grid md:grid-cols-2 gap-10 items-center">
-            <div className="space-y-5">
-              <SectionEyebrow>The Letter</SectionEyebrow>
-              <h2 className="font-serif text-4xl md:text-5xl text-balance">A weekly love letter to readers and writers.</h2>
-              <p className="text-muted-foreground">One essay, three book recommendations, zero noise. Saturday mornings, in your inbox.</p>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground pt-2">
-                <BookOpen size={16} className="text-primary" /> Joined by 24,000+ readers
-              </div>
-            </div>
-            <form className="space-y-3">
-              <div className="flex border border-border bg-background focus-within:border-primary transition">
-                <input
-                  type="email"
-                  placeholder="your.address@email.com"
-                  className="bg-transparent px-5 py-4 flex-1 outline-none"
-                />
-                <button className="bg-primary text-primary-foreground px-6 text-sm uppercase tracking-wider">Subscribe</button>
-              </div>
-              <p className="text-xs text-muted-foreground">Unsubscribe in one click. We never share your address.</p>
-            </form>
+      <section id="newsletter" className="bg-card border-t border-border scroll-mt-24">
+        <div className="container-luxe py-16 md:py-20 grid md:grid-cols-12 gap-8 md:gap-10 items-end">
+          <div className="md:col-span-6 space-y-3">
+            <SectionEyebrow>The Letter</SectionEyebrow>
+            <h2 className="font-serif text-2xl md:text-3xl text-balance">A Saturday letter on books worth finding.</h2>
+            <p className="text-muted-foreground">One essay and a few recommendations on reading, discovery and publishing.</p>
           </div>
+          <form className="md:col-span-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex border-b border-foreground/30 focus-within:border-primary transition">
+              <input type="email" aria-label="Email address" placeholder="Your email address" className="bg-transparent py-4 flex-1 min-w-0 outline-none" />
+              <button className="text-sm uppercase tracking-wider text-primary pl-4">Subscribe</button>
+            </div>
+          </form>
         </div>
       </section>
     </SiteLayout>
   );
 }
+
