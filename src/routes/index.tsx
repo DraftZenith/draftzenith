@@ -68,8 +68,8 @@ function Index() {
 
 
       {/* PRINCIPLES */}
-      <section className="container-luxe pb-24 md:pb-32">
-        <div className="border-t border-border pt-16 md:pt-20 grid md:grid-cols-12 gap-12 md:gap-10">
+      <section className="container-luxe py-24 md:py-32">
+        <div className="grid md:grid-cols-12 gap-12 md:gap-10">
           <div className="md:col-span-5 space-y-6">
             <SectionEyebrow>Our Principles</SectionEyebrow>
             <h2 className="font-serif text-3xl sm:text-4xl leading-[1.1] text-balance">
