@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      assessment_requests: {
+        Row: {
+          author_website: string | null
+          book_title: string | null
+          budget_range: string | null
+          consent: boolean
+          country: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          main_goal: string
+          project_description: string
+          service_of_interest: string
+        }
+        Insert: {
+          author_website?: string | null
+          book_title?: string | null
+          budget_range?: string | null
+          consent?: boolean
+          country: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          main_goal: string
+          project_description: string
+          service_of_interest: string
+        }
+        Update: {
+          author_website?: string | null
+          book_title?: string | null
+          budget_range?: string | null
+          consent?: boolean
+          country?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          main_goal?: string
+          project_description?: string
+          service_of_interest?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
