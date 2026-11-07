@@ -38,31 +38,31 @@
 
 :root {
   --radius: 0.25rem;
-  /* Dark luxury base */
-  --background: oklch(0.16 0.005 60);
-  --foreground: oklch(0.95 0.012 80);
-  --card: oklch(0.19 0.006 60);
-  --card-foreground: oklch(0.95 0.012 80);
-  --popover: oklch(0.19 0.006 60);
-  --popover-foreground: oklch(0.95 0.012 80);
-  --primary: oklch(0.78 0.12 80); /* gold */
-  --primary-foreground: oklch(0.14 0.005 60);
-  --secondary: oklch(0.24 0.008 60);
-  --secondary-foreground: oklch(0.95 0.012 80);
-  --muted: oklch(0.22 0.006 60);
-  --muted-foreground: oklch(0.68 0.015 70);
-  --accent: oklch(0.78 0.12 80);
-  --accent-foreground: oklch(0.14 0.005 60);
+  /* Warm ivory and deep navy agency palette */
+  --background: oklch(0.975 0.012 88);
+  --foreground: oklch(0.24 0.045 255);
+  --card: oklch(0.995 0.006 88);
+  --card-foreground: oklch(0.24 0.045 255);
+  --popover: oklch(0.995 0.006 88);
+  --popover-foreground: oklch(0.24 0.045 255);
+  --primary: oklch(0.69 0.095 78);
+  --primary-foreground: oklch(0.20 0.045 255);
+  --secondary: oklch(0.92 0.018 88);
+  --secondary-foreground: oklch(0.24 0.045 255);
+  --muted: oklch(0.945 0.012 88);
+  --muted-foreground: oklch(0.48 0.028 255);
+  --accent: oklch(0.91 0.025 84);
+  --accent-foreground: oklch(0.24 0.045 255);
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.28 0.008 60);
-  --input: oklch(0.24 0.008 60);
-  --ring: oklch(0.78 0.12 80);
+  --border: oklch(0.86 0.018 88);
+  --input: oklch(0.88 0.016 88);
+  --ring: oklch(0.69 0.095 78);
 
-  --gold: oklch(0.78 0.12 80);
-  --gold-soft: oklch(0.85 0.08 82);
-  --cream: oklch(0.95 0.018 80);
-  --ink: oklch(0.14 0.005 60);
+  --gold: oklch(0.69 0.095 78);
+  --gold-soft: oklch(0.76 0.07 82);
+  --cream: oklch(0.975 0.012 88);
+  --ink: oklch(0.20 0.045 255);
 }
 
 @layer base {
@@ -94,7 +94,7 @@
     height: 1px;
   }
   .gold-text-gradient {
-    background: linear-gradient(135deg, oklch(0.88 0.10 82), oklch(0.72 0.13 75));
+    background: linear-gradient(135deg, oklch(0.76 0.07 82), oklch(0.62 0.08 76));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

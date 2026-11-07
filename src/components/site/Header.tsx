@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/blog", label: "Journal" },
-  { to: "/authors", label: "Authors" },
-  { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/portfolio", label: "Portfolio" },
+  { to: "/how-it-works", label: "How It Works" },
 ] as const;
 
 export function Header() {
@@ -50,17 +50,18 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link
-            to="/submit"
+            to="/get-started"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm tracking-wide uppercase font-medium hover:bg-primary/90 transition"
           >
-            Submit Your Book
+            Request a Free Assessment
           </Link>
         </div>
 
         <button
-          aria-label="Open menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           className="md:hidden p-2 text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
@@ -69,7 +70,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border">
+        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border">
           <nav className="container-luxe flex flex-col py-6 gap-5 text-sm uppercase tracking-wide">
             {NAV.map((n) => (
               <Link
@@ -83,11 +84,11 @@ export function Header() {
               </Link>
             ))}
             <Link
-              to="/submit"
+              to="/get-started"
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center bg-primary text-primary-foreground px-5 py-3 text-sm tracking-wide uppercase font-medium"
             >
-              Submit Your Book
+              Request a Free Assessment
             </Link>
           </nav>
         </div>
