@@ -9,18 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthorsRouteImport } from './routes/authors'
 import { Route as BlogRouteImport } from './routes/blog'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SubmitRouteImport } from './routes/submit'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthorsRoute = AuthorsRouteImport.update({
@@ -33,19 +31,9 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SubmitRoute = SubmitRouteImport.update({
-  id: '/submit',
-  path: '/submit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthorsSlugRoute = AuthorsSlugRouteImport.update({
@@ -60,85 +48,71 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/about': typeof AboutRoute
+  '/': typeof IndexRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
-  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/submit': typeof SubmitRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
-  '/about': typeof AboutRoute
+  '/': typeof IndexRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
-  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/submit': typeof SubmitRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/about': typeof AboutRoute
+  '/': typeof IndexRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
-  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/submit': typeof SubmitRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/about'
+    | '/'
     | '/authors'
     | '/blog'
-    | '/services'
     | '/sitemap.xml'
-    | '/submit'
     | '/authors/$slug'
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/about'
+    | '/'
     | '/authors'
     | '/blog'
-    | '/services'
     | '/sitemap.xml'
-    | '/submit'
     | '/authors/$slug'
     | '/blog/$slug'
   id:
     | '__root__'
-    | '/about'
+    | '/'
     | '/authors'
     | '/blog'
-    | '/services'
     | '/sitemap.xml'
-    | '/submit'
     | '/authors/$slug'
     | '/blog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AboutRoute: typeof AboutRoute
+  IndexRoute: typeof IndexRoute
   AuthorsRoute: typeof AuthorsRouteWithChildren
   BlogRoute: typeof BlogRouteWithChildren
-  ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SubmitRoute: typeof SubmitRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/authors': {
@@ -155,25 +129,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/submit': {
-      id: '/submit'
-      path: '/submit'
-      fullPath: '/submit'
-      preLoaderRoute: typeof SubmitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/authors/$slug': {
@@ -215,12 +175,10 @@ const BlogRouteChildren: BlogRouteChildren = {
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  AboutRoute: AboutRoute,
+  IndexRoute: IndexRoute,
   AuthorsRoute: AuthorsRouteWithChildren,
   BlogRoute: BlogRouteWithChildren,
-  ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SubmitRoute: SubmitRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
