@@ -1,265 +1,136 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Compass, Globe2, PenTool, SearchCheck } from "lucide-react";
+import hero from "@/assets/agency-hero.jpg";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
-import { POSTS, TRENDING_BOOKS } from "@/data/content";
-import hero from "@/assets/hero.jpg";
+import { AssessmentCta } from "@/components/site/AgencyPage";
+import { PORTFOLIO_PROJECTS, PROCESS_STEPS, SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Draft Zenith | Where Stories Rise" },
-      { name: "description", content: "Draft Zenith helps books find the readers they were written for, through research-led discovery and genuine reader engagement." },
-      { property: "og:title", content: "Draft Zenith | Where Stories Rise" },
-      { property: "og:description", content: "Research-led reader discovery and engagement for authors and their books." },
+      { title: "Draft Zenith | Author Branding & Book Discoverability" },
+      { name: "description", content: "Draft Zenith helps authors build professional brands, strengthen their digital presence, and improve book discoverability." },
+      { property: "og:title", content: "Draft Zenith | Author Branding & Book Discoverability" },
+      { property: "og:description", content: "Build your author brand, strengthen your digital presence, and connect your book with relevant readers." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: HomePage,
 });
 
+const serviceSummaries = [
+  { title: "Author Brand Development", icon: PenTool, text: "Establish a clear, professional author identity across your reader-facing presence." },
+  { title: "Author Websites & Book Landing Pages", icon: Globe2, text: "Present your author story and books through a purposeful digital home." },
+  { title: "Book Discoverability", icon: SearchCheck, text: "Make it easier for relevant readers to encounter your books online." },
+  { title: "Author Visibility Management", icon: Compass, text: "Keep selected digital visibility work moving with an agreed monthly scope." },
+];
 
+const approach = [
+  ["Author-led", "Work begins with your author identity, book, and intended audience."],
+  ["Connected services", "Brand, digital presence, and book discoverability can be considered together."],
+  ["Agreed scope", "Deliverables and timelines are discussed in an assessment and proposal."],
+  ["Clear terms", "Project payments, timing, and third-party expenses are stated before work begins."],
+  ["Digital-first", "Services focus on author brands, websites, landing pages, and online discovery."],
+  ["No outcome promises", "Recommendations and costs are discussed without guaranteeing audience results."],
+];
 
-function Index() {
-  const featured = POSTS.find((p) => p.featured) ?? POSTS[0];
-  const others = POSTS.filter((p) => p.slug !== featured.slug);
-  const journalLead = others[0];
-  const journalRest = others.slice(1, 3);
-
+function HomePage() {
   return (
     <SiteLayout>
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-end overflow-hidden">
-        <img
-          src={hero}
-          alt="An open book lit by a brass lamp"
-          className="absolute inset-0 w-full h-full object-cover"
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
-        <div className="container-luxe relative z-10 pb-20 md:pb-24 pt-36 md:pt-40 grid md:grid-cols-12 gap-10 items-end">
-          <div className="md:col-span-8 space-y-7 animate-fade-up">
-            <SectionEyebrow>Draft Zenith · Reader Discovery</SectionEyebrow>
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] text-balance max-w-3xl">
-              Where the right readers discover the right <em className="text-primary">books</em>.
+      <section className="relative flex min-h-[780px] items-end overflow-hidden bg-foreground md:min-h-[820px]">
+        <img src={hero} alt="Author-brand moodboard, open book, and website layouts in a creative studio" width={1920} height={1088} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/65 to-foreground/10" />
+        <div className="container-luxe relative z-10 grid items-end gap-12 pb-16 pt-40 md:grid-cols-12 md:pb-24">
+          <div className="space-y-7 md:col-span-9 lg:col-span-8">
+            <SectionEyebrow>Author branding · Digital presence · Book discoverability</SectionEyebrow>
+            <h1 className="max-w-5xl font-serif text-4xl leading-[1.06] text-balance text-background sm:text-5xl md:text-6xl lg:text-7xl">
+              Build Your Author Brand. Strengthen Your Digital Presence. Expand Your Book&apos;s Discoverability.
             </h1>
-            <p className="text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
-              Draft Zenith connects books with the readers most likely to care about them, through research-led discovery, reader engagement, and thoughtful editorial storytelling.
+            <p className="max-w-2xl text-base leading-relaxed text-background/85 md:text-lg">
+              Your book deserves more than a listing on a retailer&apos;s website. Draft Zenith helps authors establish professional brands, create engaging digital experiences and improve their books&apos; discoverability through strategic online campaigns.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <Link to="/blog" className="group inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
-                Explore Draft Zenith <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
+            <div className="flex flex-col gap-3 pt-1 sm:flex-row">
+              <Link to="/get-started" className="inline-flex min-h-12 items-center justify-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90">
+                Request a Free Assessment <ArrowRight size={16} />
               </Link>
-              <Link to="/services" className="inline-flex items-center justify-center gap-3 border border-foreground/30 hover:border-primary hover:text-primary px-6 py-3.5 text-sm uppercase tracking-wider font-medium transition">
-                For Authors
-              </Link>
-            </div>
-          </div>
-          <div className="md:col-span-4 hidden md:block">
-            <div className="ml-auto max-w-xs border-l border-primary/40 pl-5 space-y-3">
-              <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">Featured in the Journal</div>
-              <Link to="/blog/$slug" params={{ slug: featured.slug }} className="block font-serif text-xl leading-snug text-foreground/90 hover:text-primary transition">
-                {featured.title}
+              <Link to="/services" className="inline-flex min-h-12 items-center justify-center border border-background/60 px-6 py-3 text-sm font-medium text-background transition hover:border-primary hover:text-primary">
+                Explore Our Services
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-
-      {/* PRINCIPLES */}
-      <section className="container-luxe py-24 md:py-32">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-10">
-          <div className="md:col-span-5 space-y-6">
-            <SectionEyebrow>Our Principles</SectionEyebrow>
-            <h2 className="font-serif text-3xl sm:text-4xl leading-[1.1] text-balance">
-              Reader discovery starts with research.
-            </h2>
-            <p className="text-foreground/80 leading-relaxed max-w-md">
-              Every book has a particular audience. Draft Zenith researches the themes, communities, conversations, and interests surrounding a book before creating paths for readers to discover and engage with it.
-            </p>
-          </div>
-          <ol className="md:col-span-6 md:col-start-7 border-t border-border">
-            {[
-              ["Research first", "Reader acquisition begins with understanding where relevant readers already gather."],
-              ["Real engagement", "Create opportunities for genuine discovery, discussion, and reader response rather than simply placing promotional links."],
-              ["Lasting connection", "Give interested readers a way to stay connected with a book and discover an author's future work."],
-            ].map(([title, text], i) => (
-              <li key={title} className="grid grid-cols-[3rem_1fr] sm:grid-cols-[4rem_1fr] gap-4 py-8 border-b border-border">
-                <span className="font-serif text-2xl sm:text-3xl text-primary tabular-nums leading-none">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3 className="font-serif text-xl sm:text-2xl text-foreground">{title}</h3>
-                  <p className="mt-2 text-muted-foreground leading-relaxed">{text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-
-      {/* HOW DRAFT ZENITH WORKS */}
-      <section className="bg-card border-y border-border">
-        <div className="container-luxe py-24 md:py-32">
-          <div className="max-w-2xl space-y-5 mb-16">
-            <SectionEyebrow>How Draft Zenith Works</SectionEyebrow>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-balance">
-              Three stages, built around the reader.
-            </h2>
-          </div>
-          <ol className="grid md:grid-cols-3 border-t border-border">
-            {[
-              ["Find the right readers", "Research where relevant readers are already discussing the themes, subjects and interests connected to a book."],
-              ["Start genuine conversations", "Introduce the book in relevant reader spaces and create opportunities for discussion and discovery rather than generic promotion."],
-              ["Build lasting reader interest", "Turn genuine reader interest into meaningful feedback, recommendations and an audience the author can continue to reach."],
-            ].map(([title, text], i) => (
-              <li key={title} className={`pt-8 pb-10 md:pr-10 ${i > 0 ? "border-t md:border-t-0 md:border-l border-border md:pl-10" : ""}`}>
-                <span className="font-serif text-sm text-primary tabular-nums">Stage {String(i + 1).padStart(2, "0")}</span>
-                <h3 className="font-serif text-2xl md:text-[1.7rem] leading-snug mt-4">{title}</h3>
-                <p className="mt-4 text-muted-foreground leading-relaxed">{text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* EDITORIAL FEATURE */}
-      <section className="container-luxe py-24 md:py-32">
-        <div className="grid md:grid-cols-12 gap-10 md:gap-14 items-end">
-          <div className="md:col-span-7 overflow-hidden">
-            <img src={featured.image} alt={featured.title} loading="lazy" className="w-full aspect-[4/3] object-cover" />
-          </div>
-          <div className="md:col-span-5 space-y-6 md:pb-4">
-            <SectionEyebrow>The Feature</SectionEyebrow>
-            <h2 className="font-serif text-3xl md:text-5xl leading-[1.08] text-balance">{featured.title}</h2>
-            <p className="text-foreground/80 leading-relaxed text-lg">{featured.excerpt}</p>
-            <p className="text-sm text-muted-foreground">By {featured.author} · {featured.readMinutes} min read · {featured.category}</p>
-            <Link to="/blog/$slug" params={{ slug: featured.slug }} className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition underline-gold">
-              Read the feature <ArrowRight size={14} />
-            </Link>
+          <div className="hidden border-l border-primary/70 pl-5 text-sm text-background/80 md:col-span-3 md:block lg:col-span-4 lg:col-start-9">
+            <p className="mb-2 text-xs uppercase text-background/65">A focused agency for authors</p>
+            <p className="font-serif text-xl leading-snug text-background">Brand clarity, digital experiences, and thoughtful book discovery.</p>
           </div>
         </div>
       </section>
 
-      {/* THE JOURNAL */}
-      <section className="border-t border-border">
-        <div className="container-luxe py-24 md:py-28">
-          <div className="flex items-end justify-between gap-6 mb-12">
-            <div className="space-y-3">
-              <SectionEyebrow>The Journal</SectionEyebrow>
-              <h2 className="font-serif text-3xl md:text-4xl">Recent writing</h2>
-            </div>
-            <Link to="/blog" className="hidden sm:inline-flex items-center gap-2 text-sm underline-gold">
-              All articles <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-12 gap-10 md:gap-14">
-            {journalLead && (
-              <Link to="/blog/$slug" params={{ slug: journalLead.slug }} className="group md:col-span-7 block">
-                <div className="overflow-hidden mb-6">
-                  <img src={journalLead.image} alt={journalLead.title} loading="lazy" className="w-full aspect-[16/10] object-cover" />
-                </div>
-                <p className="text-xs text-primary mb-3">{journalLead.category}</p>
-                <h3 className="font-serif text-2xl md:text-3xl leading-snug group-hover:text-primary transition-colors">{journalLead.title}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed max-w-xl">{journalLead.excerpt}</p>
-              </Link>
-            )}
-            <div className="md:col-span-5 border-t border-border md:border-t-0">
-              {journalRest.map((p) => (
-                <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="group block py-8 border-b border-border first:md:pt-0">
-                  <p className="text-xs text-primary mb-3">{p.category}</p>
-                  <h3 className="font-serif text-xl md:text-2xl leading-snug group-hover:text-primary transition-colors">{p.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.excerpt}</p>
-                  <p className="mt-4 text-xs text-muted-foreground">{p.author} · {p.readMinutes} min read</p>
-                </Link>
-              ))}
-            </div>
-          </div>
+      <section className="container-luxe grid gap-8 py-20 md:grid-cols-12 md:gap-12 md:py-28">
+        <div className="md:col-span-5">
+          <SectionEyebrow>The Draft Zenith Approach</SectionEyebrow>
         </div>
-      </section>
-
-      {/* SELECTED BOOKS */}
-      <section className="bg-card border-y border-border">
-        <div className="container-luxe py-24 md:py-28">
-          <div className="grid md:grid-cols-12 gap-10 mb-14">
-            <div className="md:col-span-5 space-y-3">
-              <SectionEyebrow>Selected Books</SectionEyebrow>
-              <h2 className="font-serif text-3xl md:text-4xl">On our desk</h2>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
-            {TRENDING_BOOKS.map((b) => (
-              <div key={b.title}>
-                <div className="aspect-[3/4] overflow-hidden mb-4">
-                  <img src={b.image} alt={`${b.title} cover`} loading="lazy" className="w-full h-full object-cover" />
-                </div>
-                <h3 className="font-serif text-lg leading-tight">{b.title}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{b.author} · {b.genre}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FOR AUTHORS */}
-      <section className="container-luxe py-24 md:py-32">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-10">
-          <div className="md:col-span-7 space-y-7">
-            <SectionEyebrow>For Authors</SectionEyebrow>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-balance">
-              Bring your book to the readers who are already looking for it.
-            </h2>
-            <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl">
-              We help authors identify the reader communities where their book belongs, create genuine engagement around it, and build reader interest that lasts beyond launch week.
-            </p>
-            <Link to="/services" className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3.5 text-sm uppercase tracking-wider font-medium hover:bg-primary/90 transition">
-              Work with Draft Zenith <ArrowRight size={16} />
-            </Link>
-          </div>
-          <div className="md:col-span-4 md:col-start-9 md:pt-14">
-            <p className="font-serif italic text-muted-foreground mb-4">What working together looks like</p>
-            <ul className="border-t border-border divide-y divide-border text-foreground/90">
-              <li className="py-4">Research into where your book's readers gather</li>
-              <li className="py-4">Introductions in relevant reader spaces</li>
-              <li className="py-4">Feedback and conversation from real readers</li>
-              <li className="py-4">An audience you can reach again</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL AUTHOR CTA */}
-      <section className="border-t border-border">
-        <div className="container-luxe py-24 md:py-32 text-center max-w-3xl">
-          <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] text-balance">
-            Your book already has readers. Let's find them.
-          </h2>
-          <p className="mt-6 text-foreground/80 leading-relaxed max-w-xl mx-auto">
-            Tell us about your book and who you wrote it for. We'll reply personally with how we would approach it.
+        <div className="space-y-6 md:col-span-7">
+          <h2 className="max-w-3xl font-serif text-3xl leading-tight text-balance md:text-5xl">More Than a Published Book. A Stronger Author Presence.</h2>
+          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            An author&apos;s work deserves a clear identity and a thoughtful place online. We bring author branding, digital presence, and book discoverability into one considered plan, shaped around your work and goals.
           </p>
-          <Link to="/submit" className="mt-10 inline-flex items-center gap-3 border border-foreground/30 hover:border-primary hover:text-primary px-7 py-4 text-sm uppercase tracking-wider font-medium transition">
-            Talk to Draft Zenith <ArrowRight size={16} />
-          </Link>
+          <Link to="/about" className="inline-flex items-center gap-2 border-b border-primary pb-1 text-sm hover:text-primary">About Draft Zenith <ArrowRight size={15} /></Link>
         </div>
       </section>
 
-      {/* NEWSLETTER */}
-      <section id="newsletter" className="bg-card border-t border-border scroll-mt-24">
-        <div className="container-luxe py-16 md:py-20 grid md:grid-cols-12 gap-8 md:gap-10 items-end">
-          <div className="md:col-span-6 space-y-3">
-            <SectionEyebrow>The Letter</SectionEyebrow>
-            <h2 className="font-serif text-2xl md:text-3xl text-balance">A Saturday letter on books worth finding.</h2>
-            <p className="text-muted-foreground">One essay and a few recommendations on reading, discovery and publishing.</p>
+      <section className="border-y border-border bg-card">
+        <div className="container-luxe py-20 md:py-28">
+          <div className="mb-12 flex flex-col justify-between gap-5 border-b border-border pb-8 sm:flex-row sm:items-end">
+            <div className="space-y-3"><SectionEyebrow>Services</SectionEyebrow><h2 className="font-serif text-3xl md:text-5xl">A stronger author presence, built with intention.</h2></div>
+            <Link to="/services" className="inline-flex shrink-0 items-center gap-2 text-sm hover:text-primary">View all services <ArrowRight size={15} /></Link>
           </div>
-          <form className="md:col-span-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="flex border-b border-foreground/30 focus-within:border-primary transition">
-              <input type="email" aria-label="Email address" placeholder="Your email address" className="bg-transparent py-4 flex-1 min-w-0 outline-none" />
-              <button className="text-sm uppercase tracking-wider text-primary pl-4">Subscribe</button>
-            </div>
-          </form>
+          <div className="grid md:grid-cols-2">
+            {serviceSummaries.map((service, i) => (
+              <Link to="/services" key={service.title} className={`group flex gap-5 border-b border-border py-7 sm:py-9 ${i % 2 === 0 ? "md:mr-8 md:pr-8" : "md:ml-8 md:border-l md:pl-8"}`}>
+                <service.icon className="mt-1 shrink-0 text-primary" size={22} aria-hidden="true" />
+                <span><span className="font-serif text-xl sm:text-2xl group-hover:text-primary">{service.title}</span><span className="mt-2 block max-w-lg text-sm leading-relaxed text-muted-foreground">{service.text}</span></span>
+                <ArrowRight className="ml-auto mt-1 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary" size={16} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
+
+      <section className="container-luxe py-20 md:py-28">
+        <div className="mb-10 flex flex-col gap-5 border-b border-border pb-8 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-3"><SectionEyebrow>Selected projects</SectionEyebrow><h2 className="font-serif text-3xl md:text-5xl">Work in the world</h2></div>
+          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">A selection of digital projects and reader-discovery work. Explore each available project directly.</p>
+        </div>
+        <ol className="border-t border-border">
+          {PORTFOLIO_PROJECTS.map((project, i) => (
+            <li key={project.name} className="grid gap-3 border-b border-border py-6 sm:grid-cols-[3rem_1fr_auto] sm:items-center sm:gap-5 sm:py-8">
+              <span className="font-serif text-xl text-primary">0{i + 1}</span>
+              <h3 className="font-serif text-2xl sm:text-3xl">{project.name}</h3>
+              {project.href ? <a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 justify-self-start text-sm underline underline-offset-4 hover:text-primary sm:justify-self-end">View Project <ArrowRight size={15} /></a> : <span className="text-sm text-muted-foreground sm:text-right">Project link not provided</span>}
+            </li>
+          ))}
+        </ol>
+        <Link to="/portfolio" className="mt-7 inline-flex items-center gap-2 text-sm hover:text-primary">Explore portfolio <ArrowRight size={15} /></Link>
+      </section>
+
+      <section className="border-y border-border bg-secondary/60">
+        <div className="container-luxe grid gap-12 py-20 md:grid-cols-12 md:py-28">
+          <div className="md:col-span-4"><SectionEyebrow>Why Draft Zenith</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">A clear, considered way to build your presence.</h2></div>
+          <ol className="grid gap-x-10 md:col-span-8 md:grid-cols-2">
+            {approach.map(([title, text], i) => <li key={title} className="border-t border-border py-5"><span className="text-xs text-primary">0{i + 1}</span><h3 className="mt-2 font-serif text-xl">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p></li>)}
+          </ol>
+        </div>
+      </section>
+
+      <section className="container-luxe py-20 md:py-28">
+        <div className="mb-12 max-w-3xl space-y-4"><SectionEyebrow>How it works</SectionEyebrow><h2 className="font-serif text-3xl md:text-5xl">A thoughtful process, from first conversation to handover.</h2></div>
+        <ol className="grid border-t border-border md:grid-cols-4">
+          {PROCESS_STEPS.map((step, i) => <li key={step.title} className={`border-b border-border py-7 md:py-8 ${i > 0 ? "md:border-l md:pl-6" : "md:pr-6"} ${i < 3 ? "md:pr-6" : ""}`}><span className="font-serif text-sm text-primary">0{i + 1}</span><h3 className="mt-3 font-serif text-2xl">{step.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.text}</p></li>)}
+        </ol>
+        <Link to="/how-it-works" className="mt-7 inline-flex items-center gap-2 text-sm hover:text-primary">See how the process works <ArrowRight size={15} /></Link>
+      </section>
+      <AssessmentCta />
     </SiteLayout>
   );
 }
-
