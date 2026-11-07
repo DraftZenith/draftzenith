@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthorsRouteImport } from './routes/authors'
 import { Route as BlogRouteImport } from './routes/blog'
@@ -19,11 +18,6 @@ import { Route as SubmitRouteImport } from './routes/submit'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -66,7 +60,6 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
@@ -77,7 +70,6 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
@@ -89,7 +81,6 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
@@ -102,7 +93,6 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/about'
     | '/authors'
     | '/blog'
@@ -113,7 +103,6 @@ export interface FileRouteTypes {
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/about'
     | '/authors'
     | '/blog'
@@ -124,7 +113,6 @@ export interface FileRouteTypes {
     | '/blog/$slug'
   id:
     | '__root__'
-    | '/'
     | '/about'
     | '/authors'
     | '/blog'
@@ -136,7 +124,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AuthorsRoute: typeof AuthorsRouteWithChildren
   BlogRoute: typeof BlogRouteWithChildren
@@ -147,13 +134,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -235,7 +215,6 @@ const BlogRouteChildren: BlogRouteChildren = {
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AuthorsRoute: AuthorsRouteWithChildren,
   BlogRoute: BlogRouteWithChildren,
