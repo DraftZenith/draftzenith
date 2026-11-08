@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthorsRouteImport } from './routes/authors'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -38,6 +39,11 @@ const AuthorsRoute = AuthorsRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetStartedRoute = GetStartedRouteImport.update({
+  id: '/get-started',
+  path: '/get-started',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
+  '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
+  '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
+  '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/authors'
     | '/blog'
+    | '/get-started'
     | '/how-it-works'
     | '/portfolio'
     | '/services'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/authors'
     | '/blog'
+    | '/get-started'
     | '/how-it-works'
     | '/portfolio'
     | '/services'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/authors'
     | '/blog'
+    | '/get-started'
     | '/how-it-works'
     | '/portfolio'
     | '/services'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthorsRoute: typeof AuthorsRouteWithChildren
   BlogRoute: typeof BlogRouteWithChildren
+  GetStartedRoute: typeof GetStartedRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesRoute: typeof ServicesRoute
@@ -186,6 +199,13 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-started': {
+      id: '/get-started'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof GetStartedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -259,6 +279,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthorsRoute: AuthorsRouteWithChildren,
   BlogRoute: BlogRouteWithChildren,
+  GetStartedRoute: GetStartedRoute,
   HowItWorksRoute: HowItWorksRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesRoute: ServicesRoute,

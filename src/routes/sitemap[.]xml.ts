@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { POSTS, AUTHORS } from "@/data/content";
-
-const BASE_URL = "https://zenith-scribe-collective.lovable.app";
+const BASE_URL = "https://draftzenith.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -16,13 +14,11 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/blog", changefreq: "weekly", priority: "0.9" },
-          { path: "/authors", changefreq: "monthly", priority: "0.8" },
-          { path: "/services", changefreq: "monthly", priority: "0.8" },
-          { path: "/about", changefreq: "monthly", priority: "0.6" },
-          { path: "/submit", changefreq: "monthly", priority: "0.7" },
-          ...POSTS.map((p) => ({ path: `/blog/${p.slug}`, changefreq: "monthly" as const, priority: "0.7" })),
-          ...AUTHORS.map((a) => ({ path: `/authors/${a.slug}`, changefreq: "monthly" as const, priority: "0.6" })),
+          { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/services", changefreq: "monthly", priority: "0.9" },
+          { path: "/portfolio", changefreq: "monthly", priority: "0.8" },
+          { path: "/how-it-works", changefreq: "monthly", priority: "0.8" },
+          { path: "/get-started", changefreq: "monthly", priority: "0.8" },
         ];
 
         const urls = entries.map((e) =>
