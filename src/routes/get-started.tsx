@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { SERVICE_OPTIONS } from "@/data/services";
-import { submitAssessmentRequest, type AssessmentInput } from "@/lib/assessment.functions";
+import { assessmentInputSchema, submitAssessmentRequest, type AssessmentInput } from "@/lib/assessment.functions";
 
 const searchSchema = z.object({ service: z.string().optional() });
 
@@ -50,8 +50,15 @@ function GetStartedPage() {
       company_website: String(form.get("company_website") ?? ""),
     };
 
+    const parsed = assessmentInputSchema.safeParse(input);
+    if (!parsed.success) {
+      setError(parsed.error.issues[0]?.message ?? "Check the information and try again.");
+      setBusy(false);
+      return;
+    }
+
     try {
-      const result = await sendRequest({ data: input });
+      const result = await sendRequest({ data: parsed.data });
       if (result.ok) setSuccess(true);
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "We could not submit your request. Please try again.");
