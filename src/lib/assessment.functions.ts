@@ -1,16 +1,24 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { SERVICE_OPTIONS } from "@/data/services";
+
+const validServiceNames = [...SERVICE_OPTIONS, "Not sure yet"];
+const serviceSchema = z.string().refine((value) => validServiceNames.includes(value), "Choose a service from the list.");
+const optionalUrlSchema = z.string().trim().max(2048).optional().or(z.literal("")).refine(
+  (value) => !value || z.string().url().safeParse(value).success,
+  "Enter a complete website URL, including https://.",
+);
 
 export const assessmentInputSchema = z.object({
   full_name: z.string().trim().min(1, "Enter your full name.").max(120),
   email: z.string().trim().email("Enter a valid email address.").max(254),
   country: z.string().trim().min(1, "Enter your country.").max(100),
-  author_website: z.string().trim().max(2048).optional().or(z.literal("")),
+  author_website: optionalUrlSchema,
   book_title: z.string().trim().max(200).optional().or(z.literal("")),
-  service_of_interest: z.string().trim().min(1, "Choose a service of interest.").max(150),
+  service_of_interest: serviceSchema,
   project_description: z.string().trim().min(1, "Tell us briefly about your project.").max(3000),
   main_goal: z.string().trim().min(1, "Tell us your main goal.").max(500),
-  budget_range: z.string().trim().max(80).optional().or(z.literal("")),
+  budget_range: z.enum(["", "Under $500", "$500–$1,000", "$1,001–$2,500", "$2,501–$5,000", "Over $5,000", "Not sure yet"]).optional(),
   consent: z.literal(true, { errorMap: () => ({ message: "Please agree to be contacted about this request." }) }),
   company_website: z.string().max(300).optional(),
 });

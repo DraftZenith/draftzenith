@@ -26,7 +26,7 @@ export function Header() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/85 backdrop-blur-xl border-b border-border/60"
-          : "bg-transparent"
+          : "bg-background/95 border-b border-border/60"
       }`}
     >
       <div className="container-luxe flex items-center justify-between h-20">
