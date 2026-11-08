@@ -74,19 +74,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Draft Zenith | Where Stories Rise" },
-      { name: "google-site-verification", content: "fCkebHvtuCj0GllNbaDqwVyL_JJSge4z_Atup7_iJ-4" },
-      { name: "description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
-      { name: "author", content: "Draft Zenith" },
-      { property: "og:title", content: "Draft Zenith | Where Stories Rise" },
-      { property: "og:description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Draft Zenith | Where Stories Rise" },
-      { name: "twitter:description", content: "A premium publishing platform for book discovery, indie author promotion, and editorial insights on writing, reading, and the craft of storytelling." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0617353a-d3cb-42a7-bd54-77e7997e2da0" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0617353a-d3cb-42a7-bd54-77e7997e2da0" },
+      { property: "og:site_name", content: "Draft Zenith" },
     ],
     links: [
       {
@@ -95,28 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Draft Zenith",
-          url: "https://zenith-scribe-collective.lovable.app",
-          description: "A premium publishing platform for book discovery, indie author promotion, and editorial insights.",
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: "Draft Zenith",
-          url: "https://zenith-scribe-collective.lovable.app",
-        }),
-      },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,

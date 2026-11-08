@@ -1,17 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import {
-  X,
-  Send,
-  Sparkles,
-  BookOpen,
-  Feather,
-  Compass,
-  Megaphone,
-  PenLine,
-  Flame,
-  Mail,
-} from "lucide-react";
+import { X, Send, Sparkles, BookOpen, Feather, Compass, Megaphone, PenLine, Flame, Mail } from "lucide-react";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -22,24 +11,24 @@ type QuickPrompt = {
 };
 
 const QUICK_PROMPTS: QuickPrompt[] = [
-  { label: "Submit my book", prompt: "I'd like to submit my book for a feature. How does the process work?", icon: Feather },
-  { label: "Recommend a read", prompt: "Recommend a book I'll fall in love with. Ask me what I'm in the mood for.", icon: BookOpen },
-  { label: "Discover authors", prompt: "Introduce me to a few indie authors I should be reading right now.", icon: Compass },
-  { label: "Promotion options", prompt: "Walk me through Draft Zenith's promotion options for indie authors.", icon: Megaphone },
-  { label: "Writing tips", prompt: "Share a piece of writing advice from the Draft Zenith Journal.", icon: PenLine },
-  { label: "Trending now", prompt: "What's trending in the Draft Zenith Journal this week?", icon: Flame },
+  { label: "Build my author brand", prompt: "What should I consider when building a clear author brand?", icon: Feather },
+  { label: "Website options", prompt: "What are the differences between an author website and a book landing page?", icon: Compass },
+  { label: "Find a service", prompt: "Help me understand which Draft Zenith service may fit my goals.", icon: Megaphone },
+  { label: "Book discoverability", prompt: "What does book discoverability mean, and what can shape a project plan?", icon: BookOpen },
+  { label: "Project process", prompt: "How does a free assessment and project proposal work?", icon: PenLine },
+  { label: "Request assessment", prompt: "Where can I request a free assessment?", icon: Mail },
 ];
 
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Welcome to Draft Zenith. I'm **Zenith**, your editorial concierge. I can help you find your next read or think through how to reach readers for your own book. Where shall we begin?",
+    "Welcome to Draft Zenith. I'm **Zenith**, your author-services guide. I can help you explore branding, websites, book discoverability, and how to request an assessment. What are you working on?",
 };
 
 const AMBIENT_NUDGES = [
-  "Looking for your next unforgettable read?",
-  "Want help getting your book discovered?",
-  "Need a recommendation tailored to your taste?",
+  "Thinking about your author brand?",
+  "Want to strengthen your online presence?",
+  "Exploring ways to improve book discoverability?",
 ];
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
