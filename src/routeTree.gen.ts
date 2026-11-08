@@ -10,8 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthorsRouteImport } from './routes/authors'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -19,6 +23,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthorsRoute = AuthorsRouteImport.update({
@@ -29,6 +38,21 @@ const AuthorsRoute = AuthorsRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -49,16 +73,24 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/portfolio': typeof PortfolioRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/portfolio': typeof PortfolioRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -66,8 +98,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/authors': typeof AuthorsRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/portfolio': typeof PortfolioRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -76,24 +112,36 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/authors'
     | '/blog'
+    | '/how-it-works'
+    | '/portfolio'
+    | '/services'
     | '/sitemap.xml'
     | '/authors/$slug'
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/authors'
     | '/blog'
+    | '/how-it-works'
+    | '/portfolio'
+    | '/services'
     | '/sitemap.xml'
     | '/authors/$slug'
     | '/blog/$slug'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/authors'
     | '/blog'
+    | '/how-it-works'
+    | '/portfolio'
+    | '/services'
     | '/sitemap.xml'
     | '/authors/$slug'
     | '/blog/$slug'
@@ -101,8 +149,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AuthorsRoute: typeof AuthorsRouteWithChildren
   BlogRoute: typeof BlogRouteWithChildren
+  HowItWorksRoute: typeof HowItWorksRoute
+  PortfolioRoute: typeof PortfolioRoute
+  ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -113,6 +165,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/authors': {
@@ -127,6 +186,27 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -176,8 +256,12 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AuthorsRoute: AuthorsRouteWithChildren,
   BlogRoute: BlogRouteWithChildren,
+  HowItWorksRoute: HowItWorksRoute,
+  PortfolioRoute: PortfolioRoute,
+  ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
