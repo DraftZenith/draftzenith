@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zenith-scribe-collective.lovable.app/sitemap.xml
+Sitemap: https://draftzenith.lovable.app/sitemap.xml

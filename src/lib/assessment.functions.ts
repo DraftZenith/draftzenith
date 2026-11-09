@@ -2,8 +2,8 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { SERVICE_OPTIONS } from "@/data/services";
 
-const validServiceNames = [...SERVICE_OPTIONS, "Not sure yet"];
-const serviceSchema = z.string().refine((value) => validServiceNames.includes(value), "Choose a service from the list.");
+const validServiceNames = new Set<string>([...SERVICE_OPTIONS, "Not sure yet"]);
+const serviceSchema = z.string().refine((value) => validServiceNames.has(value), "Choose a service from the list.");
 const optionalUrlSchema = z.string().trim().max(2048).optional().or(z.literal("")).refine(
   (value) => !value || z.string().url().safeParse(value).success,
   "Enter a complete website URL, including https://.",
@@ -23,10 +23,10 @@ export const assessmentInputSchema = z.object({
   company_website: z.string().max(300).optional(),
 });
 
-export type AssessmentInput = z.infer<typeof assessmentInputSchema>;
+export type AssessmentInput = z.input<typeof assessmentInputSchema>;
 
 export const submitAssessmentRequest = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => assessmentInputSchema.parse(input))
+  .validator((input: unknown) => assessmentInputSchema.parse(input))
   .handler(async ({ data }) => {
     if (data.company_website?.trim()) return { ok: true };
 

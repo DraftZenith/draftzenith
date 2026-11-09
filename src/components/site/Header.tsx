@@ -8,6 +8,7 @@ const NAV = [
   { to: "/services", label: "Services" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/how-it-works", label: "How It Works" },
+  { to: "/get-started", label: "Get Started" },
 ] as const;
 
 export function Header() {
@@ -36,7 +37,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-10 text-sm tracking-wide uppercase">
+        <nav className="hidden xl:flex items-center gap-4 text-xs tracking-wide uppercase 2xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -50,7 +51,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Link
             to="/get-started"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm tracking-wide uppercase font-medium hover:bg-primary/90 transition"
@@ -62,7 +63,7 @@ export function Header() {
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="md:hidden p-2 text-foreground"
+          className="xl:hidden p-2 text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -70,7 +71,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border">
+        <div className="xl:hidden bg-background/95 backdrop-blur-xl border-t border-border">
           <nav className="container-luxe flex flex-col py-6 gap-5 text-sm uppercase tracking-wide">
             {NAV.map((n) => (
               <Link

@@ -101,7 +101,7 @@ function GetStartedPage() {
               <label htmlFor="budget_range" className="text-sm font-medium">Budget range (optional)</label>
               <select id="budget_range" name="budget_range" defaultValue="" className="min-h-12 w-full border border-input bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 <option value="">Prefer not to say</option>
-                <option>Under $500</option><option>$500–$1,000</option><option>$1,001–$2,500</option><option>$2,501–$5,000</option><option>Over $5,000</option><option>Not sure yet</option>
+                <option value="Under $500">Under $500</option><option value="$500–$1,000">$500–$1,000</option><option value="$1,001–$2,500">$1,001–$2,500</option><option value="$2,501–$5,000">$2,501–$5,000</option><option value="Over $5,000">Over $5,000</option><option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
           </div>
