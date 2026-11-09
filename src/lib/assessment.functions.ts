@@ -26,7 +26,7 @@ export const assessmentInputSchema = z.object({
 export type AssessmentInput = z.input<typeof assessmentInputSchema>;
 
 export const submitAssessmentRequest = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => assessmentInputSchema.parse(input))
+  .validator((input: unknown) => assessmentInputSchema.parse(input))
   .handler(async ({ data }) => {
     if (data.company_website?.trim()) return { ok: true };
 
