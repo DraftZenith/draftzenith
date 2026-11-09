@@ -1,6 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Instagram, Mail } from "lucide-react";
 
+function PinterestIcon() {
+  return <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.09 2.46 7.61 5.97 9.16-.08-.78-.16-1.97.03-2.82.18-.77 1.17-4.91 1.17-4.91s-.3-.6-.3-1.48c0-1.39.81-2.43 1.81-2.43.85 0 1.27.64 1.27 1.41 0 .86-.55 2.15-.83 3.34-.24.99.5 1.8 1.48 1.8 1.78 0 3.14-1.87 3.14-4.57 0-2.39-1.72-4.06-4.17-4.06-2.84 0-4.51 2.13-4.51 4.33 0 .86.33 1.78.74 2.28a.3.3 0 0 1 .07.28c-.08.31-.25 1-.28 1.14-.04.18-.15.22-.34.13-1.25-.58-2.03-2.4-2.03-3.87 0-3.15 2.29-6.04 6.6-6.04 3.46 0 6.16 2.47 6.16 5.77 0 3.44-2.17 6.21-5.18 6.21-1.01 0-1.97-.53-2.29-1.15 0 0-.5 1.92-.63 2.39-.23.86-.83 1.94-1.24 2.6.93.29 1.92.44 2.94.44 5.52 0 10-4.48 10-10S17.52 2 12 2z" /></svg>;
+}
+
 export function Footer() {
   return <footer className="mt-20 border-t border-border bg-foreground text-background">
     <div className="container-luxe grid gap-12 py-14 md:grid-cols-12 md:py-20">
@@ -18,7 +22,7 @@ export function Footer() {
         <p className="text-sm leading-relaxed text-background/70">Questions about your author brand, digital presence, or book discoverability?</p>
         <div className="flex gap-3">
           <a href="https://www.instagram.com/draft.zenith/" target="_blank" rel="noopener noreferrer" aria-label="Draft Zenith on Instagram" className="grid size-10 place-items-center border border-background/25 text-background/80 transition hover:border-primary hover:text-primary"><Instagram size={17} /></a>
-          <a href="https://www.pinterest.com/Draftzenith/" target="_blank" rel="noopener noreferrer" aria-label="Draft Zenith on Pinterest" className="grid size-10 place-items-center border border-background/25 font-serif text-xl text-background/80 transition hover:border-primary hover:text-primary">P</a>
+          <a href="https://www.pinterest.com/Draftzenith/" target="_blank" rel="noopener noreferrer" aria-label="Draft Zenith on Pinterest" className="grid size-10 place-items-center border border-background/25 text-background/80 transition hover:border-primary hover:text-primary"><PinterestIcon /></a>
           <Link to="/get-started" aria-label="Contact Draft Zenith" className="grid size-10 place-items-center border border-background/25 text-background/80 transition hover:border-primary hover:text-primary"><Mail size={17} /></Link>
         </div>
       </div>

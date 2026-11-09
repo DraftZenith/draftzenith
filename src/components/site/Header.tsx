@@ -37,7 +37,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-5 text-xs tracking-wide uppercase lg:gap-7">
+        <nav className="hidden xl:flex items-center gap-4 text-xs tracking-wide uppercase 2xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -63,7 +63,7 @@ export function Header() {
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="md:hidden p-2 text-foreground"
+          className="xl:hidden p-2 text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -71,7 +71,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border">
+        <div className="xl:hidden bg-background/95 backdrop-blur-xl border-t border-border">
           <nav className="container-luxe flex flex-col py-6 gap-5 text-sm uppercase tracking-wide">
             {NAV.map((n) => (
               <Link
