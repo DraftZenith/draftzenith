@@ -23,7 +23,7 @@ export const assessmentInputSchema = z.object({
   company_website: z.string().max(300).optional(),
 });
 
-export type AssessmentInput = z.infer<typeof assessmentInputSchema>;
+export type AssessmentInput = z.input<typeof assessmentInputSchema>;
 
 export const submitAssessmentRequest = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => assessmentInputSchema.parse(input))
