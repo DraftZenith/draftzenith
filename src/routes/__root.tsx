@@ -74,6 +74,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "fCkebHvtuCj0GllNbaDqwVyL_JJSge4z_Atup7_iJ-4" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Draft Zenith" },
     ],

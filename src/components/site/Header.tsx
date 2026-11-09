@@ -8,6 +8,7 @@ const NAV = [
   { to: "/services", label: "Services" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/how-it-works", label: "How It Works" },
+  { to: "/get-started", label: "Get Started" },
 ] as const;
 
 export function Header() {
@@ -36,7 +37,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-10 text-sm tracking-wide uppercase">
+        <nav className="hidden md:flex items-center gap-5 text-xs tracking-wide uppercase lg:gap-7">
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -50,7 +51,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Link
             to="/get-started"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm tracking-wide uppercase font-medium hover:bg-primary/90 transition"
@@ -70,7 +71,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border">
           <nav className="container-luxe flex flex-col py-6 gap-5 text-sm uppercase tracking-wide">
             {NAV.map((n) => (
               <Link
