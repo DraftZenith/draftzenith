@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { X, Send, Sparkles, BookOpen, Feather, Compass, Megaphone, PenLine, Flame, Mail } from "lucide-react";
+import { X, Send, Sparkles, BookOpen, Feather, Compass, Megaphone, PenLine, Mail } from "lucide-react";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
