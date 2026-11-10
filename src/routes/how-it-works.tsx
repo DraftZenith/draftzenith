@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { AgencyPageIntro, AssessmentCta } from "@/components/site/AgencyPage";
-import { PROCESS_STEPS } from "@/data/services";
+import { PROCESS_STEPS, PROJECT_TERMS } from "@/data/services";
 
 export const Route = createFileRoute("/how-it-works")({
   head: () => ({ meta: [
@@ -18,9 +18,9 @@ const terms = [
   ["Free initial assessment", "Share your current author presence, project, and goals. We review your request as the starting point for a conversation."],
   ["Consultation and goals", "Discuss your needs and priorities so the proposed work addresses the project you have in mind."],
   ["Recommendation and proposal", "The proposal records agreed scope, deliverables, fees, and timing before work begins."],
-  ["Project and handover", "One-time projects are paid 50% upfront. The remaining 50% is due after agreed deliverables and before handover."],
-  ["Monthly services", "Monthly retainers are due at the beginning of each service month."],
-  ["Timing and additional costs", "Timelines begin after the deposit and required materials are received. Domains, hosting, premium software, and third-party costs are quoted separately where applicable."],
+  ["Project and handover", `One-time projects are paid ${PROJECT_TERMS.oneTimeDepositPercent}% upfront. The remaining ${PROJECT_TERMS.oneTimeBalancePercent}% is due after agreed deliverables and before handover.`],
+  ["Monthly services", `Monthly retainers are due ${PROJECT_TERMS.monthlyRetainerDue}.`],
+  ["Timing and additional costs", `Timelines begin ${PROJECT_TERMS.timelineStarts}. ${PROJECT_TERMS.separateCosts.join(", ")} are quoted separately where applicable.`],
 ];
 
 function HowItWorksPage() {

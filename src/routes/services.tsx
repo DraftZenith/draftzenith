@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { AgencyPageIntro, AssessmentCta } from "@/components/site/AgencyPage";
-import { SERVICES } from "@/data/services";
+import { PROJECT_TERMS, SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/services")({
   head: () => ({ meta: [
@@ -33,7 +33,7 @@ function ServicesPage() {
       </div>
       <div className="mt-12 grid gap-7 border-t border-border pt-8 md:grid-cols-3">
         <div><SectionEyebrow>Payment terms</SectionEyebrow></div>
-        <p className="text-sm leading-relaxed text-muted-foreground md:col-span-2">One-time work is paid 50% upfront, with the remaining 50% due after agreed deliverables and before handover. Monthly retainers are due at the beginning of each service month. Timelines start after the deposit and required materials are received. Domains, hosting, premium software, and third-party costs are quoted separately where applicable.</p>
+        <p className="text-sm leading-relaxed text-muted-foreground md:col-span-2">One-time work is paid {PROJECT_TERMS.oneTimeDepositPercent}% upfront, with the remaining {PROJECT_TERMS.oneTimeBalancePercent}% due after agreed deliverables and before handover. Monthly retainers are due {PROJECT_TERMS.monthlyRetainerDue}. Timelines start {PROJECT_TERMS.timelineStarts}. {PROJECT_TERMS.separateCosts.join(", ")} are quoted separately where applicable.</p>
       </div>
     </section>
     <AssessmentCta title="Find the right scope for your project." />

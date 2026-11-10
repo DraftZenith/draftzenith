@@ -75,3 +75,11 @@ export const PROCESS_STEPS = [
   { title: "Create", text: "We agree on scope, deliverables, costs, and timing in a proposal before work begins." },
   { title: "Improve", text: "We complete the agreed work and identify any next steps together." },
 ] as const;
+
+export const PROJECT_TERMS = {
+  oneTimeDepositPercent: 50,
+  oneTimeBalancePercent: 50,
+  monthlyRetainerDue: "at the beginning of each service month",
+  timelineStarts: "after the deposit and required materials are received",
+  separateCosts: ["domains", "hosting", "premium software", "third-party costs"],
+} as const;
