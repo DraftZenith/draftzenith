@@ -24,6 +24,10 @@ export const assessmentInputSchema = z.object({
 });
 
 export type AssessmentInput = z.input<typeof assessmentInputSchema>;
+export type AssessmentFormInput = Omit<AssessmentInput, "consent" | "budget_range"> & {
+  consent: boolean;
+  budget_range: string;
+};
 
 export const submitAssessmentRequest = createServerFn({ method: "POST" })
   .validator((input: unknown) => assessmentInputSchema.parse(input))

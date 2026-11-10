@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { SERVICE_OPTIONS } from "@/data/services";
-import { assessmentInputSchema, submitAssessmentRequest, type AssessmentInput } from "@/lib/assessment.functions";
+import { assessmentInputSchema, submitAssessmentRequest, type AssessmentFormInput } from "@/lib/assessment.functions";
 
 const searchSchema = z.object({ service: z.string().optional() });
 
@@ -36,7 +36,7 @@ function GetStartedPage() {
     setError("");
     setBusy(true);
     const form = new FormData(event.currentTarget);
-    const input: AssessmentInput = {
+    const input: AssessmentFormInput = {
       full_name: String(form.get("full_name") ?? ""),
       email: String(form.get("email") ?? ""),
       country: String(form.get("country") ?? ""),
