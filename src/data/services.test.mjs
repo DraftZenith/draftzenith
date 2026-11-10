@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { SERVICES } from "./services.ts";
+import { PROJECT_TERMS, SERVICES } from "./services.ts";
 
 test("all published package names and USD prices match the approved catalog", () => {
   const actual = SERVICES.flatMap((service) => service.packages.map(({ name, price }) => [name, price]));
@@ -28,4 +28,21 @@ test("all published package names and USD prices match the approved catalog", ()
 test("only ongoing management packages are marked monthly", () => {
   const monthly = SERVICES.flatMap((service) => service.packages.filter((offer) => "monthly" in offer && offer.monthly).map((offer) => offer.name));
   expect(monthly).toEqual(["Pinterest Management", "Multi-Platform Management", "Comprehensive Visibility Management"]);
+});
+
+test("one-time project payment is split into the agreed 50% deposit and 50% balance", () => {
+  expect(PROJECT_TERMS.oneTimeDepositPercent).toBe(50);
+  expect(PROJECT_TERMS.oneTimeBalancePercent).toBe(50);
+});
+
+test("monthly retainers are due at the beginning of each service month", () => {
+  expect(PROJECT_TERMS.monthlyRetainerDue).toBe("at the beginning of each service month");
+});
+
+test("project timelines begin after both the deposit and required materials arrive", () => {
+  expect(PROJECT_TERMS.timelineStarts).toBe("after the deposit and required materials are received");
+});
+
+test("domains, hosting, premium software, and third-party costs remain separate", () => {
+  expect(PROJECT_TERMS.separateCosts).toEqual(["domains", "hosting", "premium software", "third-party costs"]);
 });
