@@ -63,6 +63,20 @@ jobs:
 
           grep -qi "Draft Zenith" /tmp/draftzenith-home.html
 
+          # Exercise every public route that the sitemap advertises, including
+          # the assessment form, so broken route registration fails CI.
+          for route in about services portfolio how-it-works get-started; do
+            route_status="$(curl --silent --show-error --output "/tmp/draftzenith-${route}.html" --write-out '%{http_code}' "http://127.0.0.1:8787/${route}")"
+            if [[ "$route_status" != "200" ]]; then
+              cat /tmp/draftzenith-wrangler.log
+              echo "/${route} returned HTTP $route_status"
+              head -c 2000 "/tmp/draftzenith-${route}.html" 2>/dev/null || true
+              exit 1
+            fi
+          done
+
+          grep -qi "Request a Free Assessment" /tmp/draftzenith-get-started.html
+
           sitemap_status="$(curl --silent --show-error --output /tmp/draftzenith-sitemap.xml --write-out '%{http_code}' http://127.0.0.1:8787/sitemap.xml)"
           if [[ "$sitemap_status" != "200" ]] || ! grep -q "<urlset" /tmp/draftzenith-sitemap.xml; then
             cat /tmp/draftzenith-wrangler.log
