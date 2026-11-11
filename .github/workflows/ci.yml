@@ -30,3 +30,6 @@ jobs:
 
       - name: Run validation
         run: bun run check
+
+      - name: Validate Cloudflare Worker package
+        run: bunx --bun wrangler deploy --dry-run
