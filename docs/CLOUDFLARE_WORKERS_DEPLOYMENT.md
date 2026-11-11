@@ -4,7 +4,7 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The project uses the direct Cloudflare Vite plugin integration. CI has passed TypeScript checking, ESLint, the production build, Wrangler packaging dry-run, and local Worker smoke tests for the homepage and sitemap. This does not verify Supabase, email, chat, or production secrets. Do not deploy until the application-service checks have passed.
+The project uses the direct Cloudflare Vite plugin integration. CI run #54 has passed TypeScript checking, ESLint, the production build, Wrangler packaging dry-run, and local Worker smoke tests for the homepage, sitemap, and dynamic robots.txt sitemap URL. This does not verify Supabase, email, chat, or production secrets. Do not deploy until the application-service checks have passed.
 
 ## Local validation
 
@@ -15,7 +15,7 @@ bun install --frozen-lockfile
 bun run check
 ```
 
-The check script runs TypeScript checking, ESLint, and the production Vite build.
+The check script runs TypeScript checking, ESLint, and the production Vite build. The local Worker smoke test also confirms that robots.txt advertises the sitemap using the request's current origin.
 
 After the build, validate the generated Worker package and run a local Worker smoke test with Wrangler:
 
