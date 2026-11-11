@@ -93,7 +93,9 @@ export function ChatWidget() {
         try {
           const j = await resp.json();
           if (j?.error) msg = j.error;
-        } catch {}
+        } catch {
+          // Keep the generic fallback message when the response is not JSON.
+        }
         setMessages((m) => [...m, { role: "assistant", content: msg }]);
         return;
       }
