@@ -85,7 +85,8 @@ serve(async (req) => {
     }
 
     const MAX_MESSAGES = 20;
-    const MAX_PER_MESSAGE = 2000;
+    const MAX_USER_MESSAGE = 2000;
+    const MAX_ASSISTANT_MESSAGE = 8000;
     const MAX_TOTAL = 10000;
 
     if (rawMessages.length === 0 || rawMessages.length > MAX_MESSAGES) {
@@ -107,8 +108,9 @@ serve(async (req) => {
       // Strip any client-supplied system messages to prevent prompt injection
       if (m.role !== "user" && m.role !== "assistant") continue;
       if (typeof m.content !== "string" || m.content.length === 0) continue;
-      if (m.content.length > MAX_PER_MESSAGE) {
-        return new Response(JSON.stringify({ error: `Each message must be ${MAX_PER_MESSAGE} characters or fewer.` }), {
+      const messageLimit = m.role === "user" ? MAX_USER_MESSAGE : MAX_ASSISTANT_MESSAGE;
+      if (m.content.length > messageLimit) {
+        return new Response(JSON.stringify({ error: `Each ${m.role} message must be ${messageLimit} characters or fewer.` }), {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
