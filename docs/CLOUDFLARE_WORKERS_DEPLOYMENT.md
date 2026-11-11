@@ -4,7 +4,7 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The Workers deployment configuration is being validated. Do not deploy until the Cloudflare Vite adapter, generated Worker entrypoint, production build, and Wrangler dry-run have all been verified.
+The project is being migrated from a Nitro-based Cloudflare preset to the direct Cloudflare Vite plugin integration. Do not deploy until the generated Worker entrypoint, production build, and Wrangler dry-run have all been verified.
 
 ## Local validation
 
@@ -20,7 +20,7 @@ The check script runs TypeScript checking, ESLint, and the production Vite build
 After the build and adapter configuration have been confirmed, validate the generated Worker with Wrangler:
 
 ```sh
-bunx wrangler deploy --dry-run
+bunx --bun wrangler deploy --dry-run
 ```
 
 Do not run a real deploy as part of validation.
@@ -42,8 +42,7 @@ The current application reads Supabase server values from `process.env`. The Wor
 
 ## Still required before launch
 
-- Verify the Cloudflare Vite plugin is actually registered by the project's Vite configuration wrapper.
-- Confirm the generated TanStack Start server entry is compatible with `src/server.ts` and `wrangler.jsonc`.
+- Confirm the direct Cloudflare Vite plugin generates a Worker config that respects `wrangler.jsonc` and the selected server entry.
 - Run type checking, lint, production build, and Wrangler dry-run successfully.
 - Confirm the Supabase assessment table and migration exist in the intended project.
 - Test a real assessment submission, validation rejection, honeypot handling, and database failure.
