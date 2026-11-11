@@ -4,7 +4,7 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The project uses the direct Cloudflare Vite plugin integration. CI run #61 has passed TypeScript checking, ESLint, the production build, Wrangler packaging dry-run, and local Worker smoke tests for the homepage, sitemap, and dynamic robots.txt sitemap URL. It also includes the latest chat accessibility and site skip-link changes. This does not verify Supabase, email, chat deployment, origin configuration, or production secrets. Do not deploy until the application-service checks have passed.
+The project uses the direct Cloudflare Vite plugin integration. CI run #62 passed on the documentation update that preceded the latest application changes. The review branch now also extends the local Worker smoke test to all public pages and the assessment form, and bounds chat history to the Edge Function's message and payload limits. Those newest commits still need a fresh validation run. CI and local Worker checks do not verify Supabase, email, chat deployment, origin configuration, privacy terms, or production secrets. Do not deploy until the application-service checks have passed.
 
 ## Local validation
 
@@ -49,7 +49,9 @@ The assessment handler reads server values from `process.env`. The chat function
 - Configure the server runtime variable `SUPABASE_URL` and secret `SUPABASE_SERVICE_ROLE_KEY` on the Cloudflare Worker.
 - Confirm the `assessment_requests` table migration has been applied to the intended Supabase project. The current SQL is in `drizzle/migrations/0000_create_assessment_requests.sql`; it has not been verified as applied.
 - Test a real assessment submission, validation rejection, honeypot handling, and database failure.
-- Implement and test assessment email notifications to the agency inbox.
+- Choose an email provider and verified sender, then implement and test assessment email notifications to the agency inbox.
+- Publish a privacy notice before collecting assessment data. Confirm the responsible business/controller identity, contact method, retention period, analytics/cookie use, service providers, and how data requests will be handled; these details are not established in the repository.
+- Decide whether launch will use the existing `authorbloomcircle.workers.dev` subdomain temporarily or a purchased custom domain. No custom Worker domain is currently attached to the account.
 - Add and test server-side abuse protection/rate limiting before opening the public assessment and chat endpoints. The chat origin allowlist is a browser-origin control, not rate limiting or bot protection.
 - Verify the Supabase `chat` Edge Function is deployed, its `LOVABLE_API_KEY` secret is configured, and `CHAT_ALLOWED_ORIGINS` contains the exact production HTTPS origin. The function now rejects requests without an explicitly allowed `Origin` and returns CORS headers only for allowlisted origins. The repository contains the function source, but deployment and secret state have not been verified.
 - Review note: the two historical `.env` versions were checked. They contained Supabase project identifiers, URLs, and publishable keys only; no service-role key or private credential was found in those files. This was a targeted `.env` history check, not a complete repository-wide secret audit.
