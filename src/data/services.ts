@@ -65,7 +65,7 @@ export const PORTFOLIO_PROJECTS = [
   { name: "Kanfmatic Agency", href: "https://kanfmaticagency.online" },
   {
     name: "Goodreads Reader Discovery",
-    href: "https://robert-henry-reader-engagement.authorbloomcircle.workers.dev/",
+    href: "https://robert-henry-reader-engagement.pages.dev",
   },
 ] as const;
 
