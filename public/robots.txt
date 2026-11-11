@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://draftzenith.lovable.app/sitemap.xml
