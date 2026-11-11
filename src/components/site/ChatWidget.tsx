@@ -162,27 +162,28 @@ export function ChatWidget() {
         }`}
       >
         {nudge && (
-          <button
-            onClick={() => setOpen(true)}
-            className="group relative block text-left rounded-2xl rounded-br-sm border border-primary/30 bg-background/85 backdrop-blur-xl px-4 py-3 pr-9 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]"
-          >
-            <span className="absolute inset-0 rounded-2xl rounded-br-sm bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
-            <p className="relative font-serif italic text-sm leading-snug text-foreground/95">{nudge}</p>
-            <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · author services</p>
-            <span
-              role="button"
-              tabIndex={0}
-              aria-label="Dismiss"
-              onClick={(e) => {
-                e.stopPropagation();
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="group relative block w-full text-left rounded-2xl rounded-br-sm border border-primary/30 bg-background/85 backdrop-blur-xl px-4 py-3 pr-9 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]"
+            >
+              <span className="absolute inset-0 rounded-2xl rounded-br-sm bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+              <p className="relative font-serif italic text-sm leading-snug text-foreground/95">{nudge}</p>
+              <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · author services</p>
+            </button>
+            <button
+              type="button"
+              aria-label="Dismiss greeting"
+              onClick={() => {
                 setNudge(null);
                 setNudgeDismissed(true);
               }}
-              className="absolute top-2 right-2 p-1 text-muted-foreground hover:text-foreground transition"
+              className="absolute top-2 right-2 z-10 p-1 text-muted-foreground hover:text-foreground transition"
             >
               <X size={12} />
-            </span>
-          </button>
+            </button>
+          </div>
         )}
       </div>
 
