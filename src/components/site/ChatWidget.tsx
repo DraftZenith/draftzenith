@@ -191,6 +191,8 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open Zenith concierge"}
+        aria-expanded={open}
+        aria-controls="zenith-chat-panel"
         className="fixed bottom-6 right-4 sm:right-6 z-[60] group"
       >
         <span className="absolute inset-0 rounded-full bg-primary/50 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500 animate-pulse" />
@@ -206,6 +208,11 @@ export function ChatWidget() {
 
       {/* Panel */}
       <div
+        id="zenith-chat-panel"
+        role="region"
+        aria-label="Chat with Zenith"
+        aria-hidden={!open}
+        inert={!open}
         className={`fixed z-[60] right-4 sm:right-6 bottom-24 w-[calc(100vw-2rem)] sm:w-[420px] max-w-[420px] origin-bottom-right transition-all duration-500 ease-out ${
           open ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 translate-y-6 pointer-events-none"
         }`}
