@@ -62,10 +62,19 @@ jobs:
           fi
 
           grep -qi "Draft Zenith" /tmp/draftzenith-home.html
+
           sitemap_status="$(curl --silent --show-error --output /tmp/draftzenith-sitemap.xml --write-out '%{http_code}' http://127.0.0.1:8787/sitemap.xml)"
           if [[ "$sitemap_status" != "200" ]] || ! grep -q "<urlset" /tmp/draftzenith-sitemap.xml; then
             cat /tmp/draftzenith-wrangler.log
             echo "Sitemap returned HTTP $sitemap_status"
             head -c 2000 /tmp/draftzenith-sitemap.xml 2>/dev/null || true
+            exit 1
+          fi
+
+          robots_status="$(curl --silent --show-error --output /tmp/draftzenith-robots.txt --write-out '%{http_code}' http://127.0.0.1:8787/robots.txt)"
+          if [[ "$robots_status" != "200" ]] || ! grep -Fxq "Sitemap: http://127.0.0.1:8787/sitemap.xml" /tmp/draftzenith-robots.txt; then
+            cat /tmp/draftzenith-wrangler.log
+            echo "robots.txt returned HTTP $robots_status or did not advertise the request-origin sitemap"
+            cat /tmp/draftzenith-robots.txt 2>/dev/null || true
             exit 1
           fi
