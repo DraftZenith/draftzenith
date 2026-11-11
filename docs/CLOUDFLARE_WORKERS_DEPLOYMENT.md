@@ -4,7 +4,7 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The project uses the direct Cloudflare Vite plugin integration. GitHub Actions CI run #71 passed on commit `93a23c6` (11 November 2026), including TypeScript, ESLint, production build, Wrangler packaging, and local Worker smoke tests for all public pages, the assessment form, sitemap, and robots.txt. Cloudflare also reported successful branch-preview builds for this commit; these are previews, not production deployments. CI and preview builds do not verify Supabase, email, chat deployment, origin configuration, privacy terms, or production secrets. Do not deploy until the application-service checks have passed.
+The project uses the direct Cloudflare Vite plugin integration. GitHub Actions CI run #72 passed on commit `e9a234e` (11 November 2026), including TypeScript, ESLint, production build, Wrangler packaging, and local Worker smoke tests for all public pages, the assessment form, sitemap, and robots.txt. Cloudflare Workers Builds and Cloudflare Pages also reported successful branch-preview builds for this commit; these are previews, not production deployments. CI and preview builds do not verify Supabase, email, chat deployment, origin configuration, privacy terms, or production secrets. Do not deploy until the application-service checks have passed.
 
 ## Local validation
 
@@ -50,7 +50,7 @@ The assessment handler reads server values from `process.env`. The chat function
 - Confirm the `assessment_requests` table migration has been applied to the intended Supabase project. The current SQL is in `drizzle/migrations/0000_create_assessment_requests.sql`; it has not been verified as applied.
 - Test a real assessment submission, validation rejection, honeypot handling, and database failure.
 - Choose an email provider and verified sender, then implement and test assessment email notifications to the agency inbox.
-- Publish a privacy notice before collecting assessment data. Confirm the responsible business/controller identity, contact method, retention period, analytics/cookie use, service providers, and how data requests will be handled; these details are not established in the repository.
+- Publish a privacy notice before collecting assessment data. The user has confirmed the responsible identity as **Funmi K., trading as Draft Zenith** (not Christine Mackay). The contact email is `DraftZenith@gmail.com`. Still confirm the retention period, analytics/cookie use, service providers, and how data requests will be handled before publishing the notice.
 - Decide whether launch will use the existing `authorbloomcircle.workers.dev` subdomain temporarily or a purchased custom domain. No custom Worker domain is currently attached to the account.
 - Add and test server-side abuse protection/rate limiting before opening the public assessment and chat endpoints. The chat origin allowlist is a browser-origin control, not rate limiting or bot protection.
 - Verify the Supabase `chat` Edge Function is deployed, its `LOVABLE_API_KEY` secret is configured, and `CHAT_ALLOWED_ORIGINS` contains the exact production HTTPS origin. The function now rejects requests without an explicitly allowed `Origin` and returns CORS headers only for allowlisted origins. The repository contains the function source, but deployment and secret state have not been verified.
