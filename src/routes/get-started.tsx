@@ -59,7 +59,11 @@ function GetStartedPage() {
 
     try {
       const result = await sendRequest({ data: parsed.data });
-      if (result.ok) setSuccess(true);
+      if (result.ok) {
+        setSuccess(true);
+      } else {
+        setError("We could not confirm that your request was saved. Please try again.");
+      }
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "We could not submit your request. Please try again.");
     } finally {
