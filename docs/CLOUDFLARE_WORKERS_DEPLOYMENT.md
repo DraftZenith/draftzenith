@@ -37,6 +37,7 @@ Keep public build values separate from server-side secrets. Never commit secret 
 | `SUPABASE_URL` | Cloudflare Worker runtime | Runtime variable | Server-side Supabase endpoint |
 | `SUPABASE_SERVICE_ROLE_KEY` | Cloudflare Worker secret | Secret only | Server-side assessment inserts; bypasses RLS |
 | `LOVABLE_API_KEY` | Supabase Edge Function secrets | Secret only | Chat function's Lovable AI Gateway credential |
+| `CHAT_ALLOWED_ORIGINS` | Supabase Edge Function environment | Non-secret allowlist | Comma-separated exact origins permitted to call the chat endpoint, including the final HTTPS site origin |
 
 The service-role key and Lovable API key must never use a `VITE_` prefix or be exposed to browser code.
 
@@ -50,7 +51,7 @@ The assessment handler reads server values from `process.env`. The chat function
 - Test a real assessment submission, validation rejection, honeypot handling, and database failure.
 - Implement and test assessment email notifications to the agency inbox.
 - Add and test server-side abuse protection/rate limiting before opening the public assessment and chat endpoints.
-- Verify the Supabase `chat` Edge Function is deployed and its `LOVABLE_API_KEY` secret is configured. The repository contains the function source, but deployment and secret state have not been verified.
+- Verify the Supabase `chat` Edge Function is deployed, its `LOVABLE_API_KEY` secret is configured, and `CHAT_ALLOWED_ORIGINS` contains the exact production HTTPS origin. The function now rejects requests without an explicitly allowed `Origin` and returns CORS headers only for allowlisted origins. The repository contains the function source, but deployment and secret state have not been verified.
 - Review note: the two historical `.env` versions were checked. They contained Supabase project identifiers, URLs, and publishable keys only; no service-role key or private credential was found in those files. This was a targeted `.env` history check, not a complete repository-wide secret audit.
 
 ## Deployment approval
