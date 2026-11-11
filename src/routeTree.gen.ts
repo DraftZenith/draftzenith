@@ -100,8 +100,6 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -116,6 +114,7 @@ export interface FileRoutesByTo {
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -131,6 +130,7 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -148,8 +148,6 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/robots.txt'
-    | '/robots.txt'
-    | '/robots.txt'
     | '/submit'
     | '/authors/$slug'
     | '/blog/$slug'
@@ -164,6 +162,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/services'
     | '/sitemap.xml'
+    | '/robots.txt'
     | '/submit'
     | '/authors/$slug'
     | '/blog/$slug'
@@ -178,6 +177,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/services'
     | '/sitemap.xml'
+    | '/robots.txt'
     | '/submit'
     | '/authors/$slug'
     | '/blog/$slug'
@@ -260,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
