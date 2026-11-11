@@ -91,6 +91,18 @@ export function ChatWidget() {
     setInput("");
     setLoading(true);
 
+    // Keep the most recent context within the Edge Function's message and
+    // total-payload limits, while always retaining the visitor's latest turn.
+    const recentMessages = next.filter((m) => m !== GREETING).slice(-20);
+    let remainingCharacters = 10000;
+    const boundedMessages: Msg[] = [];
+    for (const message of [...recentMessages].reverse()) {
+      if (message.content.length <= remainingCharacters) {
+        boundedMessages.unshift(message);
+        remainingCharacters -= message.content.length;
+      }
+    }
+
     try {
       const resp = await fetch(CHAT_URL, {
         method: "POST",
@@ -100,7 +112,7 @@ export function ChatWidget() {
           apikey: ANON,
         },
         body: JSON.stringify({
-          messages: next.filter((m) => m !== GREETING).slice(-20).map((m) => ({ role: m.role, content: m.content })),
+          messages: boundedMessages.map((m) => ({ role: m.role, content: m.content })),
         }),
       });
 
