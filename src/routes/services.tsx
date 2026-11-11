@@ -17,7 +17,7 @@ export const Route = createFileRoute("/services")({
 
 function ServicesPage() {
   return <SiteLayout>
-    <AgencyPageIntro eyebrow="Services" title="Practical services for a stronger author presence." description="Explore the available packages across author branding, digital presence, and book discoverability. Scope and timing are agreed after assessment." />
+    <AgencyPageIntro eyebrow="Services" title="Practical services for a stronger author presence." description="Explore the available packages across author branding, digital presence, and book discoverability. Prices are starting points; final scope, deliverables, and timing are confirmed in a proposal after assessment." />
     <section className="container-luxe pb-20 md:pb-28">
       <div className="border-t border-border">
         {SERVICES.map((service, i) => <article key={service.category} className="grid gap-6 border-b border-border py-9 md:grid-cols-12 md:gap-10 md:py-12">
