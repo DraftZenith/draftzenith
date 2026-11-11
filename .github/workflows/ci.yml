@@ -42,13 +42,31 @@ jobs:
           worker_pid=$!
           trap 'kill "$worker_pid" 2>/dev/null || true' EXIT
 
+          home_status=""
           for attempt in $(seq 1 30); do
-            if curl --fail --silent http://127.0.0.1:8787/ -o /tmp/draftzenith-home.html; then
+            home_status="$(curl --silent --show-error --output /tmp/draftzenith-home.html --write-out '%{http_code}' http://127.0.0.1:8787/ 2>/dev/null || true)"
+            if [[ "$home_status" == "200" ]]; then
               break
+            fi
+            if ! kill -0 "$worker_pid" 2>/dev/null; then
+              cat /tmp/draftzenith-wrangler.log
+              exit 1
             fi
             sleep 1
           done
 
-          test -s /tmp/draftzenith-home.html
+          if [[ "$home_status" != "200" ]]; then
+            cat /tmp/draftzenith-wrangler.log
+            echo "Homepage returned HTTP ${home_status:-no response}"
+            head -c 2000 /tmp/draftzenith-home.html 2>/dev/null || true
+            exit 1
+          fi
+
           grep -qi "Draft Zenith" /tmp/draftzenith-home.html
-          curl --fail --silent http://127.0.0.1:8787/sitemap.xml | grep -q "<urlset"
+          sitemap_status="$(curl --silent --show-error --output /tmp/draftzenith-sitemap.xml --write-out '%{http_code}' http://127.0.0.1:8787/sitemap.xml)"
+          if [[ "$sitemap_status" != "200" ]] || ! grep -q "<urlset" /tmp/draftzenith-sitemap.xml; then
+            cat /tmp/draftzenith-wrangler.log
+            echo "Sitemap returned HTTP $sitemap_status"
+            head -c 2000 /tmp/draftzenith-sitemap.xml 2>/dev/null || true
+            exit 1
+          fi
