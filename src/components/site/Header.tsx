@@ -22,6 +22,17 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -31,13 +42,13 @@ export function Header() {
       }`}
     >
       <div className="container-luxe flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2 group">
           <span className="font-serif text-2xl tracking-tight">
             Draft<span className="text-primary">·</span>Zenith
           </span>
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-4 text-xs tracking-wide uppercase 2xl:gap-6">
+        <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-4 text-xs tracking-wide uppercase 2xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -61,8 +72,10 @@ export function Header() {
         </div>
 
         <button
+          type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-primary-navigation"
           className="xl:hidden p-2 text-foreground"
           onClick={() => setOpen((o) => !o)}
         >
@@ -71,8 +84,8 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="xl:hidden bg-background/95 backdrop-blur-xl border-t border-border">
-          <nav className="container-luxe flex flex-col py-6 gap-5 text-sm uppercase tracking-wide">
+        <div id="mobile-primary-navigation" className="xl:hidden bg-background/95 backdrop-blur-xl border-t border-border">
+          <nav aria-label="Mobile navigation" className="container-luxe flex flex-col py-6 gap-5 text-sm uppercase tracking-wide">
             {NAV.map((n) => (
               <Link
                 key={n.to}
