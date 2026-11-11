@@ -4,7 +4,7 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The project uses the direct Cloudflare Vite plugin integration. CI run #62 passed on the documentation update that preceded the latest application changes. The review branch now also extends the local Worker smoke test to all public pages and the assessment form, and bounds chat history to the Edge Function's message and payload limits. Those newest commits still need a fresh validation run. CI and local Worker checks do not verify Supabase, email, chat deployment, origin configuration, privacy terms, or production secrets. Do not deploy until the application-service checks have passed.
+The project uses the direct Cloudflare Vite plugin integration. GitHub Actions CI run #71 passed on commit `93a23c6` (11 November 2026), including TypeScript, ESLint, production build, Wrangler packaging, and local Worker smoke tests for all public pages, the assessment form, sitemap, and robots.txt. Cloudflare also reported successful branch-preview builds for this commit; these are previews, not production deployments. CI and preview builds do not verify Supabase, email, chat deployment, origin configuration, privacy terms, or production secrets. Do not deploy until the application-service checks have passed.
 
 ## Local validation
 
