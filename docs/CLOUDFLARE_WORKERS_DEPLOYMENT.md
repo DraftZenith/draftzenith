@@ -4,7 +4,7 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The project is being migrated from a Nitro-based Cloudflare preset to the direct Cloudflare Vite plugin integration. Do not deploy until the generated Worker entrypoint, production build, and Wrangler dry-run have all been verified.
+The project now uses the direct Cloudflare Vite plugin integration. The production build and Wrangler packaging dry-run pass in CI. Local Worker runtime smoke testing is still being validated. Do not deploy until that check and the application-service checks have passed.
 
 ## Local validation
 
@@ -20,7 +20,7 @@ The check script runs TypeScript checking, ESLint, and the production Vite build
 After the build and adapter configuration have been confirmed, validate the generated Worker with Wrangler:
 
 ```sh
-bunx --bun wrangler deploy --dry-run
+npx --yes wrangler deploy --dry-run
 ```
 
 Do not run a real deploy as part of validation.
