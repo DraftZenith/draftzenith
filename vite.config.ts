@@ -1,11 +1,22 @@
-// @lovable.dev/vite-tanstack-config supplies the Cloudflare Vite plugin,
-// TanStack Start, React, Tailwind, path aliases, and development helpers.
-// Cloudflare Workers is the supported full-stack deployment target.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-// Keep the custom SSR error wrapper as the Worker's entrypoint.
+// Use Cloudflare's supported Vite integration directly. The previous Lovable
+// wrapper selected Nitro's Cloudflare preset, which generated a Nitro deployment
+// config and ignored Wrangler's configured main entry.
 export default defineConfig({
-  tanstackStart: {
-    server: { entry: "server" },
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tanstackStart(),
+    react(),
+    tailwindcss(),
+    tsconfigPaths(),
+  ],
+  resolve: {
+    dedupe: ["react", "react-dom"],
   },
 });
