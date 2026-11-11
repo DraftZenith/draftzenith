@@ -51,7 +51,7 @@ The assessment handler reads server values from `process.env`. The chat function
 - Implement and test assessment email notifications to the agency inbox.
 - Add and test server-side abuse protection/rate limiting before opening the public assessment and chat endpoints.
 - Verify the Supabase `chat` Edge Function is deployed and its `LOVABLE_API_KEY` secret is configured. The repository contains the function source, but deployment and secret state have not been verified.
-- Review Git history for previously committed credentials and rotate any private credentials found.
+- Review note: the two historical `.env` versions were checked. They contained Supabase project identifiers, URLs, and publishable keys only; no service-role key or private credential was found in those files. This was a targeted `.env` history check, not a complete repository-wide secret audit.
 
 ## Deployment approval
 
