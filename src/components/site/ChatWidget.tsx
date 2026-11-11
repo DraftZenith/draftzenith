@@ -31,7 +31,8 @@ const AMBIENT_NUDGES = [
   "Exploring ways to improve book discoverability?",
 ];
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const CHAT_URL = SUPABASE_URL ? `${SUPABASE_URL}/functions/v1/chat` : "";
 const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 export function ChatWidget() {
@@ -149,6 +150,9 @@ export function ChatWidget() {
     }
   }
 
+  // Keep the launcher hidden until the public Supabase endpoint and key are configured.
+  if (!SUPABASE_URL || !ANON) return null;
+
   return (
     <>
       {/* Ambient greeting bubble */}
@@ -164,7 +168,7 @@ export function ChatWidget() {
           >
             <span className="absolute inset-0 rounded-2xl rounded-br-sm bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
             <p className="relative font-serif italic text-sm leading-snug text-foreground/95">{nudge}</p>
-            <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · concierge</p>
+            <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · author services</p>
             <span
               role="button"
               tabIndex={0}
@@ -227,7 +231,7 @@ export function ChatWidget() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-serif text-lg leading-tight tracking-tight">Zenith</p>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Editorial concierge · online</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Author services guide · online</p>
             </div>
             <button
               onClick={() => setOpen(false)}
@@ -341,7 +345,7 @@ export function ChatWidget() {
             </button>
           </form>
           <p className="relative text-[9px] text-center text-muted-foreground/70 pb-2.5 tracking-[0.25em] uppercase">
-            Draft Zenith · Editorial Concierge
+            Draft Zenith · Author services
           </p>
         </div>
       </div>
