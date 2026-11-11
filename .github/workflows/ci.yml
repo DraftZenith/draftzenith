@@ -33,3 +33,22 @@ jobs:
 
       - name: Validate Cloudflare Worker package
         run: bunx --bun wrangler deploy --dry-run
+
+      - name: Smoke test local Cloudflare Worker
+        shell: bash
+        run: |
+          set -euo pipefail
+          bunx --bun wrangler dev --local --ip 127.0.0.1 --port 8787 > /tmp/draftzenith-wrangler.log 2>&1 &
+          worker_pid=$!
+          trap 'kill "$worker_pid" 2>/dev/null || true' EXIT
+
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8787/ -o /tmp/draftzenith-home.html; then
+              break
+            fi
+            sleep 1
+          done
+
+          test -s /tmp/draftzenith-home.html
+          grep -qi "Draft Zenith" /tmp/draftzenith-home.html
+          curl --fail --silent http://127.0.0.1:8787/sitemap.xml | grep -q "<urlset"
