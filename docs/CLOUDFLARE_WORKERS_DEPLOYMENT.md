@@ -20,7 +20,7 @@ The check script runs TypeScript checking, ESLint, and the production Vite build
 After the build and adapter configuration have been confirmed, validate the generated Worker with Wrangler:
 
 ```sh
-npx --yes wrangler deploy --dry-run
+npx --yes --package=wrangler@4.160.0 wrangler deploy --dry-run
 ```
 
 Do not run a real deploy as part of validation.
