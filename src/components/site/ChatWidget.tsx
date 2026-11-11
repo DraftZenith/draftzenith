@@ -44,6 +44,7 @@ export function ChatWidget() {
   const [nudgeDismissed, setNudgeDismissed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -65,6 +66,20 @@ export function ChatWidget() {
       const t = setTimeout(() => inputRef.current?.focus(), 350);
       return () => clearTimeout(t);
     }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        launcherRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   async function send(text: string) {
@@ -189,6 +204,8 @@ export function ChatWidget() {
 
       {/* Floating launcher */}
       <button
+        ref={launcherRef}
+        type="button"
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open Zenith concierge"}
         aria-expanded={open}
@@ -235,14 +252,17 @@ export function ChatWidget() {
             <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-[oklch(0.72_0.14_75)] via-primary to-[oklch(0.5_0.1_55)] grid place-items-center text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.6_0.13_70_/_0.7)]">
               <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent" />
               <Sparkles size={16} className="relative animate-pulse" />
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-background shadow-[0_0_10px_rgba(52,211,153,0.6)]" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-serif text-lg leading-tight tracking-tight">Zenith</p>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Author services guide · online</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Author services guide</p>
             </div>
             <button
-              onClick={() => setOpen(false)}
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                launcherRef.current?.focus();
+              }}
               aria-label="Close"
               className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 rounded-full hover:bg-card/50"
             >
@@ -336,6 +356,7 @@ export function ChatWidget() {
             <Mail size={14} className="ml-2 text-muted-foreground/60 shrink-0" />
             <input
               ref={inputRef}
+              aria-label="Message Zenith"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Zenith anything…"
