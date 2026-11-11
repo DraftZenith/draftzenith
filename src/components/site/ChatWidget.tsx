@@ -100,7 +100,7 @@ export function ChatWidget() {
           apikey: ANON,
         },
         body: JSON.stringify({
-          messages: next.filter((m) => m !== GREETING).map((m) => ({ role: m.role, content: m.content })),
+          messages: next.filter((m) => m !== GREETING).slice(-20).map((m) => ({ role: m.role, content: m.content })),
         }),
       });
 
