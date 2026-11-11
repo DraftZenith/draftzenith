@@ -1,10 +1,23 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+function getCorsHeaders(request: Request): HeadersInit | null {
+  const origin = request.headers.get("Origin");
+  const allowedOrigins = (Deno.env.get("CHAT_ALLOWED_ORIGINS") ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  if (!origin || !allowedOrigins.includes(origin)) return null;
+
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Max-Age": "600",
+    "Vary": "Origin",
+  };
+}
 
 const SYSTEM_PROMPT = `You are Zenith, Draft Zenith's author-services guide. Draft Zenith is an author branding, digital presence, and book discoverability agency. It is not a publisher, literary magazine, editorial publication, or author-spotlight platform.
 
@@ -49,6 +62,14 @@ Draft Zenith helps authors build professional author brands, strengthen their on
 - Close replies with either a small invitation to continue ("Would you like me to point you to a few?") or a plain ending, never with corporate sign-offs.`;
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+  if (!corsHeaders) {
+    return new Response(JSON.stringify({ error: "Origin not allowed." }), {
+      status: 403,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
