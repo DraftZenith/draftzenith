@@ -73,7 +73,7 @@ function GetStartedPage() {
         <SectionEyebrow>Get started</SectionEyebrow>
         <h1 className="font-serif text-4xl leading-[1.05] text-balance md:text-6xl">Request a Free Assessment.</h1>
         <p className="text-lg leading-relaxed text-muted-foreground">Tell us where you are now and what you would like to strengthen. This is an initial conversation, not a commitment to proceed.</p>
-        <p className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">Your details are stored securely so we can review your request. This form does not send an email confirmation, and we do not claim that email notifications are configured.</p>
+        <p className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">Your details are submitted so we can review your request and contact you about it. This form does not send an email confirmation.</p>
       </div>
       <div className="md:col-span-7">
         {success ? <div role="status" className="border border-primary/50 bg-card p-8 sm:p-12">
