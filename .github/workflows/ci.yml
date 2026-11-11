@@ -32,13 +32,13 @@ jobs:
         run: bun run check
 
       - name: Validate Cloudflare Worker package
-        run: bunx --bun wrangler deploy --dry-run
+        run: npx --yes wrangler deploy --dry-run
 
       - name: Smoke test local Cloudflare Worker
         shell: bash
         run: |
           set -euo pipefail
-          bunx --bun wrangler dev --local --ip 127.0.0.1 --port 8787 > /tmp/draftzenith-wrangler.log 2>&1 &
+          npx --yes wrangler dev --local --ip 127.0.0.1 --port 8787 > /tmp/draftzenith-wrangler.log 2>&1 &
           worker_pid=$!
           trap 'kill "$worker_pid" 2>/dev/null || true' EXIT
 
