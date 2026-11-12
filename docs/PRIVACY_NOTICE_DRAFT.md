@@ -37,7 +37,7 @@ Do not use assessment details for unrelated marketing unless a separate, valid p
 
 Assessment enquiries should be kept only for as long as necessary to review and respond to the enquiry, manage any resulting client relationship, and meet applicable legal or record-keeping obligations. Information that is no longer needed should be securely deleted or irreversibly anonymised, subject to lawful retention requirements.
 
-**Confirm before publication:** Set and implement a concrete retention schedule. A proposed starting point for unsuccessful enquiries is **12 months after the last meaningful contact**, followed by deletion or anonymisation unless a documented legal or business-record requirement justifies longer retention. Confirm or replace this period before publishing. Set separate retention periods for client records, chatbot conversations, security logs, and backups after checking the relevant providers' settings and terms.
+**Approved retention rule for unsuccessful assessment enquiries:** Keep an enquiry for up to **12 months after the last meaningful contact**, then securely delete it or irreversibly anonymise it unless a documented legal or business-record requirement justifies longer retention. If the person contacts Draft Zenith again before deletion and wishes to resume the discussion, the enquiry may be reopened and the 12-month period runs from that new meaningful contact. If the old enquiry has already been deleted or anonymised, a returning person can simply submit a new enquiry; Draft Zenith should not promise to recover information that has been deleted. A client relationship or active project may require a separate, documented retention schedule for client and transaction records. Set separate retention periods for chatbot conversations, security logs, and backups after checking the relevant providers' settings and terms.
 
 ## 5. Service providers and transfers
 
@@ -77,7 +77,7 @@ If the website's data practices change, this notice should be reviewed and updat
 ## Publication checklist
 
 - [ ] Confirm responsible person's legal description and suitable business/contact address.
-- [ ] Confirm the retention period for unsuccessful enquiries (12 months after last meaningful contact is proposed, not approved).
+- [x] Retention period for unsuccessful enquiries approved: 12 months after last meaningful contact; a returning person may reopen an enquiry before deletion, or submit a new enquiry after deletion.
 - [ ] Set separate retention periods for client records, chat messages, security logs, and backups.
 - [ ] Verify the live Supabase project and database access controls.
 - [ ] Verify the chatbot is deployed and confirm Lovable AI Gateway data handling and subprocessors.
