@@ -94,7 +94,15 @@ serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-    const body = JSON.parse(rawBody);
+    let body: { messages?: unknown };
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return new Response(JSON.stringify({ error: "Request body must be valid JSON." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
     const rawMessages = body?.messages;
 
     // Validate structure
