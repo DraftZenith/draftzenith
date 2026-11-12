@@ -4,11 +4,11 @@ This project uses TanStack Start with server-side rendering and server functions
 
 ## Current status
 
-The project uses the direct Cloudflare Vite plugin integration. GitHub Actions CI run #74 passed on commit `e908851`; the latest source commit is `1e1d6d9`. The CI workflow validates TypeScript, ESLint, the production build, Wrangler packaging, and local Worker smoke tests for public pages, the assessment form, sitemap, and robots.txt.
+The project uses the direct Cloudflare Vite plugin integration. GitHub Actions CI runs #72 and #74 passed on earlier commits; no GitHub Actions run is currently reported for the latest portfolio commit `4facd79` by the connector's pull-request-run query. The latest Cloudflare Worker preview build for `4facd79` completed successfully. Netlify's deploy preview also reports success for that commit. The CI workflow validates TypeScript, ESLint, the production build, Wrangler packaging, and local Worker smoke tests for public pages, the assessment form, sitemap, and robots.txt.
 
 Cloudflare Pages and Workers Builds are separate integrations in this account. The Pages project is currently configured as a static-site deployment of `dist/client`; that directory does not contain a root `index.html` for this SSR application, so a successful Pages asset upload is not proof that the application is served correctly. Do not use the Pages `pages.dev` preview as the authoritative application preview.
 
-The Cloudflare Workers Builds project is linked to this repository. On 12 November 2026, its legacy non-production trigger was migrated to the current Worker Previews model. Preview builds are enabled and use `npx wrangler preview`; production remains configured with `npx wrangler deploy`. The migration did not deploy or change the production Worker. A fresh branch build is required to generate the first URL under the new preview model.
+The Cloudflare Workers Builds project is linked to this repository. On 12 November 2026, its legacy non-production trigger was migrated to the current Worker Previews model. Preview builds are enabled and use `npx wrangler preview`; production remains configured with `npx wrangler deploy`. The migration did not deploy or change the production Worker. Preview builds succeeded for commits `be0e765` and `4facd79`. The branch preview URL is `https://codex-cloudflare-pages-hardening-draftzenith.authorbloomcircle.workers.dev`.
 
 CI and preview builds do not verify Supabase, email, chat deployment, origin configuration, privacy terms, or production secrets. Do not deploy to production until the application-service checks have passed and explicit approval has been given.
 
@@ -64,4 +64,4 @@ The assessment handler reads server values from `process.env`. The chat function
 
 ## Deployment approval
 
-A successful preview or CI build is not production approval. Production deployment and domain changes require explicit approval after the checks above pass.
+A successful preview or CI build is not production approval. Production deployment and domain changes require explicit approval after the checks above pass. The latest preview confirms build and deployment success only; it has not been independently visually inspected on desktop and mobile.
