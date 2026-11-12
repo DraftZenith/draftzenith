@@ -93,7 +93,9 @@ export function ChatWidget() {
 
     // Keep the most recent context within the Edge Function's message and
     // total-payload limits, while always retaining the visitor's latest turn.
-    const recentMessages = next.filter((m) => m !== GREETING).slice(-20);
+    const recentMessages = next
+      .filter((m) => m !== GREETING && m.role === "user")
+      .slice(-20);
     let remainingCharacters = 10000;
     const boundedMessages: Msg[] = [];
     for (const message of [...recentMessages].reverse()) {
