@@ -119,6 +119,7 @@ export interface FileRoutesByTo {
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -135,6 +136,7 @@ export interface FileRoutesById {
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -168,6 +170,7 @@ export interface FileRouteTypes {
     | '/get-started'
     | '/how-it-works'
     | '/portfolio'
+    | '/privacy'
     | '/services'
     | '/sitemap.xml'
     | '/robots.txt'
@@ -183,6 +186,7 @@ export interface FileRouteTypes {
     | '/get-started'
     | '/how-it-works'
     | '/portfolio'
+    | '/privacy'
     | '/services'
     | '/sitemap.xml'
     | '/robots.txt'
