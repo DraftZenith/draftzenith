@@ -30,7 +30,7 @@ function GetStartedPage() {
   const [busy, setBusy] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const privacyNoticeUrl = import.meta.env.VITE_PRIVACY_NOTICE_URL ?? "";
+  const privacyNoticeUrl = import.meta.env.VITE_PRIVACY_NOTICE_URL || "/privacy";
   // Keep personal-data collection disabled until a reviewed privacy notice URL
   // and the explicit deployment feature flag are both configured.
   const assessmentFormEnabled =
@@ -89,7 +89,7 @@ function GetStartedPage() {
         {!assessmentFormEnabled ? <div className="border border-border bg-card p-8 sm:p-12">
           <h2 className="font-serif text-2xl">Assessment requests are temporarily being prepared.</h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            We are completing the secure enquiry and privacy arrangements before accepting personal information through this form.
+            The Privacy Notice is available. We are finishing the secure submission setup before accepting assessment requests.
             For general questions, contact <a className="underline underline-offset-4 hover:text-primary" href="mailto:DraftZenith@gmail.com">DraftZenith@gmail.com</a>.
           </p>
         </div> : success ? <div role="status" className="border border-primary/50 bg-card p-8 sm:p-12">

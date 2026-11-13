@@ -16,6 +16,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -58,6 +59,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
   path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/get-started': typeof GetStartedRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -145,6 +154,7 @@ export interface FileRouteTypes {
     | '/get-started'
     | '/how-it-works'
     | '/portfolio'
+    | '/privacy'
     | '/services'
     | '/sitemap.xml'
     | '/robots.txt'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/get-started'
     | '/how-it-works'
     | '/portfolio'
+    | '/privacy'
     | '/services'
     | '/sitemap.xml'
     | '/robots.txt'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/get-started'
     | '/how-it-works'
     | '/portfolio'
+    | '/privacy'
     | '/services'
     | '/sitemap.xml'
     | '/robots.txt'
@@ -191,6 +203,7 @@ export interface RootRouteChildren {
   GetStartedRoute: typeof GetStartedRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PortfolioRoute: typeof PortfolioRoute
+  PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -246,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -329,6 +349,7 @@ const rootRouteChildren: RootRouteChildren = {
   GetStartedRoute: GetStartedRoute,
   HowItWorksRoute: HowItWorksRoute,
   PortfolioRoute: PortfolioRoute,
+  PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,

@@ -29,9 +29,12 @@ export function Footer() {
       </div>
     </div>
     <div className="border-t border-background/15">
-      <div className="container-luxe flex flex-col gap-2 py-5 text-xs text-background/55 sm:flex-row sm:justify-between">
+      <div className="container-luxe flex flex-col gap-2 py-5 text-xs text-background/55 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Draft Zenith. All rights reserved.</p>
-        <p>Author Branding · Digital Presence · Book Discoverability</p>
+        <div className="flex flex-wrap items-center gap-4">
+          <Link to="/privacy" className="transition hover:text-primary">Privacy Notice</Link>
+          <p>Author Branding · Digital Presence · Book Discoverability</p>
+        </div>
       </div>
     </div>
   </footer>;
