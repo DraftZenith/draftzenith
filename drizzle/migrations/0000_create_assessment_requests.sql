@@ -12,5 +12,6 @@ CREATE TABLE public.assessment_requests (
   budget_range varchar(80),
   consent boolean NOT NULL DEFAULT false CHECK (consent = true)
 );
-GRANT ALL ON public.assessment_requests TO service_role;
+REVOKE ALL ON TABLE public.assessment_requests FROM anon, authenticated, PUBLIC;
+GRANT ALL ON TABLE public.assessment_requests TO service_role;
 ALTER TABLE public.assessment_requests ENABLE ROW LEVEL SECURITY;
