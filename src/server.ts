@@ -18,6 +18,19 @@ async function getServerEntry(): Promise<ServerEntry> {
   return serverEntryPromise;
 }
 
+function robotsResponse(request: Request): Response {
+  const sitemapUrl = new URL("/sitemap.xml", request.url).href;
+  return new Response(`User-agent: *
+Allow: /
+Sitemap: ${sitemapUrl}
+`, {
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+    },
+  });
+}
+
 function brandedErrorResponse(): Response {
   return new Response(renderErrorPage(), {
     status: 500,
@@ -69,6 +82,11 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if (request.method === "GET" && url.pathname === "/robots.txt") {
+        return robotsResponse(request);
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

@@ -1,10 +1,23 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+function getCorsHeaders(request: Request): Record<string, string> | null {
+  const origin = request.headers.get("Origin");
+  const allowedOrigins = (Deno.env.get("CHAT_ALLOWED_ORIGINS") ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  if (!origin || !allowedOrigins.includes(origin)) return null;
+
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Max-Age": "600",
+    "Vary": "Origin",
+  };
+}
 
 const SYSTEM_PROMPT = `You are Zenith, Draft Zenith's author-services guide. Draft Zenith is an author branding, digital presence, and book discoverability agency. It is not a publisher, literary magazine, editorial publication, or author-spotlight platform.
 
@@ -49,10 +62,47 @@ Draft Zenith helps authors build professional author brands, strengthen their on
 - Close replies with either a small invitation to continue ("Would you like me to point you to a few?") or a plain ending, never with corporate sign-offs.`;
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+  if (!corsHeaders) {
+    return new Response(JSON.stringify({ error: "Origin not allowed." }), {
+      status: 403,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  if (req.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Method not allowed." }), {
+      status: 405,
+      headers: { ...corsHeaders, "Content-Type": "application/json", "Allow": "POST, OPTIONS" },
+    });
+  }
 
   try {
-    const body = await req.json().catch(() => null);
+    const MAX_BODY_BYTES = 48_000;
+    const declaredLength = Number(req.headers.get("Content-Length") ?? 0);
+    if (declaredLength > MAX_BODY_BYTES) {
+      return new Response(JSON.stringify({ error: "Request body is too large." }), {
+        status: 413,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const rawBody = await req.text();
+    if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
+      return new Response(JSON.stringify({ error: "Request body is too large." }), {
+        status: 413,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    let body: { messages?: unknown };
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return new Response(JSON.stringify({ error: "Request body must be valid JSON." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
     const rawMessages = body?.messages;
 
     // Validate structure
@@ -64,7 +114,7 @@ serve(async (req) => {
     }
 
     const MAX_MESSAGES = 20;
-    const MAX_PER_MESSAGE = 2000;
+    const MAX_USER_MESSAGE = 2000;
     const MAX_TOTAL = 10000;
 
     if (rawMessages.length === 0 || rawMessages.length > MAX_MESSAGES) {
@@ -83,11 +133,13 @@ serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      // Strip any client-supplied system messages to prevent prompt injection
-      if (m.role !== "user" && m.role !== "assistant") continue;
+      // Accept only visitor-authored turns. The browser must not be able to
+      // inject fabricated assistant turns into the model's conversation history.
+      if (m.role !== "user") continue;
       if (typeof m.content !== "string" || m.content.length === 0) continue;
-      if (m.content.length > MAX_PER_MESSAGE) {
-        return new Response(JSON.stringify({ error: `Each message must be ${MAX_PER_MESSAGE} characters or fewer.` }), {
+      const messageLimit = MAX_USER_MESSAGE;
+      if (m.content.length > messageLimit) {
+        return new Response(JSON.stringify({ error: `Each ${m.role} message must be ${messageLimit} characters or fewer.` }), {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
@@ -99,7 +151,7 @@ serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      messages.push({ role: m.role, content: m.content });
+      messages.push({ role: "user", content: m.content });
     }
 
     if (messages.length === 0) {

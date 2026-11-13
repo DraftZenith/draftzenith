@@ -31,7 +31,8 @@ const AMBIENT_NUDGES = [
   "Exploring ways to improve book discoverability?",
 ];
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const CHAT_URL = SUPABASE_URL ? `${SUPABASE_URL}/functions/v1/chat` : "";
 const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 export function ChatWidget() {
@@ -43,6 +44,7 @@ export function ChatWidget() {
   const [nudgeDismissed, setNudgeDismissed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -66,6 +68,20 @@ export function ChatWidget() {
     }
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        launcherRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   async function send(text: string) {
     const trimmed = text.trim();
     if (!trimmed || loading) return;
@@ -74,6 +90,20 @@ export function ChatWidget() {
     setMessages(next);
     setInput("");
     setLoading(true);
+
+    // Keep the most recent context within the Edge Function's message and
+    // total-payload limits, while always retaining the visitor's latest turn.
+    const recentMessages = next
+      .filter((m) => m !== GREETING && m.role === "user")
+      .slice(-20);
+    let remainingCharacters = 10000;
+    const boundedMessages: Msg[] = [];
+    for (const message of [...recentMessages].reverse()) {
+      if (message.content.length <= remainingCharacters) {
+        boundedMessages.unshift(message);
+        remainingCharacters -= message.content.length;
+      }
+    }
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -84,7 +114,7 @@ export function ChatWidget() {
           apikey: ANON,
         },
         body: JSON.stringify({
-          messages: next.filter((m) => m !== GREETING).map((m) => ({ role: m.role, content: m.content })),
+          messages: boundedMessages.map((m) => ({ role: m.role, content: m.content })),
         }),
       });
 
@@ -93,7 +123,9 @@ export function ChatWidget() {
         try {
           const j = await resp.json();
           if (j?.error) msg = j.error;
-        } catch {}
+        } catch {
+          // Keep the generic fallback message when the response is not JSON.
+        }
         setMessages((m) => [...m, { role: "assistant", content: msg }]);
         return;
       }
@@ -147,6 +179,9 @@ export function ChatWidget() {
     }
   }
 
+  // Keep the launcher hidden until the public Supabase endpoint and key are configured.
+  if (!SUPABASE_URL || !ANON) return null;
+
   return (
     <>
       {/* Ambient greeting bubble */}
@@ -156,34 +191,39 @@ export function ChatWidget() {
         }`}
       >
         {nudge && (
-          <button
-            onClick={() => setOpen(true)}
-            className="group relative block text-left rounded-2xl rounded-br-sm border border-primary/30 bg-background/85 backdrop-blur-xl px-4 py-3 pr-9 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]"
-          >
-            <span className="absolute inset-0 rounded-2xl rounded-br-sm bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
-            <p className="relative font-serif italic text-sm leading-snug text-foreground/95">{nudge}</p>
-            <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · concierge</p>
-            <span
-              role="button"
-              tabIndex={0}
-              aria-label="Dismiss"
-              onClick={(e) => {
-                e.stopPropagation();
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="group relative block w-full text-left rounded-2xl rounded-br-sm border border-primary/30 bg-background/85 backdrop-blur-xl px-4 py-3 pr-9 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]"
+            >
+              <span className="absolute inset-0 rounded-2xl rounded-br-sm bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+              <p className="relative font-serif italic text-sm leading-snug text-foreground/95">{nudge}</p>
+              <p className="relative mt-1 text-[10px] uppercase tracking-[0.28em] text-primary/80">Zenith · author services</p>
+            </button>
+            <button
+              type="button"
+              aria-label="Dismiss greeting"
+              onClick={() => {
                 setNudge(null);
                 setNudgeDismissed(true);
               }}
-              className="absolute top-2 right-2 p-1 text-muted-foreground hover:text-foreground transition"
+              className="absolute top-2 right-2 z-10 p-1 text-muted-foreground hover:text-foreground transition"
             >
               <X size={12} />
-            </span>
-          </button>
+            </button>
+          </div>
         )}
       </div>
 
       {/* Floating launcher */}
       <button
+        ref={launcherRef}
+        type="button"
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open Zenith concierge"}
+        aria-expanded={open}
+        aria-controls="zenith-chat-panel"
         className="fixed bottom-6 right-4 sm:right-6 z-[60] group"
       >
         <span className="absolute inset-0 rounded-full bg-primary/50 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500 animate-pulse" />
@@ -199,6 +239,11 @@ export function ChatWidget() {
 
       {/* Panel */}
       <div
+        id="zenith-chat-panel"
+        role="region"
+        aria-label="Chat with Zenith"
+        aria-hidden={!open}
+        inert={!open}
         className={`fixed z-[60] right-4 sm:right-6 bottom-24 w-[calc(100vw-2rem)] sm:w-[420px] max-w-[420px] origin-bottom-right transition-all duration-500 ease-out ${
           open ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 translate-y-6 pointer-events-none"
         }`}
@@ -221,14 +266,17 @@ export function ChatWidget() {
             <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-[oklch(0.72_0.14_75)] via-primary to-[oklch(0.5_0.1_55)] grid place-items-center text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.6_0.13_70_/_0.7)]">
               <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent" />
               <Sparkles size={16} className="relative animate-pulse" />
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-background shadow-[0_0_10px_rgba(52,211,153,0.6)]" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-serif text-lg leading-tight tracking-tight">Zenith</p>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Editorial concierge · online</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Author services guide</p>
             </div>
             <button
-              onClick={() => setOpen(false)}
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                launcherRef.current?.focus();
+              }}
               aria-label="Close"
               className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 rounded-full hover:bg-card/50"
             >
@@ -322,6 +370,7 @@ export function ChatWidget() {
             <Mail size={14} className="ml-2 text-muted-foreground/60 shrink-0" />
             <input
               ref={inputRef}
+              aria-label="Message Zenith"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Zenith anything…"
@@ -339,7 +388,7 @@ export function ChatWidget() {
             </button>
           </form>
           <p className="relative text-[9px] text-center text-muted-foreground/70 pb-2.5 tracking-[0.25em] uppercase">
-            Draft Zenith · Editorial Concierge
+            Draft Zenith · Author services
           </p>
         </div>
       </div>

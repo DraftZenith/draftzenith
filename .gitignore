@@ -16,9 +16,14 @@ dist-ssr
 .nitro
 *.local
 
+# Environment files (keep only the documented template)
+.env
+.env.*
+!.env.example
+
 # Wrangler / Cloudflare
 .wrangler/
-.dev.vars
+.dev.vars*
 
 # Editor directories and files
 .vscode/*

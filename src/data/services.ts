@@ -61,11 +61,14 @@ export const SERVICE_OPTIONS = SERVICES.flatMap((service) =>
 
 export const PORTFOLIO_PROJECTS = [
   { name: "Women Gone WILD", href: "https://women-gone-wild-reader-experience.pages.dev" },
-  { name: "Outback Odyssey", href: null },
+  {
+    name: "Outback Odyssey — Goodreads discussion",
+    href: "https://www.goodreads.com/topic/show/24779734-the-land-doesn-t-know-you-how-do-you-learn-to-belong",
+  },
   { name: "Kanfmatic Agency", href: "https://kanfmaticagency.online" },
   {
     name: "Goodreads Reader Discovery",
-    href: "https://robert-henry-reader-engagement.authorbloomcircle.workers.dev/",
+    href: "https://robert-henry-reader-engagement.pages.dev",
   },
 ] as const;
 
