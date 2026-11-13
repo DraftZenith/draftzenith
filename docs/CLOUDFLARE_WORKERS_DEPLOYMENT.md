@@ -76,3 +76,10 @@ The `public.assessment_requests` table was created to match the server function'
 The Cloudflare Workers **branch preview build configuration only** now has the public `VITE_SUPABASE_URL`, `VITE_SUPABASE_PROJECT_ID`, and `VITE_SUPABASE_PUBLISHABLE_KEY` values configured. The assessment form remains explicitly disabled (`VITE_ASSESSMENT_FORM_ENABLED=false`) and the privacy URL remains blank. These values were not added to production build settings.
 
 Still required: configure `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` as server-only secrets for the preview Worker, implement/verify rate limiting and Turnstile before opening public write paths, deploy and configure the chat Edge Function only after its provider secret and abuse controls are ready, and test a real form submission end-to-end. Do not place the service-role key in GitHub, VITE variables, or browser code.
+
+
+### Assessment endpoint server-side launch gate
+
+The assessment server function now independently checks runtime `ASSESSMENT_FORM_ENABLED=true` and a non-empty `ASSESSMENT_PRIVACY_NOTICE_URL` before inserting a record. This mirrors the frontend gate and prevents direct invocation of the server function from bypassing the disabled form.
+
+The Cloudflare **branch preview** build configuration has both runtime-named values explicitly set to disabled/blank as a defensive configuration measure. The public `VITE_*` values remain configured only for the branch preview. Do not enable assessment submissions until the privacy notice is reviewed and published, Turnstile or equivalent abuse controls are deployed and verified, and server-only `SUPABASE_URL` plus `SUPABASE_SERVICE_ROLE_KEY` are configured as Worker secrets. The Supabase connector does not expose the service-role secret value, so it must be obtained and set directly by the project owner in the Supabase/Cloudflare dashboards. Never put it in source control, build-time `VITE_*` variables, or browser code.
