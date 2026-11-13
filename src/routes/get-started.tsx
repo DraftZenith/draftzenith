@@ -30,6 +30,12 @@ function GetStartedPage() {
   const [busy, setBusy] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const privacyNoticeUrl = import.meta.env.VITE_PRIVACY_NOTICE_URL ?? "";
+  // Keep personal-data collection disabled until a reviewed privacy notice URL
+  // and the explicit deployment feature flag are both configured.
+  const assessmentFormEnabled =
+    import.meta.env.VITE_ASSESSMENT_FORM_ENABLED === "true" &&
+    privacyNoticeUrl.trim().length > 0;
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,7 +86,13 @@ function GetStartedPage() {
         <p className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">Your details are submitted so we can review your request and contact you about it. This form does not send an email confirmation.</p>
       </div>
       <div className="md:col-span-7">
-        {success ? <div role="status" className="border border-primary/50 bg-card p-8 sm:p-12">
+        {!assessmentFormEnabled ? <div className="border border-border bg-card p-8 sm:p-12">
+          <h2 className="font-serif text-2xl">Assessment requests are temporarily being prepared.</h2>
+          <p className="mt-4 leading-relaxed text-muted-foreground">
+            We are completing the secure enquiry and privacy arrangements before accepting personal information through this form.
+            For general questions, contact <a className="underline underline-offset-4 hover:text-primary" href="mailto:DraftZenith@gmail.com">DraftZenith@gmail.com</a>.
+          </p>
+        </div> : success ? <div role="status" className="border border-primary/50 bg-card p-8 sm:p-12">
           <CheckCircle2 className="text-primary" size={36} aria-hidden="true" />
           <h2 className="mt-5 font-serif text-3xl">Your request has been received.</h2>
           <p className="mt-3 max-w-lg leading-relaxed text-muted-foreground">Thank you for sharing your project. Your information has been recorded for review. This confirmation does not mean an email has been sent.</p>
@@ -111,7 +123,7 @@ function GetStartedPage() {
           </div>
 
           <div aria-hidden="true" className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"><label htmlFor="company_website">Company website</label><input id="company_website" name="company_website" type="text" tabIndex={-1} autoComplete="off" /></div>
-          <label className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"><input type="checkbox" name="consent" required className="mt-1 size-4 shrink-0 accent-primary" /><span>I agree that Draft Zenith may contact me about this assessment request. <span className="text-destructive">*</span></span></label>
+          <label className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"><input type="checkbox" name="consent" required className="mt-1 size-4 shrink-0 accent-primary" /><span>I agree that Draft Zenith may contact me about this assessment request. Please read the <a href={privacyNoticeUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-primary">Privacy Notice</a> before submitting. <span className="text-destructive">*</span></span></label>
           {error && <p role="alert" className="border border-destructive/40 bg-destructive/5 p-3 text-sm text-destructive">{error}</p>}
           <Button type="submit" size="lg" disabled={busy} className="min-h-12 w-full sm:w-auto">
             {busy && <LoaderCircle size={16} className="animate-spin" aria-hidden="true" />}{busy ? "Sending request…" : "Submit Assessment Request"}
