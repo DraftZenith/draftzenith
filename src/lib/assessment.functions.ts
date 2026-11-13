@@ -34,6 +34,15 @@ export const submitAssessmentRequest = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     if (data.company_website?.trim()) return { ok: true };
 
+    // Enforce the launch gate on the server as well as in the UI. A caller
+    // must not be able to bypass the disabled form by invoking the server
+    // function directly.
+    const assessmentEnabled = process.env.ASSESSMENT_FORM_ENABLED === "true";
+    const privacyNoticeUrl = process.env.ASSESSMENT_PRIVACY_NOTICE_URL?.trim();
+    if (!assessmentEnabled || !privacyNoticeUrl) {
+      throw new Error("Assessment requests are not currently being accepted.");
+    }
+
     try {
       const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
       const { error } = await supabaseAdmin.from("assessment_requests").insert({
