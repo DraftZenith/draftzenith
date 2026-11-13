@@ -6,9 +6,9 @@
 
 **Funmi K., trading as Draft Zenith** is the person responsible for personal information submitted through the Draft Zenith website.
 
-Contact: [DraftZenith@gmail.com](mailto:DraftZenith@gmail.com)
+Privacy contact email: [DraftZenith@gmail.com](mailto:DraftZenith@gmail.com)
 
-**Confirm before publication:** Add the appropriate business/contact address or other required location details, and confirm that this is the correct legal description for the person operating the website.
+**Still required before publication:** Confirm the controller's residence or place of business to be disclosed under section 27(1)(a) of the Nigeria Data Protection Act 2023. The email address is a communication channel; it does not replace the residence/place-of-business information. Do not publish a private home address without considering an appropriate business contact arrangement.
 
 ## 2. Information the website may collect
 
@@ -76,7 +76,8 @@ If the website's data practices change, this notice should be reviewed and updat
 
 ## Publication checklist
 
-- [ ] Confirm responsible person's legal description and suitable business/contact address.
+- [x] Confirm responsible person's trading description and privacy contact email: Funmi K., trading as Draft Zenith; DraftZenith@gmail.com.
+- [ ] Confirm the controller's residence or place of business for the section 27(1)(a) disclosure.
 - [x] Retention period for unsuccessful enquiries approved: 12 months after last meaningful contact; a returning person may reopen an enquiry before deletion, or submit a new enquiry after deletion.
 - [ ] Set separate retention periods for client records, chat messages, security logs, and backups.
 - [ ] Verify the live Supabase project and database access controls.
