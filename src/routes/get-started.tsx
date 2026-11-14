@@ -29,11 +29,10 @@ function GetStartedPage() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const privacyNoticeUrl = import.meta.env.VITE_PRIVACY_NOTICE_URL || "/privacy";
-  // Keep personal-data collection disabled until a reviewed privacy notice URL
-  // and the explicit deployment feature flag are both configured.
-  const assessmentFormEnabled =
-    import.meta.env.VITE_ASSESSMENT_FORM_ENABLED === "true" &&
-    privacyNoticeUrl.trim().length > 0;
+  // The form is available whenever the privacy notice is configured.
+  // The server-side Pages Function independently enforces its submission flag
+  // and secure database credentials before accepting any personal data.
+  const assessmentFormEnabled = privacyNoticeUrl.trim().length > 0;
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
