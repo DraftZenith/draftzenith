@@ -23,13 +23,13 @@ function PrivacyPage() {
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
             We use the information you share with Draft Zenith only for the reason you provide it: to understand your project, respond to your enquiry, and provide the author services you request.
           </p>
-          <p className="text-sm text-muted-foreground">Effective date: 13 November 2026</p>
+          <p className="text-sm text-muted-foreground">Effective date: 14 November 2026</p>
         </div>
 
         <div className="divide-y divide-border">
           <section className="space-y-4 py-8">
             <h2 className="font-serif text-2xl text-foreground md:text-3xl">1. Who is responsible for your information?</h2>
-            <p className="leading-relaxed text-muted-foreground"><strong>Funmi K., trading as Draft Zenith</strong>, is responsible for personal information submitted through the Draft Zenith website.</p>
+            <p className="leading-relaxed text-muted-foreground">Draft Zenith is responsible for personal information submitted through the Draft Zenith website. For privacy enquiries, contact us using the details below.</p>
             <p className="leading-relaxed text-muted-foreground">Draft Zenith is a remote author-services business managed from Victoria Island. We work with a distributed team of independent creative professionals; we do not operate as a walk-in agency office.</p>
             <p className="leading-relaxed text-muted-foreground"><strong>Operating location:</strong> Victoria Island<br /><strong>Privacy contact:</strong> <a href="mailto:DraftZenith@gmail.com">DraftZenith@gmail.com</a></p>
           </section>
@@ -78,8 +78,8 @@ function PrivacyPage() {
 
           <section className="space-y-4 py-8">
             <h2 className="font-serif text-2xl text-foreground md:text-3xl">6. How long do we keep information?</h2>
-            <p className="leading-relaxed text-muted-foreground">For an enquiry that does not become a client project, we keep the enquiry for up to <strong>12 months after the last meaningful contact</strong>, then securely delete it or irreversibly anonymise it unless a legal obligation requires longer retention.</p>
-            <p className="leading-relaxed text-muted-foreground">If you contact us again before the information is deleted and want to resume the discussion, we may reopen the enquiry and the 12-month period will run from that new meaningful contact. If the earlier enquiry has already been deleted, you can submit a new one.</p>
+            <p className="leading-relaxed text-muted-foreground">For an enquiry that does not become a client project, we keep the information only for as long as reasonably needed to assess and respond to the enquiry, manage any related discussion, and meet applicable legal obligations. We then securely delete it or irreversibly anonymise it.</p>
+            <p className="leading-relaxed text-muted-foreground">If you contact us again before the information is deleted and want to resume the discussion, we may continue the enquiry using the information still held.</p>
             <p className="leading-relaxed text-muted-foreground">If you become a client, we keep relevant project and transaction records only for as long as needed to manage the work and meet applicable legal obligations. Technical security logs are retained according to the relevant provider's settings and policies.</p>
           </section>
 
