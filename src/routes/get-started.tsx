@@ -42,6 +42,7 @@ function GetStartedPage() {
     const input: AssessmentFormInput = {
       full_name: String(form.get("full_name") ?? ""),
       email: String(form.get("email") ?? ""),
+      email_confirm: String(form.get("email_confirm") ?? ""),
       country: String(form.get("country") ?? ""),
       author_website: String(form.get("author_website") ?? ""),
       book_title: String(form.get("book_title") ?? ""),
@@ -85,7 +86,7 @@ function GetStartedPage() {
         <SectionEyebrow>Get started</SectionEyebrow>
         <h1 className="font-serif text-4xl leading-[1.05] text-balance md:text-6xl">Request a Free Assessment.</h1>
         <p className="text-lg leading-relaxed text-muted-foreground">Tell us where you are now and what you would like to strengthen. This is an initial conversation, not a commitment to proceed.</p>
-        <p className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">Your details are submitted so we can review your request and contact you about it. This form does not send an email confirmation.</p>
+        <p className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">Your details are submitted so we can review your request and contact you about it. Please enter your email address twice so we can catch typing mistakes. This form does not send an email confirmation.</p>
       </div>
       <div className="md:col-span-7">
         {!assessmentFormEnabled ? <div className="border border-border bg-card p-8 sm:p-12">
@@ -97,11 +98,12 @@ function GetStartedPage() {
         </div> : success ? <div role="status" className="border border-primary/50 bg-card p-8 sm:p-12">
           <CheckCircle2 className="text-primary" size={36} aria-hidden="true" />
           <h2 className="mt-5 font-serif text-3xl">Your request has been received.</h2>
-          <p className="mt-3 max-w-lg leading-relaxed text-muted-foreground">Thank you for sharing your project. Your information has been recorded for review. This confirmation does not mean an email has been sent.</p>
+          <p className="mt-3 max-w-lg leading-relaxed text-muted-foreground">Thank you for sharing your project. Your information has been recorded for review. We will use the email address you provided to contact you. No automated email has been sent.</p>
         </div> : <form onSubmit={handleSubmit} className="space-y-7" noValidate>
           <div className="grid gap-6 sm:grid-cols-2">
             <Field name="full_name" label="Full name" required maxLength={120} autoComplete="name" />
             <Field name="email" label="Email address" type="email" required maxLength={254} autoComplete="email" />
+            <Field name="email_confirm" label="Confirm email address" type="email" required maxLength={254} autoComplete="email" />
             <Field name="country" label="Country" required maxLength={100} autoComplete="country-name" />
             <Field name="author_website" label="Author website (optional)" type="url" maxLength={2048} placeholder="https://" />
             <Field name="book_title" label="Book title (optional)" maxLength={200} />
