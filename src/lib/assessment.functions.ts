@@ -12,6 +12,7 @@ const optionalUrlSchema = z.string().trim().max(2048).optional().or(z.literal(""
 export const assessmentInputSchema = z.object({
   full_name: z.string().trim().min(1, "Enter your full name.").max(120),
   email: z.string().trim().email("Enter a valid email address.").max(254),
+  email_confirm: z.string().trim().email("Re-enter a valid email address.").max(254),
   country: z.string().trim().min(1, "Enter your country.").max(100),
   author_website: optionalUrlSchema,
   book_title: z.string().trim().max(200).optional().or(z.literal("")),
@@ -21,6 +22,10 @@ export const assessmentInputSchema = z.object({
   budget_range: z.enum(["", "Under $500", "$500–$1,000", "$1,001–$2,500", "$2,501–$5,000", "Over $5,000", "Not sure yet"]).optional(),
   consent: z.literal(true, { errorMap: () => ({ message: "Please agree to be contacted about this request." }) }),
   company_website: z.string().max(300).optional(),
+}).superRefine((data, ctx) => {
+  if (data.email.trim().toLowerCase() !== data.email_confirm.trim().toLowerCase()) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["email_confirm"], message: "The email addresses do not match. Please check both fields." });
+  }
 });
 
 export type AssessmentInput = z.input<typeof assessmentInputSchema>;
