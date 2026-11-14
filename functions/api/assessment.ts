@@ -3,6 +3,7 @@ interface Env {
   SUPABASE_SERVICE_ROLE_KEY: string;
   ASSESSMENT_FORM_ENABLED: string;
   ASSESSMENT_PRIVACY_NOTICE_URL: string;
+  ASSESSMENT_ALLOWED_ORIGINS?: string;
 }
 
 const allowedServices = new Set([
@@ -44,9 +45,17 @@ function json(data: unknown, status = 200): Response {
 }
 
 export const onRequestPost = async ({ request, env }: { request: Request; env: Env }) => {
-  if (request.headers.get("origin")) {
+  const requestOrigin = request.headers.get("origin");
+  if (requestOrigin) {
     try {
-      if (new URL(request.headers.get("origin")!).origin !== new URL(request.url).origin) {
+      const origin = new URL(requestOrigin).origin;
+      const sameOrigin = new URL(request.url).origin;
+      const configuredOrigins = (env.ASSESSMENT_ALLOWED_ORIGINS || "")
+        .split(",")
+        .map((value) => value.trim())
+        .filter(Boolean);
+      const allowedOrigins = new Set([sameOrigin, ...configuredOrigins]);
+      if (!allowedOrigins.has(origin)) {
         return json({ ok: false, error: "This request could not be verified. Please refresh the page and try again." }, 403);
       }
     } catch {
