@@ -91,6 +91,7 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
 
   const fullName = typeof data.full_name === "string" ? data.full_name.trim() : "";
   const email = typeof data.email === "string" ? data.email.trim() : "";
+  const emailConfirm = typeof data.email_confirm === "string" ? data.email_confirm.trim() : "";
   const country = typeof data.country === "string" ? data.country.trim() : "";
   const service = typeof data.service_of_interest === "string" ? data.service_of_interest : "";
   const description = typeof data.project_description === "string" ? data.project_description.trim() : "";
@@ -101,6 +102,7 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
   const budget = typeof data.budget_range === "string" ? data.budget_range : "";
 
   if (!fullName || fullName.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 ||
+      emailConfirm.toLowerCase() !== email.toLowerCase() ||
       !country || country.length > 100 || !allowedServices.has(service) ||
       !description || description.length > 3000 || !goal || goal.length > 500 || !consent ||
       (website && (website.length > 2048 || !/^https?:\/\//i.test(website))) ||
