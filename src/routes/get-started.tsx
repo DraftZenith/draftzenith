@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { SERVICE_OPTIONS } from "@/data/services";
-import { assessmentInputSchema, submitAssessmentRequest, type AssessmentFormInput } from "@/lib/assessment.functions";
+import { assessmentInputSchema, type AssessmentFormInput } from "@/lib/assessment.functions";
 
 const searchSchema = z.object({ service: z.string().optional() });
 
@@ -26,7 +25,6 @@ const initialService = (value: string | undefined) => SERVICE_OPTIONS.includes(v
 
 function GetStartedPage() {
   const search = Route.useSearch();
-  const sendRequest = useServerFn(submitAssessmentRequest);
   const [busy, setBusy] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -64,11 +62,16 @@ function GetStartedPage() {
     }
 
     try {
-      const result = await sendRequest({ data: parsed.data });
-      if (result.ok) {
+      const response = await fetch("/api/assessment", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      const result = await response.json().catch(() => null) as { ok?: boolean; error?: string } | null;
+      if (response.ok && result?.ok) {
         setSuccess(true);
       } else {
-        setError("We could not confirm that your request was saved. Please try again.");
+        setError(result?.error || "We could not confirm that your request was saved. Please try again.");
       }
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "We could not submit your request. Please try again.");
