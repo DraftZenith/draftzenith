@@ -7,24 +7,15 @@ interface Env {
 }
 
 const allowedServices = new Set([
-  "Author Brand Essentials",
-  "Complete Author Brand",
-  "Author Brand & Digital Presence",
+  "Author Branding & Digital Presence",
+  "Pinterest Marketing & Book Visibility",
+  "Book Trailers & Visual Promotion",
+  "Book Discovery & Audience Development",
+  "Ongoing Author Visibility Management",
   "Book Landing Page",
-  "Complete Author Website",
-  "Premium Author Digital Platform",
   "Pinterest Foundation",
   "Pinterest Visibility Campaign",
   "Pinterest Growth Campaign",
-  "Listopia Starter",
-  "Listopia Visibility",
-  "Listopia Extended Campaign",
-  "Essential Book Discovery",
-  "Multi-Platform Visibility",
-  "Complete Book Discovery Campaign",
-  "Pinterest Management",
-  "Multi-Platform Management",
-  "Comprehensive Visibility Management",
   "Not sure yet",
 ]);
 

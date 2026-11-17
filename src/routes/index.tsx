@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass, Globe2, PenTool, SearchCheck } from "lucide-react";
+import { ArrowRight, Compass, Globe2, PenTool, SearchCheck, Clapperboard } from "lucide-react";
 import hero from "@/assets/agency-hero.jpg";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { AssessmentCta } from "@/components/site/AgencyPage";
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
       { title: "Draft Zenith | Author Branding & Book Discoverability" },
       { name: "description", content: "Draft Zenith helps authors build professional brands, strengthen their digital presence, and improve book discoverability." },
       { property: "og:title", content: "Draft Zenith | Author Branding & Book Discoverability" },
-      { property: "og:description", content: "Build your author brand, strengthen your digital presence, and connect your book with relevant readers." },
+      { property: "og:description", content: "A team supporting author brands, book presentation, reader discovery and lasting digital visibility." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -22,8 +22,10 @@ export const Route = createFileRoute("/")({
 const serviceSummaries = [
   { title: "Author Brand Development", icon: PenTool, text: "Establish a clear, professional author identity across your reader-facing presence." },
   { title: "Author Websites & Book Landing Pages", icon: Globe2, text: "Present your author story and books through a purposeful digital home." },
-  { title: "Book Discoverability", icon: SearchCheck, text: "Make it easier for relevant readers to encounter your books online." },
-  { title: "Author Visibility Management", icon: Compass, text: "Keep selected digital visibility work moving with an agreed monthly scope." },
+  { title: "Pinterest Marketing & Book Visibility", icon: SearchCheck, text: "Use research, branded pins and campaign management to create more routes to your book." },
+  { title: "Book Trailers & Visual Promotion", icon: Clapperboard, text: "Introduce your book through purposeful video and supporting creative." },
+  { title: "Book Discovery & Audience Development", icon: Compass, text: "Research relevant readers, communities and channels for your book." },
+  { title: "Ongoing Author Visibility Management", icon: Globe2, text: "Maintain content, updates and campaign reviews through an agreed ongoing scope." },
 ];
 
 const approach = [
@@ -73,7 +75,7 @@ function HomePage() {
         <div className="space-y-6 md:col-span-7">
           <h2 className="max-w-3xl font-serif text-3xl leading-tight text-balance md:text-5xl">More Than a Published Book. A Stronger Author Presence.</h2>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            An author&apos;s work deserves a clear identity and a thoughtful place online. We bring author branding, digital presence, and book discoverability into one considered plan, shaped around your work and goals.
+            An author&apos;s work deserves a clear identity and a thoughtful place online. Our team brings together brand strategy, website development, design, visual promotion, audience research and ongoing visibility support. Choose the work you need now or connect services in a coordinated plan.
           </p>
           <Link to="/about" className="inline-flex items-center gap-2 border-b border-primary pb-1 text-sm hover:text-primary">About Draft Zenith <ArrowRight size={15} /></Link>
         </div>
