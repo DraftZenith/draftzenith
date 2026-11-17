@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { AgencyPageIntro, AssessmentCta } from "@/components/site/AgencyPage";
 import { SERVICES, PROJECT_TERMS } from "@/data/services";
