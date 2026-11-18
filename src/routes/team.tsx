@@ -58,7 +58,6 @@ function TeamPage() {
       <div className="grid gap-6 border-t border-border pt-8 md:grid-cols-12">
         <div className="md:col-span-4"><SectionEyebrow>Work with us</SectionEyebrow></div>
         <div className="space-y-4 md:col-span-8"><h2 className="font-serif text-3xl md:text-4xl">Let&apos;s talk about your book and your next steps.</h2><p className="max-w-2xl leading-relaxed text-muted-foreground">If you are an author looking to strengthen your brand, digital presence or book discoverability, tell us what you are working towards.</p><a href="/get-started" className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">Request a Free Assessment <ArrowUpRight size={15}/></a></div>
-      </div>
-    </section>
+      </div></section>
   </SiteLayout>;
 }
