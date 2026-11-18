@@ -39,30 +39,30 @@
 :root {
   --radius: 0.25rem;
   /* Warm ivory and deep navy agency palette */
-  --background: oklch(0.975 0.012 88);
-  --foreground: oklch(0.24 0.045 255);
-  --card: oklch(0.995 0.006 88);
-  --card-foreground: oklch(0.24 0.045 255);
-  --popover: oklch(0.995 0.006 88);
-  --popover-foreground: oklch(0.24 0.045 255);
-  --primary: oklch(0.59 0.12 39);
-  --primary-foreground: oklch(0.98 0.008 85);
-  --secondary: oklch(0.92 0.025 145);
-  --secondary-foreground: oklch(0.24 0.045 255);
-  --muted: oklch(0.945 0.012 88);
-  --muted-foreground: oklch(0.48 0.028 255);
-  --accent: oklch(0.91 0.035 48);
-  --accent-foreground: oklch(0.24 0.045 255);
+  --background: #f7f0e2;
+  --foreground: #0b1d32;
+  --card: #fffaf0;
+  --card-foreground: #0b1d32;
+  --popover: #fffaf0;
+  --popover-foreground: #0b1d32;
+  --primary: #bd8b3e;
+  --primary-foreground: #0b1d32;
+  --secondary: #e8ddc7;
+  --secondary-foreground: #0b1d32;
+  --muted: #eee5d5;
+  --muted-foreground: #5d6875;
+  --accent: #ead9b8;
+  --accent-foreground: #0b1d32;
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.86 0.018 88);
-  --input: oklch(0.88 0.016 88);
-  --ring: oklch(0.59 0.12 39);
+  --border: #d9c8a8;
+  --input: #d9c8a8;
+  --ring: #bd8b3e;
 
-  --gold: oklch(0.72 0.08 78);
-  --gold-soft: oklch(0.80 0.06 82);
-  --cream: oklch(0.975 0.012 88);
-  --ink: oklch(0.20 0.045 255);
+  --gold: #c99a4d;
+  --gold-soft: #e5c98f;
+  --cream: #f7f0e2;
+  --ink: #0b1d32;
 }
 
 @layer base {
@@ -89,11 +89,11 @@
   @media (min-width: 480px) { .container-luxe { padding-inline: 1.5rem; } }
   @media (min-width: 768px) { .container-luxe { padding-inline: 2.5rem; } }
 
-  .band-forest { background: #203a36; color: #f7f1e7; }
-  .band-sage { background: #e4e9df; color: #263d36; }
-  .band-clay { background: #f1dfd5; color: #4a302b; }
-  .band-paper { background: #f2ecdf; color: #263440; }
-  .band-blue { background: #e0e8ed; color: #263744; }
+  .band-forest { background: #0b1d32; color: #fff8e9; }
+  .band-sage { background: #e8ddc7; color: #0b1d32; }
+  .band-clay { background: #eee5d5; color: #0b1d32; }
+  .band-paper { background: #f7f0e2; color: #0b1d32; }
+  .band-blue { background: #e1e6e9; color: #0b1d32; }
 
   .gold-line {
     background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
