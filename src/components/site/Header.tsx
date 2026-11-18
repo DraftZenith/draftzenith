@@ -40,7 +40,7 @@ export function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#f7f0e2]/95 shadow-sm backdrop-blur-md" : "bg-[#f7f0e2]"}`}>
       <div className="container-luxe flex h-[76px] items-center justify-between">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3">
-          <img src="/draft-zenith-seal.webp" alt="Draft Zenith" width="58" height="58" className="h-14 w-14 shrink-0 object-contain" />
+          <img src="/draft-zenith-seal.svg" alt="Draft Zenith" width="58" height="58" className="h-14 w-14 shrink-0 object-contain" />
           <span className="font-serif text-[1.55rem] leading-none tracking-tight text-[#0b1d32]">Draft Zenith</span>
         </Link>
         <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-4 text-sm 2xl:gap-6">
