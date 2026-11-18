@@ -29,7 +29,7 @@ function ServicesPage() {
     <section className="bg-[#203a36] text-[#f7f1e7]">
       <div className="container-luxe grid gap-8 pb-16 pt-36 md:grid-cols-12 md:items-end md:pb-20 md:pt-48">
         <div className="space-y-5 md:col-span-8">
-          <SectionEyebrow>Our services</SectionEyebrow>
+          <SectionEyebrow tone="light">Our services</SectionEyebrow>
           <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">Good work begins with understanding what your book needs.</h1>
         </div>
         <p className="max-w-xl leading-relaxed text-[#dce4dc] md:col-span-4">We work across author websites, brand design, visual promotion and reader discovery. Choose a single service or ask us to coordinate several parts of the work.</p>
