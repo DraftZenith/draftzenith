@@ -89,7 +89,13 @@
   @media (min-width: 480px) { .container-luxe { padding-inline: 1.5rem; } }
   @media (min-width: 768px) { .container-luxe { padding-inline: 2.5rem; } }
 
-  .band-forest { background: #203a36; color: #f7f1e7; }\n  .band-sage { background: #e4e9df; color: #263d36; }\n  .band-clay { background: #f1dfd5; color: #4a302b; }\n  .band-paper { background: #f2ecdf; color: #263440; }\n  .band-blue { background: #e0e8ed; color: #263744; }\n\n  .gold-line {
+  .band-forest { background: #203a36; color: #f7f1e7; }
+  .band-sage { background: #e4e9df; color: #263d36; }
+  .band-clay { background: #f1dfd5; color: #4a302b; }
+  .band-paper { background: #f2ecdf; color: #263440; }
+  .band-blue { background: #e0e8ed; color: #263744; }
+
+  .gold-line {
     background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
     height: 1px;
   }
