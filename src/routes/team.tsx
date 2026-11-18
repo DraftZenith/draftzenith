@@ -32,15 +32,15 @@ function TeamPage() {
         <p className="text-lg leading-relaxed text-muted-foreground">Draft Zenith brings together a distributed team supporting authors with their brand presence, book services and digital projects. Connect directly with a team member below.</p>
       </div>
     </section>
-    <section className="border-y border-border bg-card">
-      <div className="container-luxe py-16 md:py-24">
+    <section className="border-y border-[#c5d0c3] bg-[#e1e9df]">
+      <div className="container-luxe bg-[#f1dfd5] py-16 md:py-24">
         <div className="mb-10 space-y-3"><SectionEyebrow>Our people</SectionEyebrow><h2 className="font-serif text-3xl md:text-4xl">A team working across author services.</h2></div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {members.slice(0,2).map((member) => <article key={member.email} className="flex min-h-64 flex-col justify-between border border-border bg-background p-7">
+          {members.slice(0,2).map((member) => <article key={member.email} className="flex min-h-64 flex-col justify-between border border-[#c5d0c3] bg-[#fffaf1] p-7">
             <div><span className="text-xs uppercase tracking-[0.2em] text-primary">Draft Zenith</span><h3 className="mt-4 font-serif text-2xl">{member.name}</h3><p className="mt-2 text-sm text-muted-foreground">{member.note}</p></div>
             <a href={`mailto:${member.email}`} className="mt-8 inline-flex items-center gap-2 self-start border-b border-primary pb-1 text-sm hover:text-primary"><Mail size={15}/> Get in touch <ArrowUpRight size={14}/></a>
           </article>)}
-          <article className="overflow-hidden border border-border bg-background">
+          <article className="overflow-hidden border border-[#c5d0c3] bg-[#fffaf1]">
             <img src={funmiPortrait} alt="Portrait of Funmi K." width="240" height="240" loading="lazy" className="aspect-[4/3] w-full object-cover object-center"/>
             <div className="flex min-h-48 flex-col justify-between p-7">
               <div><span className="text-xs uppercase tracking-[0.2em] text-primary">Book services specialist</span><h3 className="mt-3 font-serif text-2xl">Funmi K.</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">A book services specialist and Fiverr service provider.</p></div>
@@ -54,11 +54,11 @@ function TeamPage() {
         </div>
       </div>
     </section>
-    <section className="container-luxe py-16 md:py-24">
+    <section className="bg-[#f1dfd5]"><div className="container-luxe py-16 md:py-24">
       <div className="grid gap-6 border-t border-border pt-8 md:grid-cols-12">
         <div className="md:col-span-4"><SectionEyebrow>Work with us</SectionEyebrow></div>
         <div className="space-y-4 md:col-span-8"><h2 className="font-serif text-3xl md:text-4xl">Let&apos;s talk about your book and your next steps.</h2><p className="max-w-2xl leading-relaxed text-muted-foreground">If you are an author looking to strengthen your brand, digital presence or book discoverability, tell us what you are working towards.</p><a href="/get-started" className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">Request a Free Assessment <ArrowUpRight size={15}/></a></div>
       </div>
-    </section>
+    </div></section>
   </SiteLayout>;
 }

@@ -48,9 +48,8 @@ export function Header() {
     >
       <div className="container-luxe flex items-center justify-between h-20">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2 group">
-          <span className="font-serif text-2xl tracking-tight">
-            Draft<span className="text-primary">·</span>Zenith
-          </span>
+          <img src="/draft-zenith-mark.svg" alt="" width="38" height="38" className="h-9 w-9 shrink-0" />
+          <span className="font-serif text-[1.65rem] leading-none tracking-tight text-foreground">Draft Zenith</span>
         </Link>
 
         <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-4 text-sm tracking-normal 2xl:gap-6">
@@ -108,7 +107,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center bg-primary text-primary-foreground px-5 py-3 text-sm tracking-wide uppercase font-medium"
             >
-              Request a Free Assessment
+              Start a Conversation
             </Link>
           </nav>
         </div>
