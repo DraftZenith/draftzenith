@@ -178,7 +178,7 @@
 
   :is(
     [class~="text-[#c99a4d]"], [class~="text-[#a8752d]"], [class~="text-[#a45d47]"],
-    [class~="text-[#956a2e]"], [class~="text-[#9a702f]"], [class~="text-[#e1bd83]"]
+    [class~="text-[#956a2e]"], [class~="text-[#9a702f]"], [class~="text-[#e1bd83]"], [class~="text-[#dfbd79]"]
   ) { color: #c08848 !important; }
 
   :is(
