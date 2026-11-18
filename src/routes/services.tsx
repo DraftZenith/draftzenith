@@ -22,6 +22,7 @@ const tones = [
   { wrap: "bg-[#f1dfd5] text-[#4a302b]", muted: "text-[#715b53]", line: "border-[#dfbfb0]", number: "text-[#a45d47]", price: "bg-[#fbf2ec]" },
   { wrap: "bg-[#e0e8ed] text-[#263744]", muted: "text-[#5d6870]", line: "border-[#c4d0d7]", number: "text-[#344e62]", price: "bg-[#f3f7f9]" },
   { wrap: "bg-[#243c39] text-[#f7f1e7]", muted: "text-[#d3dfd6]", line: "border-[#59736a]", number: "text-[#e1bd83]", price: "bg-[#304b46]" },
+  { wrap: "bg-[#001220] text-[#fdf6e6]", muted: "text-[#e8ddc7]", line: "border-[#c08848]", number: "text-[#c08848]", price: "bg-[#142c40]" },
 ];
 
 function ServicesPage() {
