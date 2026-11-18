@@ -53,7 +53,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-4 text-xs tracking-wide uppercase 2xl:gap-6">
+        <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-4 text-sm tracking-normal 2xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -70,9 +70,9 @@ export function Header() {
         <div className="hidden xl:block">
           <Link
             to="/get-started"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm tracking-wide uppercase font-medium hover:bg-primary/90 transition"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm tracking-normal font-medium hover:bg-primary/90 transition"
           >
-            Request a Free Assessment
+            Start a Conversation
           </Link>
         </div>
 

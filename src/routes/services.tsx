@@ -1,106 +1,110 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
-import { AgencyPageIntro, AssessmentCta } from "@/components/site/AgencyPage";
+import { AssessmentCta } from "@/components/site/AgencyPage";
 import { SERVICES, PROJECT_TERMS } from "@/data/services";
 
 export const Route = createFileRoute("/services")({
   head: () => ({ meta: [
-    { title: "Author Services | Draft Zenith" },
-    { name: "description", content: "Explore author branding and websites, Pinterest marketing, book trailers, book discovery and ongoing author visibility support from Draft Zenith." },
-    { property: "og:title", content: "Author Services | Draft Zenith" },
-    { property: "og:description", content: "Flexible author services, available individually or as a coordinated plan shaped around your goals." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
+    { title: "Services for Authors | Draft Zenith" },
+    { name: "description", content: "Author websites and branding, Pinterest marketing, book trailers, audience research and ongoing book visibility support." },
+    { property: "og:title", content: "Services for Authors | Draft Zenith" },
+    { property: "og:description", content: "Choose one author service or bring several together in a project shaped around your book." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: ServicesPage,
 });
 
+const tones = [
+  { wrap: "bg-[#f3ecdf] text-[#263440]", muted: "text-[#626660]", line: "border-[#d7cbb7]", number: "text-[#a45d47]", price: "bg-[#fffaf1]" },
+  { wrap: "bg-[#e4e9df] text-[#263d36]", muted: "text-[#5c675e]", line: "border-[#c7d0c4]", number: "text-[#607961]", price: "bg-[#f6f8f1]" },
+  { wrap: "bg-[#f1dfd5] text-[#4a302b]", muted: "text-[#715b53]", line: "border-[#dfbfb0]", number: "text-[#a45d47]", price: "bg-[#fbf2ec]" },
+  { wrap: "bg-[#e0e8ed] text-[#263744]", muted: "text-[#5d6870]", line: "border-[#c4d0d7]", number: "text-[#344e62]", price: "bg-[#f3f7f9]" },
+  { wrap: "bg-[#243c39] text-[#f7f1e7]", muted: "text-[#d3dfd6]", line: "border-[#59736a]", number: "text-[#e1bd83]", price: "bg-[#304b46]" },
+];
+
 function ServicesPage() {
   return <SiteLayout>
-    <AgencyPageIntro
-      eyebrow="Services"
-      title="The right support for your book and author presence."
-      description="From a clearer author website to a coordinated visibility plan, Draft Zenith brings together the people and skills to plan and deliver the work. Choose one service or combine several around what you want to achieve."
-    />
-
-    <section className="container-luxe pb-16 md:pb-20">
-      <div className="grid gap-5 border-y border-border py-7 md:grid-cols-3 md:gap-8 md:py-9">
-        <div><SectionEyebrow>Flexible by design</SectionEyebrow><h2 className="mt-3 font-serif text-2xl">Start where you need us.</h2></div>
-        <p className="text-sm leading-relaxed text-muted-foreground">You can commission an individual service, or ask us to coordinate several parts of a project. We shape the scope around your book, current presence, audience and priorities.</p>
-        <p className="text-sm leading-relaxed text-muted-foreground">Our team can take work from research and planning through creative production, implementation and ongoing management. You receive an agreed scope, deliverables and timeline before work begins.</p>
+    <section className="bg-[#203a36] text-[#f7f1e7]">
+      <div className="container-luxe grid gap-8 pb-16 pt-36 md:grid-cols-12 md:items-end md:pb-20 md:pt-48">
+        <div className="space-y-5 md:col-span-8">
+          <SectionEyebrow tone="light">Our services</SectionEyebrow>
+          <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">Good work begins with understanding what your book needs.</h1>
+        </div>
+        <p className="max-w-xl leading-relaxed text-[#dce4dc] md:col-span-4">We work across author websites, brand design, visual promotion and reader discovery. Choose a single service or ask us to coordinate several parts of the work.</p>
       </div>
     </section>
 
-    <section className="container-luxe pb-20 md:pb-28">
-      <div className="mb-10 max-w-3xl space-y-3">
-        <SectionEyebrow>What we can do</SectionEyebrow>
-        <h2 className="font-serif text-3xl leading-tight md:text-5xl">Five connected areas of author support.</h2>
-        <p className="leading-relaxed text-muted-foreground">Each service is available on its own. Where it makes sense, we can connect the work so your author brand, book presentation and discovery activity support one another.</p>
+    <section className="bg-[#f2ecdf]">
+      <div className="container-luxe grid gap-5 py-10 md:grid-cols-3 md:gap-10 md:py-14">
+        <div><SectionEyebrow>How to work with us</SectionEyebrow><h2 className="mt-3 font-serif text-2xl">Start with one clear need.</h2></div>
+        <p className="text-sm leading-relaxed text-[#5d625e]">You might need a book page, a Pinterest campaign or a trailer. Each can be commissioned on its own, with its own agreed scope and delivery plan.</p>
+        <p className="text-sm leading-relaxed text-[#5d625e]">You can also connect services when they support the same goal. Our team can plan, design, produce and manage the agreed work across the project.</p>
       </div>
-      <div className="space-y-6">
-        {SERVICES.map((service, i) => <article key={service.category} id={`service-${i + 1}`} className="scroll-mt-28 border border-border bg-card">
-          <div className="grid gap-7 p-6 md:grid-cols-12 md:gap-10 md:p-9">
+    </section>
+
+    <section className="space-y-0">
+      {SERVICES.map((service,i)=>{
+        const tone=tones[i];
+        return <article key={service.category} id={`service-${i+1}`} className={`scroll-mt-24 ${tone.wrap}`}>
+          <div className="container-luxe grid gap-8 py-12 md:grid-cols-12 md:gap-12 md:py-16 lg:py-20">
             <div className="md:col-span-4">
-              <span className="text-xs uppercase tracking-[0.22em] text-primary">Service 0{i + 1}</span>
-              <h3 className="mt-3 font-serif text-2xl leading-tight md:text-3xl">{service.category}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{service.intro}</p>
-              <div className="mt-6 border-l-2 border-primary pl-4">
-                <p className="text-xs uppercase tracking-wider text-primary">Why it matters</p>
+              <p className={`text-xs uppercase tracking-[0.22em] ${tone.number}`}>0{i+1} / What we do</p>
+              <h2 className="mt-4 font-serif text-3xl leading-tight text-balance md:text-4xl">{service.category}</h2>
+              <p className={`mt-5 text-sm leading-relaxed ${tone.muted}`}>{service.intro}</p>
+              <div className={`mt-7 border-l-2 pl-4 ${tone.line}`}>
+                <p className={`text-xs uppercase tracking-[0.16em] ${tone.number}`}>What this helps with</p>
                 <p className="mt-2 text-sm leading-relaxed">{service.benefit}</p>
               </div>
             </div>
             <div className="md:col-span-8">
-              <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">What the work can include</h4>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {service.deliverables.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed"><Check size={16} className="mt-0.5 shrink-0 text-primary" aria-hidden="true"/><span>{item}</span></li>)}
+              <h3 className="text-xs uppercase tracking-[0.2em] opacity-75">What we can deliver</h3>
+              <ul className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+                {service.deliverables.map(item=><li key={item} className="flex gap-3 text-sm leading-relaxed"><Check size={16} className={`mt-0.5 shrink-0 ${tone.number}`} aria-hidden="true"/><span>{item}</span></li>)}
               </ul>
-              {service.packages.length > 0 && <div className="mt-7 border-t border-border pt-5">
-                <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Published packages</h4>
-                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {service.packages.map((offer) => <div key={offer.name} className="border border-border bg-background p-4">
+              {service.packages.length>0 && <div className={`mt-8 border-t pt-6 ${tone.line}`}>
+                <h3 className="text-xs uppercase tracking-[0.2em] opacity-75">Published package prices</h3>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {service.packages.map(offer=><div key={offer.name} className={`flex min-h-28 flex-col justify-between p-4 ${tone.price}`}>
                     <p className="text-sm font-medium">{offer.name}</p>
-                    <p className="mt-2 font-serif text-2xl text-primary">${offer.price.toLocaleString("en-US")}</p>
+                    <p className={`mt-4 font-serif text-3xl ${tone.number}`}>${offer.price}</p>
                   </div>)}
                 </div>
               </div>}
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{service.quote}</p>
-              <Link to="/get-started" search={{ service: service.packages[0]?.name ?? service.category }} className="mt-5 inline-flex min-h-11 items-center gap-2 border-b border-primary pb-1 text-sm font-medium hover:text-primary">
+              <p className={`mt-6 max-w-2xl text-sm leading-relaxed ${tone.muted}`}>{service.quote}</p>
+              <Link to="/get-started" search={{ service: service.packages[0]?.name ?? service.category }} className={`mt-6 inline-flex min-h-11 items-center gap-3 border-b pb-1 text-sm font-semibold transition hover:opacity-70 ${tone.line}`}>
                 {service.cta} <ArrowRight size={15}/>
               </Link>
             </div>
           </div>
-        </article>)}
-      </div>
+        </article>;
+      })}
     </section>
 
-    <section className="border-y border-border bg-secondary/50">
-      <div className="container-luxe py-16 md:py-24">
-        <div className="grid gap-10 md:grid-cols-12 md:gap-14">
-          <div className="md:col-span-4"><SectionEyebrow>How services connect</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">One clear journey, with the right pieces working together.</h2></div>
-          <div className="md:col-span-8">
-            <p className="max-w-2xl leading-relaxed text-muted-foreground">For example, a book trailer can introduce the story visually. Pinterest content can extend its reach through relevant searches and browsing. A dedicated book page gives visitors a useful place to learn more, follow retailer links or sign up for updates.</p>
-            <ol className="mt-8 grid gap-4 sm:grid-cols-3">
-              {[
-                ["01", "Introduce", "A book trailer and supporting graphics give the book a visual introduction."],
-                ["02", "Extend", "Pinterest strategy, keyword research and content create additional discovery routes."],
-                ["03", "Connect", "A book landing page brings key information, purchase links and reader sign-up together."],
-              ].map(([number, title, body]) => <li key={number} className="border-t border-primary pt-4"><span className="text-xs text-primary">{number}</span><h3 className="mt-2 font-serif text-xl">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p></li>)}
-            </ol>
-          </div>
+    <section className="bg-[#f2ecdf]">
+      <div className="container-luxe grid gap-10 py-16 md:grid-cols-12 md:gap-14 md:py-24">
+        <div className="md:col-span-4"><SectionEyebrow>When services connect</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">One project can join up the whole reader journey.</h2></div>
+        <div className="md:col-span-8">
+          <p className="max-w-2xl leading-relaxed text-[#5d625e]">A trailer can introduce your book. Pinterest content can bring it into relevant searches and browsing. A book landing page can give people a place to read more, follow retailer links or join your reader list. We can coordinate all three, or work on just the part you need.</p>
+          <ol className="mt-8 grid gap-5 sm:grid-cols-3">
+            <li className="border-t-2 border-[#a45d47] pt-4"><span className="text-xs uppercase tracking-wider text-[#a45d47]">01 / Introduce</span><h3 className="mt-2 font-serif text-xl">Book trailer</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">A visual introduction for your website and social channels.</p></li>
+            <li className="border-t-2 border-[#71856f] pt-4"><span className="text-xs uppercase tracking-wider text-[#607961]">02 / Reach</span><h3 className="mt-2 font-serif text-xl">Pinterest campaign</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Branded content shaped by reader and keyword research.</p></li>
+            <li className="border-t-2 border-[#344e62] pt-4"><span className="text-xs uppercase tracking-wider text-[#344e62]">03 / Connect</span><h3 className="mt-2 font-serif text-xl">Book page</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Book details, retailer links and a reader sign-up destination.</p></li>
+          </ol>
         </div>
       </div>
     </section>
 
-    <section className="container-luxe py-16 md:py-20">
-      <div className="grid gap-8 border-b border-border pb-9 md:grid-cols-12">
-        <div className="md:col-span-4"><SectionEyebrow>Pricing & project terms</SectionEyebrow><h2 className="mt-3 font-serif text-2xl md:text-3xl">Clear scope before work begins.</h2></div>
+    <section className="bg-[#e5e9df]">
+      <div className="container-luxe grid gap-8 py-14 md:grid-cols-12 md:gap-12 md:py-16">
+        <div className="md:col-span-4"><SectionEyebrow>Pricing and project terms</SectionEyebrow><h2 className="mt-3 font-serif text-2xl md:text-3xl">Know what is included before work starts.</h2></div>
         <div className="space-y-4 md:col-span-8">
-          <p className="leading-relaxed text-muted-foreground">The four published prices shown above are fixed as listed. Book trailers, broader website and branding projects, research and ongoing management are scoped to your requirements and quoted after assessment. You do not need to purchase a bundle to work with us.</p>
-          <p className="text-sm leading-relaxed text-muted-foreground">One-time projects are paid {PROJECT_TERMS.oneTimeDepositPercent}% upfront, with the remaining {PROJECT_TERMS.oneTimeBalancePercent}% due after agreed deliverables and before handover. Monthly retainers are due {PROJECT_TERMS.monthlyRetainerDue}. Timelines start {PROJECT_TERMS.timelineStarts}. {PROJECT_TERMS.separateCosts.join(", ")} are quoted separately where applicable.</p>
+          <p className="leading-relaxed text-[#4f5d53]">The four package prices on this page are published as listed. Book trailers, full author websites, brand identity projects, research and ongoing visibility management are priced after we understand the scope. You can ask for one service without committing to a bundle.</p>
+          <p className="text-sm leading-relaxed text-[#5d625e]">One-time projects are paid {PROJECT_TERMS.oneTimeDepositPercent}% upfront, with the remaining {PROJECT_TERMS.oneTimeBalancePercent}% due after the agreed work is delivered and before handover. Monthly services are paid {PROJECT_TERMS.monthlyRetainerDue}. Work begins {PROJECT_TERMS.timelineStarts}. Domains, hosting, premium software and other third-party costs are quoted separately when needed.</p>
         </div>
       </div>
     </section>
-
-    <AssessmentCta title="Tell us what you want to strengthen."/>
+    <AssessmentCta title="Tell us what you need help with."/>
   </SiteLayout>;
 }

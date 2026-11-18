@@ -1,35 +1,61 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
-import { AgencyPageIntro, AssessmentCta } from "@/components/site/AgencyPage";
+import { AssessmentCta } from "@/components/site/AgencyPage";
 
 export const Route = createFileRoute("/about")({
   head: () => ({ meta: [
-    { title: "About Draft Zenith | Author Services Agency" },
-    { name: "description", content: "Learn about Draft Zenith's author-branding, digital-presence, and book-discoverability work." },
+    { title: "About Draft Zenith | Author Services Team" },
+    { name: "description", content: "Meet Draft Zenith, an author services team working across websites, branding, visual promotion and book discovery." },
     { property: "og:title", content: "About Draft Zenith" },
-    { property: "og:description", content: "A focused author-services agency for branding, digital presence, and book discoverability." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
+    { property: "og:description", content: "A team for the work that helps authors present their books and reach readers." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: AboutPage,
 });
 
 function AboutPage() {
   return <SiteLayout>
-    <AgencyPageIntro eyebrow="About Draft Zenith" title="Helping authors build a stronger presence around their work." description="Draft Zenith is an author branding, digital presence, and book discoverability agency. We help authors create professional brands, engaging digital experiences, and clearer paths for relevant readers to find their books." />
-    <section className="border-y border-border bg-card">
-      <div className="container-luxe grid gap-10 py-16 md:grid-cols-12 md:gap-16 md:py-24">
-        <div className="md:col-span-4"><SectionEyebrow>Our mission</SectionEyebrow></div>
-        <div className="space-y-6 md:col-span-8"><h2 className="font-serif text-3xl leading-tight text-balance md:text-5xl">An author&apos;s digital presence should make their work easier to understand and discover.</h2><p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">We bring together author-brand development, websites and book landing pages, and online discoverability services. Each project begins by understanding the author, their work, and what they want to improve.</p></div>
+    <section className="bg-[#203a36] text-[#f7f1e7]">
+      <div className="container-luxe grid gap-8 pb-16 pt-36 md:grid-cols-12 md:items-end md:pb-20 md:pt-48">
+        <div className="space-y-5 md:col-span-8">
+          <SectionEyebrow tone="light">About Draft Zenith</SectionEyebrow>
+          <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">We look after the work that happens around the book.</h1>
+        </div>
+        <p className="max-w-xl leading-relaxed text-[#dce4dc] md:col-span-4">Draft Zenith is an author and book visibility partner. We help authors present their work clearly, build useful digital homes and create more ways for readers to encounter their books.</p>
       </div>
     </section>
-    <section className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-12 md:py-24">
-      <div className="md:col-span-4"><SectionEyebrow>How we work</SectionEyebrow></div>
-      <div className="md:col-span-8"><ol className="border-t border-border">{[
-        ["Listen before recommending", "We start with your current presence, your book, and your goals."],
-        ["Agree on the work", "The proposal sets out scope, deliverables, costs, and timing before the project begins."],
-        ["Build with clarity", "We focus on the agreed work and keep expectations grounded in what is included."],
-      ].map(([title, text], i) => <li key={title} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-border py-6"><span className="font-serif text-2xl text-primary">0{i + 1}</span><div><h3 className="font-serif text-xl md:text-2xl">{title}</h3><p className="mt-2 max-w-2xl leading-relaxed text-muted-foreground">{text}</p></div></li>)}</ol></div>
+    <section className="bg-[#f2ecdf]">
+      <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-12 md:py-24">
+        <div className="md:col-span-4"><SectionEyebrow>Why we exist</SectionEyebrow></div>
+        <div className="space-y-6 md:col-span-8">
+          <h2 className="max-w-3xl font-serif text-3xl leading-tight md:text-5xl">A published book deserves a good place to meet its readers.</h2>
+          <p className="max-w-3xl text-lg leading-relaxed text-[#5d625e]">An author may need a website that finally reflects their work. Another may need new artwork for a campaign, a book trailer or a clearer route from a social post to a purchase page. Some need help finding the platforms and communities that are relevant to their audience. We work on those practical parts of the author business.</p>
+        </div>
+      </div>
     </section>
-    <AssessmentCta />
+    <section className="bg-[#e4e9df]">
+      <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-12 md:py-24">
+        <div className="md:col-span-4"><SectionEyebrow>How the team works</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">The right skills for the job in front of us.</h2></div>
+        <div className="md:col-span-8">
+          <p className="max-w-2xl leading-relaxed text-[#536056]">Draft Zenith brings together people with different skills and responsibilities. Depending on the project, that may include website development, graphic design, brand direction, Pinterest management, book trailer production or audience research. The work is coordinated around an agreed brief, so authors can get the support they need without having to manage a collection of separate providers.</p>
+          <ol className="mt-8 border-t border-[#c7d0c4]">
+            {[
+              ["We learn the context", "We look at your book, your existing presence and the result you are working towards."],
+              ["We choose the right work", "We recommend only the services that fit the brief. A single service is fine. A combined project is also possible."],
+              ["We agree what will be delivered", "You receive the scope, deliverables, price and timing before work begins."],
+            ].map(([title,body],i)=><li key={title} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-[#c7d0c4] py-6"><span className="font-serif text-2xl text-[#a45d47]">0{i+1}</span><div><h3 className="font-serif text-xl md:text-2xl">{title}</h3><p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5d625e]">{body}</p></div></li>)}
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section className="bg-[#f1dfd5]">
+      <div className="container-luxe flex flex-col gap-5 py-14 md:flex-row md:items-center md:justify-between md:py-16">
+        <div><SectionEyebrow>Meet the people</SectionEyebrow><h2 className="mt-3 font-serif text-3xl">Get to know the team behind the work.</h2></div>
+        <Link to="/team" className="inline-flex items-center gap-3 border-b border-[#a45d47] pb-1 text-sm font-medium text-[#4a302b]">Meet our team <ArrowRight size={15}/></Link>
+      </div>
+    </section>
+    <AssessmentCta title="Tell us about the book you are working on."/>
   </SiteLayout>;
 }
