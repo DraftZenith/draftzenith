@@ -22,6 +22,7 @@ const serviceTones = [
   "bg-[#e8ddc7] text-[#0b1d32]",
   "bg-[#e1e6e9] text-[#0b1d32]",
   "bg-[#102943] text-[#fff8e9]",
+  "bg-[#001220] text-[#fdf6e6]",
 ];
 
 function HomePage() {
