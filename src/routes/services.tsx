@@ -74,9 +74,14 @@ function ServicesPage() {
                 </div>
               </div>}
               <p className={`mt-6 max-w-2xl text-sm leading-relaxed ${tone.muted}`}>{service.quote}</p>
-              <Link to="/get-started" search={{ service: service.packages[0]?.name ?? service.category }} className={`mt-6 inline-flex min-h-11 items-center gap-3 border-b pb-1 text-sm font-semibold transition hover:opacity-70 ${tone.line}`}>
-                {service.cta} <ArrowRight size={15}/>
-              </Link>
+              <div className="mt-6 flex flex-wrap items-center gap-6">
+                <a href={`/services/${service.category.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`} className={`inline-flex min-h-11 items-center gap-3 border-b pb-1 text-sm font-semibold transition hover:opacity-70 ${tone.line}`}>
+                  Service details <ArrowRight size={15}/>
+                </a>
+                <Link to="/get-started" search={{ service: service.packages[0]?.name ?? service.category }} className={`inline-flex min-h-11 items-center gap-3 border-b pb-1 text-sm font-semibold transition hover:opacity-70 ${tone.line}`}>
+                  {service.cta} <ArrowRight size={15}/>
+                </Link>
+              </div>
             </div>
           </div>
         </article>;
