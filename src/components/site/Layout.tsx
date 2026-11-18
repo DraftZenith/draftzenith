@@ -20,7 +20,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
 export function SectionEyebrow({ children, tone = "default" }: { children: React.ReactNode; tone?: "default" | "light" }) {
   return (
     <div className={`flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${tone === "light" ? "text-[#d9b477]" : "text-primary"}`}>
-      <span className="w-8 h-px bg-primary" />
+      
       {children}
     </div>
   );
