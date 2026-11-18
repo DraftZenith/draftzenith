@@ -39,30 +39,30 @@
 :root {
   --radius: 0.25rem;
   /* Warm ivory and deep navy agency palette */
-  --background: #f7f0e2;
-  --foreground: #0b1d32;
-  --card: #fffaf0;
-  --card-foreground: #0b1d32;
-  --popover: #fffaf0;
-  --popover-foreground: #0b1d32;
-  --primary: #bd8b3e;
-  --primary-foreground: #0b1d32;
-  --secondary: #e8ddc7;
-  --secondary-foreground: #0b1d32;
-  --muted: #eee5d5;
-  --muted-foreground: #5d6875;
-  --accent: #ead9b8;
-  --accent-foreground: #0b1d32;
+  --background: #fdf6e6;
+  --foreground: #001220;
+  --card: #fdf6e6;
+  --card-foreground: #001220;
+  --popover: #fdf6e6;
+  --popover-foreground: #001220;
+  --primary: #c08848;
+  --primary-foreground: #001220;
+  --secondary: #f4e8d0;
+  --secondary-foreground: #001220;
+  --muted: #f4e8d0;
+  --muted-foreground: #65584a;
+  --accent: #f4e8d0;
+  --accent-foreground: #001220;
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: #d9c8a8;
-  --input: #d9c8a8;
-  --ring: #bd8b3e;
+  --border: #c08848;
+  --input: #c08848;
+  --ring: #c08848;
 
-  --gold: #c99a4d;
-  --gold-soft: #e5c98f;
-  --cream: #f7f0e2;
-  --ink: #0b1d32;
+  --gold: #c08848;
+  --gold-soft: #f4e8d0;
+  --cream: #fdf6e6;
+  --ink: #001220;
 }
 
 @layer base {
@@ -89,11 +89,11 @@
   @media (min-width: 480px) { .container-luxe { padding-inline: 1.5rem; } }
   @media (min-width: 768px) { .container-luxe { padding-inline: 2.5rem; } }
 
-  .band-forest { background: #0b1d32; color: #fff8e9; }
-  .band-sage { background: #e8ddc7; color: #0b1d32; }
-  .band-clay { background: #eee5d5; color: #0b1d32; }
-  .band-paper { background: #f7f0e2; color: #0b1d32; }
-  .band-blue { background: #e1e6e9; color: #0b1d32; }
+  .band-forest { background: #001220; color: #fdf6e6; }
+  .band-sage { background: #f4e8d0; color: #001220; }
+  .band-clay { background: #f4e8d0; color: #001220; }
+  .band-paper { background: #fdf6e6; color: #001220; }
+  .band-blue { background: #f4e8d0; color: #001220; }
 
   .gold-line {
     background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
