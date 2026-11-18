@@ -30,9 +30,9 @@ function ServicesPage() {
       <div className="container-luxe grid gap-8 pb-16 pt-36 md:grid-cols-12 md:items-end md:pb-20 md:pt-48">
         <div className="space-y-5 md:col-span-8">
           <SectionEyebrow tone="light">Our services</SectionEyebrow>
-          <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">Good work begins with understanding what your book needs.</h1>
+          <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">Services to help authors present and promote their books.</h1>
         </div>
-        <p className="max-w-xl leading-relaxed text-[#dce4dc] md:col-span-4">We work across author websites, brand design, visual promotion and reader discovery. Choose a single service or ask us to coordinate several parts of the work.</p>
+        <p className="max-w-xl leading-relaxed text-[#dce4dc] md:col-span-4">Our team works on author websites, brand design, book trailers, Pinterest campaigns and reader research. You can hire us for one service or combine several.</p>
       </div>
     </section>
 
@@ -84,9 +84,9 @@ function ServicesPage() {
 
     <section className="bg-[#f2ecdf]">
       <div className="container-luxe grid gap-10 py-16 md:grid-cols-12 md:gap-14 md:py-24">
-        <div className="md:col-span-4"><SectionEyebrow>When services connect</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">One project can join up the whole reader journey.</h2></div>
+        <div className="md:col-span-4"><SectionEyebrow>When services connect</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Some services work well together.</h2></div>
         <div className="md:col-span-8">
-          <p className="max-w-2xl leading-relaxed text-[#5d625e]">A trailer can introduce your book. Pinterest content can bring it into relevant searches and browsing. A book landing page can give people a place to read more, follow retailer links or join your reader list. We can coordinate all three, or work on just the part you need.</p>
+          <p className="max-w-2xl leading-relaxed text-[#5d625e]">A trailer introduces your book. Pinterest content gives people another way to come across it. A book page gives visitors the information and links they need. We can provide all three, or work on any one of them.</p>
           <ol className="mt-8 grid gap-5 sm:grid-cols-3">
             <li className="border-t-2 border-[#a45d47] pt-4"><span className="text-xs uppercase tracking-wider text-[#a45d47]">01 / Introduce</span><h3 className="mt-2 font-serif text-xl">Book trailer</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">A visual introduction for your website and social channels.</p></li>
             <li className="border-t-2 border-[#71856f] pt-4"><span className="text-xs uppercase tracking-wider text-[#607961]">02 / Reach</span><h3 className="mt-2 font-serif text-xl">Pinterest campaign</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Branded content shaped by reader and keyword research.</p></li>
@@ -98,13 +98,13 @@ function ServicesPage() {
 
     <section className="bg-[#e5e9df]">
       <div className="container-luxe grid gap-8 py-14 md:grid-cols-12 md:gap-12 md:py-16">
-        <div className="md:col-span-4"><SectionEyebrow>Pricing and project terms</SectionEyebrow><h2 className="mt-3 font-serif text-2xl md:text-3xl">Know what is included before work starts.</h2></div>
+        <div className="md:col-span-4"><SectionEyebrow>Pricing and project terms</SectionEyebrow><h2 className="mt-3 font-serif text-2xl md:text-3xl">We agree on the work before it begins.</h2></div>
         <div className="space-y-4 md:col-span-8">
           <p className="leading-relaxed text-[#4f5d53]">The four package prices on this page are published as listed. Book trailers, full author websites, brand identity projects, research and ongoing visibility management are priced after we understand the scope. You can ask for one service without committing to a bundle.</p>
           <p className="text-sm leading-relaxed text-[#5d625e]">One-time projects are paid {PROJECT_TERMS.oneTimeDepositPercent}% upfront, with the remaining {PROJECT_TERMS.oneTimeBalancePercent}% due after the agreed work is delivered and before handover. Monthly services are paid {PROJECT_TERMS.monthlyRetainerDue}. Work begins {PROJECT_TERMS.timelineStarts}. Domains, hosting, premium software and other third-party costs are quoted separately when needed.</p>
         </div>
       </div>
     </section>
-    <AssessmentCta title="Tell us what you need help with."/>
+    <AssessmentCta title="Tell us what you would like us to work on."/>
   </SiteLayout>;
 }
