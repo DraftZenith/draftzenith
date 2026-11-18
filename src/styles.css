@@ -126,3 +126,66 @@
   .animate-fade-up { animation: fade-up .8s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 }
+
+/* Draft Zenith brand colours, applied consistently across every route.
+   These overrides keep the existing layouts and content intact while
+   bringing legacy page-specific colour classes into the logo palette. */
+@layer utilities {
+  :is(
+    [class~="bg-[#0b1d32]"], [class~="bg-[#102943]"], [class~="bg-[#203a36]"],
+    [class~="bg-[#243c39]"], [class~="bg-[#263440]"], [class~="bg-[#263744]"],
+    [class~="bg-[#263d36]"], [class~="bg-[#304b46]"]
+  ) { background-color: #001220 !important; color: #fdf6e6 !important; }
+
+  :is(
+    [class~="bg-[#fffaf0]"], [class~="bg-[#fffaf1]"], [class~="bg-[#fff8e9]"],
+    [class~="bg-[#f7f0e2]"], [class~="bg-[#f2eadb]"], [class~="bg-[#f2ecdf]"],
+    [class~="bg-[#f3ecdf]"], [class~="bg-[#f6f8f1]"], [class~="bg-[#fdf6e6]"]
+  ) { background-color: #fdf6e6 !important; color: #001220 !important; }
+
+  :is(
+    [class~="bg-[#eee5d5]"], [class~="bg-[#e8ddc7]"], [class~="bg-[#e1e6e9]"],
+    [class~="bg-[#e4e9df]"], [class~="bg-[#e5e9df]"], [class~="bg-[#e0e8ed]"],
+    [class~="bg-[#e1e9df]"], [class~="bg-[#f1dfd5]"], [class~="bg-[#f3f7f9]"],
+    [class~="bg-[#fbf2ec]"], [class~="bg-[#f4e8d0]"]
+  ) { background-color: #f4e8d0 !important; color: #001220 !important; }
+
+  :is(
+    [class~="bg-[#b9694f]"], [class~="bg-[#a45d47]"], [class~="bg-[#d9b477]"],
+    [class~="bg-[#e8c994]"], [class~="bg-[#c99a4d]"], [class~="bg-[#bd8b3e]"],
+    [class~="bg-[#a8752d]"]
+  ) { background-color: #c08848 !important; color: #001220 !important; }
+
+  :is(
+    [class~="text-[#fff8e9]"], [class~="text-[#f7f1e7]"], [class~="text-[#fdf6e6]"],
+    [class~="text-[#e8ddc7]"], [class~="text-[#dce4dc]"], [class~="text-[#e1bd83]"],
+    [class~="text-[#d9b477]"]
+  ) { color: #fdf6e6 !important; }
+
+  :is(
+    [class~="text-[#0b1d32]"], [class~="text-[#203a36]"], [class~="text-[#243641]"],
+    [class~="text-[#263440]"], [class~="text-[#263d36]"], [class~="text-[#263744]"],
+    [class~="text-[#4a302b]"], [class~="text-[#753e31]"], [class~="text-[#001220]"]
+  ) { color: #001220 !important; }
+
+  :is(
+    [class~="text-[#566170]"], [class~="text-[#5d6875]"], [class~="text-[#5d625e]"],
+    [class~="text-[#536056]"], [class~="text-[#5c675e]"], [class~="text-[#626660]"],
+    [class~="text-[#607961]"], [class~="text-[#5d6870]"], [class~="text-[#65584a]"],
+    [class~="text-[#4f5d53]"], [class~="text-[#555f59]"], [class~="text-[#65675f]"],
+    [class~="text-[#715b53]"]
+  ) { color: #65584a !important; }
+
+  :is(
+    [class~="text-[#c99a4d]"], [class~="text-[#a8752d]"], [class~="text-[#a45d47]"],
+    [class~="text-[#956a2e]"], [class~="text-[#9a702f]"], [class~="text-[#e1bd83]"]
+  ) { color: #c08848 !important; }
+
+  :is(
+    [class~="border-[#d9c8a8]"], [class~="border-[#c9d0c5]"], [class~="border-[#c7d0c4]"],
+    [class~="border-[#a45d47]"], [class~="border-[#dfbfb0]"], [class~="border-[#c4d0d7]"],
+    [class~="border-[#71856f]"], [class~="border-[#59736a]"], [class~="border-[#607961]"],
+    [class~="border-[#344e62]"], [class~="border-[#d7cbb7]"], [class~="border-[#d6b9aa]"],
+    [class~="border-[#c5d0c3]"]
+  ) { border-color: #c08848 !important; }
+}
