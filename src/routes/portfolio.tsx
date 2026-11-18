@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { SiteLayout } from "@/components/site/Layout";
+import { SiteLayout, SectionEyebrow } from "@/components/site/Layout";
 import { AgencyPageIntro, AssessmentCta } from "@/components/site/AgencyPage";
 import { PORTFOLIO_PROJECTS } from "@/data/services";
 
