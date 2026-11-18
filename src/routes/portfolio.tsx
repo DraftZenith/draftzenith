@@ -18,7 +18,7 @@ export const Route = createFileRoute("/portfolio")({
 
 function PortfolioPage() {
   return <SiteLayout>
-    <AgencyPageIntro eyebrow="Selected work" title="A look at the work, not just the promises." description="These examples show parts of the work Draft Zenith has carried out, from campaign creative and Pinterest activity to reader discussion. They are snapshots of specific projects, not promises of the same results for every book." />
+    <AgencyPageIntro eyebrow="Selected work" title="Selected project work." description="These examples show campaign design, Pinterest activity and reader discussion from selected projects. Results vary by book, audience and timing." />
 
     <section className="bg-[#f2ecdf]">
       <div className="container-luxe grid gap-6 py-14 md:grid-cols-12 md:gap-10 md:py-20">
@@ -51,7 +51,7 @@ function PortfolioPage() {
 
     <section className="bg-[#f1dfd5]">
       <div className="container-luxe py-14 md:py-20">
-        <div className="mb-8"><SectionEyebrow>Other projects</SectionEyebrow><h2 className="mt-3 font-serif text-3xl md:text-4xl">More work to explore.</h2></div>
+        <div className="mb-8"><SectionEyebrow>Other projects</SectionEyebrow><h2 className="mt-3 font-serif text-3xl md:text-4xl">More projects.</h2></div>
         <ol className="border-t border-[#d6b9aa]">
           {PORTFOLIO_PROJECTS.map((project,i)=><li key={project.name} className="grid gap-3 border-b border-[#d6b9aa] py-6 sm:grid-cols-[4rem_1fr_auto] sm:items-center sm:gap-6">
             <span className="font-serif text-2xl text-[#a45d47]">0{i+1}</span>
