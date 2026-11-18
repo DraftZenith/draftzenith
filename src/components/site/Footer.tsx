@@ -11,7 +11,7 @@ export function Footer() {
       <div className="space-y-5 md:col-span-5">
         <Link to="/" className="font-serif text-3xl">Draft<span className="text-primary">·</span>Zenith</Link>
         <p className="max-w-md leading-relaxed text-background/70">Websites, brand design, visual promotion and reader discovery for authors who want their books presented and found.</p>
-        <Link to="/get-started" className="inline-flex items-center gap-2 border border-primary px-4 py-3 text-sm text-background transition hover:bg-primary hover:text-primary-foreground">Request a Free Assessment <ArrowUpRight size={15} /></Link>
+        <Link to="/get-started" className="inline-flex items-center gap-2 border border-primary px-4 py-3 text-sm text-background transition hover:bg-primary hover:text-primary-foreground">Tell us about your project <ArrowUpRight size={15} /></Link>
       </div>
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-4">
         <FooterColumn title="Explore" links={[["About", "/about"], ["Our Team", "/team"], ["Services", "/services"], ["Portfolio", "/portfolio"]]} />

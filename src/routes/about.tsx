@@ -21,7 +21,7 @@ function AboutPage() {
       <div className="container-luxe grid gap-8 pb-16 pt-36 md:grid-cols-12 md:items-end md:pb-20 md:pt-48">
         <div className="space-y-5 md:col-span-8">
           <SectionEyebrow tone="light">About Draft Zenith</SectionEyebrow>
-          <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">We look after the work that happens around the book.</h1>
+          <h1 className="max-w-4xl font-serif text-4xl leading-[1.04] text-balance sm:text-5xl md:text-7xl">A team helping authors present and promote their books.</h1>
         </div>
         <p className="max-w-xl leading-relaxed text-[#dce4dc] md:col-span-4">Draft Zenith is an author and book visibility partner. We help authors present their work clearly, build useful digital homes and create more ways for readers to encounter their books.</p>
       </div>
@@ -30,21 +30,21 @@ function AboutPage() {
       <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-12 md:py-24">
         <div className="md:col-span-4"><SectionEyebrow>Why we exist</SectionEyebrow></div>
         <div className="space-y-6 md:col-span-8">
-          <h2 className="max-w-3xl font-serif text-3xl leading-tight md:text-5xl">A published book deserves a good place to meet its readers.</h2>
-          <p className="max-w-3xl text-lg leading-relaxed text-[#5d625e]">An author may need a website that finally reflects their work. Another may need new artwork for a campaign, a book trailer or a clearer route from a social post to a purchase page. Some need help finding the platforms and communities that are relevant to their audience. We work on those practical parts of the author business.</p>
+          <h2 className="max-w-3xl font-serif text-3xl leading-tight md:text-5xl">Readers need a clear way to find out more about your book.</h2>
+          <p className="max-w-3xl text-lg leading-relaxed text-[#5d625e]">An author may need a website that reflects their work. Another may need campaign artwork, a book trailer or a clearer route from a social post to a purchase page. Some need help identifying platforms and communities that are relevant to their readers. These are the practical services we provide.</p>
         </div>
       </div>
     </section>
     <section className="bg-[#e4e9df]">
       <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-12 md:py-24">
-        <div className="md:col-span-4"><SectionEyebrow>How the team works</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">The right skills for the job in front of us.</h2></div>
+        <div className="md:col-span-4"><SectionEyebrow>How the team works</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">The people and skills behind each project.</h2></div>
         <div className="md:col-span-8">
-          <p className="max-w-2xl leading-relaxed text-[#536056]">Draft Zenith brings together people with different skills and responsibilities. Depending on the project, that may include website development, graphic design, brand direction, Pinterest management, book trailer production or audience research. The work is coordinated around an agreed brief, so authors can get the support they need without having to manage a collection of separate providers.</p>
+          <p className="max-w-2xl leading-relaxed text-[#536056]">Draft Zenith is supported by a team with different skills and responsibilities. Depending on the project, we bring in website development, graphic design, brand direction, Pinterest management, book trailer production or audience research. We coordinate the work against an agreed brief, so you have one point of contact instead of managing several providers.</p>
           <ol className="mt-8 border-t border-[#c7d0c4]">
             {[
-              ["We learn the context", "We look at your book, your existing presence and the result you are working towards."],
-              ["We choose the right work", "We recommend only the services that fit the brief. A single service is fine. A combined project is also possible."],
-              ["We agree what will be delivered", "You receive the scope, deliverables, price and timing before work begins."],
+              ["We learn about your book", "We look at your book, your existing presence and the result you are working towards."],
+              ["We agree on the right services", "We recommend only the services that fit the brief. A single service is fine. A combined project is also possible."],
+              ["We confirm the deliverables", "You receive the scope, deliverables, price and timing before work begins."],
             ].map(([title,body],i)=><li key={title} className="grid grid-cols-[3rem_1fr] gap-4 border-b border-[#c7d0c4] py-6"><span className="font-serif text-2xl text-[#a45d47]">0{i+1}</span><div><h3 className="font-serif text-xl md:text-2xl">{title}</h3><p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5d625e]">{body}</p></div></li>)}
           </ol>
         </div>
