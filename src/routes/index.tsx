@@ -29,7 +29,7 @@ function HomePage() {
     <section className="overflow-hidden bg-[#203a36] text-[#f7f1e7]">
       <div className="container-luxe grid gap-12 pb-20 pt-36 md:grid-cols-12 md:items-center md:gap-10 md:pb-28 md:pt-48">
         <div className="space-y-7 md:col-span-7">
-          <p className="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-[#d9b477]"><span className="h-px w-9 bg-[#d9b477]"/>Author and book visibility partner</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-[#d9b477]">Author and book visibility partner</p>
           <h1 className="max-w-3xl font-serif text-5xl leading-[1.02] text-balance sm:text-6xl md:text-7xl">Websites, book promotion and reader discovery, handled by one team.</h1>
           <p className="max-w-2xl text-base leading-relaxed text-[#e3e7df] md:text-lg">Draft Zenith helps authors with the practical work involved in presenting and promoting a book. We build and improve author websites, design campaign materials, produce trailers and research ways to reach readers. You can hire us for one service or ask us to coordinate several.</p>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">
