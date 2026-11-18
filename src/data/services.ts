@@ -96,7 +96,7 @@ export const SERVICE_OPTIONS = [
 export const PORTFOLIO_PROJECTS = [
   { name: "Women Gone WILD", href: "https://women-gone-wild-reader-experience.pages.dev" },
   {
-    name: "Outback Odyssey — Goodreads discussion",
+    name: "Outback Odyssey: Goodreads discussion",
     href: "https://www.goodreads.com/topic/show/24779734-the-land-doesn-t-know-you-how-do-you-learn-to-belong",
   },
   { name: "Kanfmatic Agency", href: "https://kanfmaticagency.online" },
