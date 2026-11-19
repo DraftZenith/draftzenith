@@ -181,6 +181,7 @@ export interface FileRouteTypes {
     | '/get-started'
     | '/how-it-works'
     | '/portfolio'
+    | '/pricing'
     | '/privacy'
     | '/services'
     | '/sitemap.xml'
