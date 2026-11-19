@@ -95,6 +95,55 @@ function HomePage() {
       </div>
     </section>
 
+
+    <section className="bg-[#f7f0e2]">
+      <div className="container-luxe grid gap-10 py-16 md:grid-cols-12 md:gap-14 md:py-24">
+        <div className="md:col-span-4">
+          <SectionEyebrow>Author Brand Elevation</SectionEyebrow>
+          <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">A plan shaped around what your author brand needs next.</h2>
+        </div>
+        <div className="space-y-6 md:col-span-8">
+          <p className="max-w-3xl text-lg leading-relaxed text-[#566170]">Author Brand Elevation is our assessment-led way of bringing the right services together. We look at your current presence, your book and your priorities, then recommend individual services or a coordinated plan. There is no requirement to buy a bundle.</p>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="border-t border-[#bd8b3e] pt-4"><h3 className="font-serif text-xl">A stronger online home</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">Author branding, website development and a book landing page.</p></div>
+            <div className="border-t border-[#bd8b3e] pt-4"><h3 className="font-serif text-xl">More routes to book discovery</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">Pinterest marketing, audience research and Goodreads discovery work.</p></div>
+            <div className="border-t border-[#bd8b3e] pt-4"><h3 className="font-serif text-xl">A stronger visual presentation</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">Book trailer production, promotional graphics and a dedicated book page.</p></div>
+            <div className="border-t border-[#bd8b3e] pt-4"><h3 className="font-serif text-xl">A professional media record</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">Press-kit development, editorial outreach and a professional recognition page.</p></div>
+            <div className="border-t border-[#bd8b3e] pt-4 sm:col-span-2"><h3 className="font-serif text-xl">Continuing visibility support</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">Monthly Pinterest publishing, promotional coordination, discovery research and performance reporting.</p></div>
+          </div>
+          <Link to="/get-started" className="inline-flex items-center gap-2 border-b border-[#a8752d] pb-1 text-sm font-semibold text-[#0b1d32] hover:text-[#a8752d]">Request an assessment <ArrowRight size={15}/></Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="bg-[#001220] text-[#fdf6e6]">
+      <div className="container-luxe py-16 md:py-20">
+        <div className="grid gap-8 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <SectionEyebrow tone="light">Clear starting prices</SectionEyebrow>
+            <h2 className="mt-4 max-w-3xl font-serif text-3xl leading-tight md:text-5xl">Choose the service that fits the work.</h2>
+            <p className="mt-4 max-w-2xl leading-relaxed text-[#e8ddc7]">Our published prices include one-time services and monthly management. Each service page explains what is included and what may be quoted separately.</p>
+          </div>
+          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#dfbd79] hover:text-white">See all services and prices <ArrowRight size={15}/></Link>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="border border-[#c08848]/60 bg-[#142c40] p-6">
+            <p className="text-xs uppercase tracking-[0.18em] text-[#dfbd79]">Recommended starting point · Book trailers</p>
+            <h3 className="mt-3 font-serif text-2xl">Standard Book Trailer</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#e8ddc7]">A developed visual introduction shaped around your book's genre, tone and themes.</p>
+            <p className="mt-5 font-serif text-4xl text-[#dfbd79]">$450 <span className="font-sans text-xs uppercase tracking-wider text-[#e8ddc7]">one-time</span></p>
+          </div>
+          <div className="border border-[#c08848]/60 bg-[#142c40] p-6">
+            <p className="text-xs uppercase tracking-[0.18em] text-[#dfbd79]">Recommended starting point · Media</p>
+            <h3 className="mt-3 font-serif text-2xl">Media Outreach Campaign</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#e8ddc7]">Publication research, tailored editorial pitches, submission coordination and appropriate follow-up.</p>
+            <p className="mt-5 font-serif text-4xl text-[#dfbd79]">$450 <span className="font-sans text-xs uppercase tracking-wider text-[#e8ddc7]">one-time</span></p>
+          </div>
+        </div>
+        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-[#e8ddc7]">Editorial decisions remain with each publication. Sponsored placements are identified as paid, and external publication charges are separate. Monthly management is priced separately from one-time projects.</p>
+      </div>
+    </section>
+
     <section className="bg-[#e8ddc7]">
       <div className="container-luxe py-16 md:py-24">
         <div className="mb-9 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div className="space-y-3"><SectionEyebrow>Selected work</SectionEyebrow><h2 className="font-serif text-3xl md:text-5xl">A few examples of our work.</h2></div><Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-medium hover:text-[#956a2e]">See the portfolio <ArrowRight size={15}/></Link></div>
