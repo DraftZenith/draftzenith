@@ -67,9 +67,12 @@ function ServicesPage() {
               {service.packages.length>0 && <div className={`mt-8 border-t pt-6 ${tone.line}`}>
                 <h3 className="text-xs uppercase tracking-[0.2em] opacity-75">Published package prices</h3>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {service.packages.map(offer=><div key={offer.name} className={`flex min-h-28 flex-col justify-between p-4 ${tone.price}`}>
-                    <p className="text-sm font-medium">{offer.name}</p>
-                    <p className={`mt-4 font-serif text-3xl ${tone.number}`}>${offer.price}</p>
+                  {service.packages.map(offer=><div key={offer.name} className={`flex min-h-32 flex-col justify-between p-4 ${tone.price}`}>
+                    <div>
+                      <p className="text-sm font-medium">{offer.name}</p>
+                      {offer.featured && <p className={`mt-2 text-[10px] font-semibold uppercase tracking-wider ${tone.number}`}>Recommended starting point</p>}
+                    </div>
+                    <p className={`mt-4 font-serif text-3xl ${tone.number}`}>${offer.price}<span className="ml-2 font-sans text-xs uppercase tracking-wide opacity-70">{offer.billing === "monthly" ? "/ month" : "one-time"}</span></p>
                   </div>)}
                 </div>
               </div>}
@@ -106,8 +109,8 @@ function ServicesPage() {
       <div className="container-luxe grid gap-8 py-14 md:grid-cols-12 md:gap-12 md:py-16">
         <div className="md:col-span-4"><SectionEyebrow>Pricing and project terms</SectionEyebrow><h2 className="mt-3 font-serif text-2xl md:text-3xl">We agree on the work before it begins.</h2></div>
         <div className="space-y-4 md:col-span-8">
-          <p className="leading-relaxed text-[#4f5d53]">The four package prices on this page are published as listed. Book trailers, full author websites, brand identity projects, research and ongoing visibility management are priced after we understand the scope. You can ask for one service without committing to a bundle.</p>
-          <p className="text-sm leading-relaxed text-[#5d625e]">One-time projects are paid {PROJECT_TERMS.oneTimeDepositPercent}% upfront, with the remaining {PROJECT_TERMS.oneTimeBalancePercent}% due after the agreed work is delivered and before handover. Monthly services are paid {PROJECT_TERMS.monthlyRetainerDue}. Work begins {PROJECT_TERMS.timelineStarts}. Domains, hosting, premium software and other third-party costs are quoted separately when needed.</p>
+          <p className="leading-relaxed text-[#4f5d53]">Prices are shown with each service, including one-time project fees and recurring monthly management fees. Package cards on the individual service pages set out the inclusions before you enquire. You can commission one service on its own or combine relevant work through an Author Brand Elevation plan.</p>
+          <p className="text-sm leading-relaxed text-[#5d625e]">One-time projects are paid {PROJECT_TERMS.oneTimeDepositPercent}% upfront, with the remaining {PROJECT_TERMS.oneTimeBalancePercent}% due before final delivery or handover. Monthly management fees are paid {PROJECT_TERMS.monthlyRetainerDue}. Work begins {PROJECT_TERMS.timelineStarts}. Work outside the agreed scope is quoted separately. Domain registration, hosting, premium software, advertising spend, external publication charges and other third-party costs are separate where applicable unless expressly included in the agreement.</p>
         </div>
       </div>
     </section>
