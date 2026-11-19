@@ -124,7 +124,7 @@ function ServiceDetailPage() {
 
     <section className="bg-[#f4e8d0]">
       <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-14 md:py-20">
-        <div className="md:col-span-4"><SectionEyebrow>Pricing</SectionEyebrow><h2 className="mt-4 font-serif text-3xl">Know the price before work begins.</h2></div>
+        <div className="md:col-span-4"><SectionEyebrow>{isTrailer || isMedia || isMonthly ? "Introductory package pricing" : "Pricing"}</SectionEyebrow><h2 className="mt-4 font-serif text-3xl">Know the price before work begins.</h2></div>
         <div className="md:col-span-8">
           {service.packages.length > 0 ? <div className="space-y-5">
             <div className="grid gap-4 md:grid-cols-2">
