@@ -138,6 +138,8 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
+  '/team': typeof TeamRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -155,6 +157,8 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
+  '/team': typeof TeamRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -191,6 +195,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/robots.txt'
     | '/submit'
+    | '/team'
+    | '/services/$slug'
     | '/authors/$slug'
     | '/blog/$slug'
   id:
@@ -207,6 +213,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/robots.txt'
     | '/submit'
+    | '/team'
+    | '/services/$slug'
     | '/authors/$slug'
     | '/blog/$slug'
   fileRoutesById: FileRoutesById
