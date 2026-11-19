@@ -355,6 +355,7 @@ export const SERVICES: readonly Service[] = [
 ];
 
 export const SERVICE_OPTIONS = [
+  "Author Brand Elevation",
   "Author Branding & Digital Presence",
   "Pinterest Marketing & Book Visibility",
   "Book Trailers & Visual Promotion",
