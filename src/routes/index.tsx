@@ -126,7 +126,7 @@ function HomePage() {
             <h2 className="mt-4 max-w-3xl font-serif text-3xl leading-tight md:text-5xl">Choose the service that fits the work.</h2>
             <p className="mt-4 max-w-2xl leading-relaxed text-[#e8ddc7]">Our prices include established one-time services and introductory rates for book trailers, media support and monthly management. Each service page explains what is included and what may be quoted separately.</p>
           </div>
-          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#dfbd79] hover:text-white">See all services and prices <ArrowRight size={15}/></Link>
+          <Link to="/pricing" className="inline-flex items-center gap-2 text-sm font-semibold text-[#dfbd79] hover:text-white">See all package prices <ArrowRight size={15}/></Link>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <div className="border border-[#c08848]/60 bg-[#142c40] p-6">
