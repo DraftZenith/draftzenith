@@ -92,15 +92,19 @@ function ServicesPage() {
     </section>
 
     <section className="bg-[#f2ecdf]">
-      <div className="container-luxe grid gap-10 py-16 md:grid-cols-12 md:gap-14 md:py-24">
-        <div className="md:col-span-4"><SectionEyebrow>When services connect</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Some services work well together.</h2></div>
-        <div className="md:col-span-8">
-          <p className="max-w-2xl leading-relaxed text-[#5d625e]">A trailer introduces your book. Pinterest content gives people another way to come across it. A book page gives visitors the information and links they need. We can provide all three, or work on any one of them.</p>
-          <ol className="mt-8 grid gap-5 sm:grid-cols-3">
-            <li className="border-t-2 border-[#a45d47] pt-4"><span className="text-xs uppercase tracking-wider text-[#a45d47]">01 / Introduce</span><h3 className="mt-2 font-serif text-xl">Book trailer</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">A visual introduction for your website and social channels.</p></li>
-            <li className="border-t-2 border-[#71856f] pt-4"><span className="text-xs uppercase tracking-wider text-[#607961]">02 / Reach</span><h3 className="mt-2 font-serif text-xl">Pinterest campaign</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Branded content shaped by reader and keyword research.</p></li>
-            <li className="border-t-2 border-[#344e62] pt-4"><span className="text-xs uppercase tracking-wider text-[#344e62]">03 / Connect</span><h3 className="mt-2 font-serif text-xl">Book page</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Book details, retailer links and a reader sign-up destination.</p></li>
-          </ol>
+      <div className="container-luxe py-16 md:py-24">
+        <div className="grid gap-8 md:grid-cols-12 md:gap-14">
+          <div className="md:col-span-4"><SectionEyebrow>Author Brand Elevation</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Services can work together without becoming a fixed bundle.</h2></div>
+          <div className="md:col-span-8">
+            <p className="max-w-2xl leading-relaxed text-[#5d625e]">We assess what is already in place, identify the priority and recommend only the services that support it. These are examples, not mandatory packages.</p>
+            <div className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2">
+              <div className="border-t-2 border-[#a45d47] pt-4"><h3 className="font-serif text-xl">A stronger online presence</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Author branding, website development and a book landing page.</p></div>
+              <div className="border-t-2 border-[#71856f] pt-4"><h3 className="font-serif text-xl">More routes to book discovery</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Pinterest marketing, audience research and Goodreads Listopia research or engagement.</p></div>
+              <div className="border-t-2 border-[#344e62] pt-4"><h3 className="font-serif text-xl">A stronger visual presentation</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Book trailer production, custom promotional graphics, Pinterest visual promotion and a book landing page.</p></div>
+              <div className="border-t-2 border-[#a8752d] pt-4"><h3 className="font-serif text-xl">A stronger professional record</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Press-kit development, editorial outreach and a professional recognition page.</p></div>
+              <div className="border-t-2 border-[#243c39] pt-4 sm:col-span-2"><h3 className="font-serif text-xl">Continuing promotional support</h3><p className="mt-2 text-sm leading-relaxed text-[#5d625e]">Ongoing Author Visibility Management, Pinterest publishing, promotional content, monitoring and reporting.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
