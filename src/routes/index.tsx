@@ -16,6 +16,8 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const slugify = (value: string) => value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 const serviceTones = [
   "bg-[#fffaf0] text-[#0b1d32]",
   "bg-[#eee5d5] text-[#0b1d32]",
@@ -73,7 +75,7 @@ function HomePage() {
           <Link to="/services" className="inline-flex items-center gap-2 text-sm font-medium hover:text-[#956a2e]">All services <ArrowRight size={15}/></Link>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
-          {SERVICES.map((service,i)=><Link key={service.category} to="/services" className={`group flex min-h-56 flex-col justify-between p-6 transition hover:-translate-y-1 hover:shadow-lg sm:p-8 ${serviceTones[i]}`}>
+          {SERVICES.map((service,i)=><Link key={service.category} to="/services/$slug" params={{ slug: slugify(service.category) }} className={`group flex min-h-56 flex-col justify-between p-6 transition hover:-translate-y-1 hover:shadow-lg sm:p-8 ${serviceTones[i]}`}>
             <div className="flex items-start justify-between gap-4"><span className="text-xs uppercase tracking-[0.2em] opacity-70">0{i+1}</span><ArrowUpRight size={18} className="transition group-hover:translate-x-1 group-hover:-translate-y-1"/></div>
             <div><h3 className="max-w-md font-serif text-2xl leading-tight sm:text-3xl">{service.category}</h3><p className="mt-3 max-w-xl text-sm leading-relaxed opacity-75">{service.intro}</p></div>
           </Link>)}
@@ -152,6 +154,50 @@ function HomePage() {
             <div><span className="text-xs text-[#956a2e]">PROJECT 0{i+1}</span><h3 className="mt-2 font-serif text-xl sm:text-2xl">{project.name}</h3></div>
             {project.href && <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name}`} className="grid size-11 shrink-0 place-items-center rounded-full border border-[#a8752d] text-[#753e31] transition hover:bg-[#a8752d] hover:text-white"><ArrowUpRight size={18}/></a>}
           </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="bg-[#f7f0e2]">
+      <div className="container-luxe py-16 md:py-20">
+        <div className="grid gap-8 border-t border-[#d7cbb7] pt-8 md:grid-cols-12 md:gap-12">
+          <div className="md:col-span-4">
+            <SectionEyebrow>How we work</SectionEyebrow>
+            <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Clear expectations before a project starts.</h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 md:col-span-8">
+            <div><h3 className="font-serif text-xl">Agreed deliverables</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">You see the proposed work, price and timing before you decide to proceed.</p></div>
+            <div><h3 className="font-serif text-xl">One point of contact</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">Our distributed team coordinates the agreed work, so you are not left managing separate providers.</p></div>
+            <div><h3 className="font-serif text-xl">Services that fit the brief</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">You can commission one service or combine relevant work. There is no compulsory bundle.</p></div>
+            <div><h3 className="font-serif text-xl">Honest reporting</h3><p className="mt-2 text-sm leading-relaxed text-[#566170]">We report available activity and outcomes without promising sales, rankings, reviews or editorial coverage.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="bg-[#fffaf0]">
+      <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-12 md:py-20">
+        <div className="md:col-span-4">
+          <SectionEyebrow>Questions authors ask</SectionEyebrow>
+          <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">A few useful things to know.</h2>
+          <Link to="/how-it-works" className="mt-6 inline-flex items-center gap-2 border-b border-[#a8752d] pb-1 text-sm font-medium text-[#0b1d32]">Read how it works <ArrowRight size={15}/></Link>
+        </div>
+        <div className="md:col-span-8">
+          <div className="border-t border-[#d9c8a8]">
+            {[
+              ["Do I have to purchase a complete package of services?", "No. You can commission an individual service. If combining services would help with your stated goals, we can explain the options in your assessment."],
+              ["What happens during the free assessment?", "We review the information you share about your book, current online presence and priorities. It gives us a starting point for discussing suitable services; it does not commit you to a purchase."],
+              ["What do I need to provide?", "Depending on the project, you may need to supply accurate book information, biography, cover files, photographs, approved testimonials and other materials. We confirm the requirements before work begins."],
+              ["Are third-party costs included in the listed prices?", "Not automatically. Domain registration, hosting, premium software, advertising, actors, voice talent, premium licences and external publication charges are separate where applicable unless your written agreement says otherwise."],
+              ["Can Draft Zenith guarantee book sales, reviews or media coverage?", "No. We can carry out the agreed design, research, publishing and outreach work, but reader behaviour and independent publication decisions are outside our control. Sponsored placements are identified as paid."],
+              ["How are projects paid for?", "One-time projects use a 50% upfront payment and a 50% balance before final delivery or handover. Monthly management is paid in full in advance. Any different arrangement must be confirmed in the written agreement."],
+            ].map(([question,answer])=><details key={question} className="group border-b border-[#d9c8a8] py-5">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-5 font-medium text-[#0b1d32] marker:hidden">
+                <span>{question}</span><span aria-hidden="true" className="text-xl leading-none text-[#a8752d] transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 max-w-3xl pr-8 text-sm leading-relaxed text-[#566170]">{answer}</p>
+            </details>)}
+          </div>
         </div>
       </div>
     </section>
