@@ -19,7 +19,6 @@ const slugify = (value: string) => value.toLowerCase().replace(/&/g, "and").repl
 
 function PricingPage() {
   const pricedServices = SERVICES.filter((service) => service.packages.length > 0);
-  const customServices = SERVICES.filter((service) => service.packages.length === 0 || service.packages.some((item) => item.name === "Book Landing Page"));
 
   return <SiteLayout>
     <section className="bg-[#001220] text-[#fdf6e6]">
