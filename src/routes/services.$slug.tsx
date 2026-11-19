@@ -103,8 +103,37 @@ function ServiceDetailPage() {
       <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-14 md:py-20">
         <div className="md:col-span-4"><SectionEyebrow>Pricing</SectionEyebrow><h2 className="mt-4 font-serif text-3xl">Know the price before work begins.</h2></div>
         <div className="md:col-span-8">
-          {service.packages.length > 0 ? <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{service.packages.map((item) => <div key={item.name} className="border border-[#c08848]/50 bg-[#fdf6e6] p-5"><p className="text-sm font-medium">{item.name}</p><p className="mt-3 font-serif text-3xl text-[#a8752d]">${item.price}</p></div>)}</div> : <p className="text-lg leading-relaxed text-[#65584a]">{service.quote}</p>}
-          {service.packages.length > 0 && <p className="mt-5 text-sm leading-relaxed text-[#65584a]">{service.quote}</p>}
+          {service.packages.length > 0 ? <div className="space-y-5">
+            <div className="grid gap-4 md:grid-cols-2">
+              {service.packages.map((item) => <article key={item.name} className={`flex flex-col border p-5 ${item.featured ? "border-[#a8752d] bg-[#fffaf0] shadow-sm" : "border-[#c08848]/40 bg-[#fdf6e6]"}`}>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-serif text-xl">{item.name}</h3>
+                  {item.featured && <span className="shrink-0 bg-[#203a36] px-2 py-1 text-[10px] uppercase tracking-wider text-[#fff8e9]">Recommended starting point</span>}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-[#65584a]">{item.description}</p>
+                <p className="mt-4 font-serif text-3xl text-[#a8752d]">${item.price}<span className="ml-2 font-sans text-xs uppercase tracking-wider text-[#65584a]">{item.billing === "monthly" ? "/ month" : "one-time"}</span></p>
+                <div className="mt-5 border-t border-[#c08848]/30 pt-4">
+                  <p className="text-xs uppercase tracking-wider text-[#65584a]">Included</p>
+                  <ul className="mt-3 space-y-2">
+                    {item.inclusions.map((inclusion) => <li key={inclusion} className="flex gap-2 text-sm leading-relaxed text-[#3d403b]"><Check size={15} className="mt-0.5 shrink-0 text-[#a8752d]"/><span>{inclusion}</span></li>)}
+                  </ul>
+                </div>
+                <Link to="/get-started" search={{ service: item.name }} className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 border border-[#a8752d] px-4 py-2 text-sm font-semibold text-[#203a36] hover:bg-[#f4e8d0]">Enquire about {item.name} <ArrowRight size={15}/></Link>
+              </article>)}
+            </div>
+          </div> : <p className="text-lg leading-relaxed text-[#65584a]">{service.quote}</p>}
+          <p className="mt-5 text-sm leading-relaxed text-[#65584a]">{service.quote}</p>
+          {service.notes && <ul className="mt-5 space-y-2 border-t border-[#c08848]/30 pt-4">{service.notes.map((note) => <li key={note} className="text-sm leading-relaxed text-[#65584a]">• {note}</li>)}</ul>}
+        </div>
+      </div>
+    </section>
+
+    <section className="bg-[#e8ddc7]">
+      <div className="container-luxe grid gap-8 py-14 md:grid-cols-12 md:gap-12 md:py-16">
+        <div className="md:col-span-4"><SectionEyebrow>Project and payment terms</SectionEyebrow><h2 className="mt-3 font-serif text-2xl md:text-3xl">Clear costs before we begin.</h2></div>
+        <div className="space-y-3 text-sm leading-relaxed text-[#4f5d53] md:col-span-8">
+          <p>For one-time projects, 50% is paid upfront and the remaining 50% is due before final delivery or handover. Monthly management fees are paid in full in advance for each service month.</p>
+          <p>Work outside the agreed scope is quoted separately. Domain registration, hosting, premium software, advertising spend, external publication charges, actors, voice talent and other third-party expenses are separate where applicable unless expressly included in the written agreement.</p>
         </div>
       </div>
     </section>
