@@ -382,14 +382,24 @@ export const SERVICE_OPTIONS = [
 ] as const;
 
 export const PORTFOLIO_PROJECTS = [
-  { name: "Women Gone WILD", href: "https://women-gone-wild-reader-experience.pages.dev" },
+  {
+    name: "Women Gone WILD",
+    description: "Reader-experience campaign website and custom Pinterest pin design.",
+    href: "https://women-gone-wild-reader-experience.pages.dev",
+  },
   {
     name: "Outback Odyssey: Goodreads discussion",
+    description: "A book-specific reader discussion built around migration, identity and belonging.",
     href: "https://www.goodreads.com/topic/show/24779734-the-land-doesn’t-know-you-how-do-you-learn-to-belong",
   },
-  { name: "Kanfmatic Agency", href: "https://kanfmaticagency.online" },
+  {
+    name: "Kanfmatic Agency",
+    description: "Agency branding and digital presentation developed across the agency and publishing studio.",
+    href: "https://kanfmaticagency.online",
+  },
   {
     name: "Goodreads Reader Discovery",
+    description: "A reader-discovery portfolio presenting Goodreads Listopia research and engagement work.",
     href: "https://robert-henry-reader-engagement.pages.dev",
   },
 ] as const;
