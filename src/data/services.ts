@@ -340,10 +340,8 @@ export const SERVICES = [
         description: "Coordinate a broader ongoing visibility programme across agreed author and book touchpoints.",
         inclusions: [
           "All Visibility Growth inclusions.",
-          "Coordination of author and book-page updates where required.",
-          "Broader audience and platform research.",
-          "More comprehensive campaign coordination and monthly review.",
-          "Recommendations for the next month's visibility priorities.",
+          "Coordinated management of the agreed monthly visibility activities.",
+          "Monthly review of available performance indicators and recommendations for the next month's priorities.",
         ],
       },
     ],
