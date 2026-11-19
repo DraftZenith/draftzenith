@@ -65,7 +65,7 @@ function ServicesPage() {
                 {service.deliverables.map(item=><li key={item} className="flex gap-3 text-sm leading-relaxed"><Check size={16} className={`mt-0.5 shrink-0 ${tone.number}`} aria-hidden="true"/><span>{item}</span></li>)}
               </ul>
               {service.packages.length>0 && <div className={`mt-8 border-t pt-6 ${tone.line}`}>
-                <h3 className="text-xs uppercase tracking-[0.2em] opacity-75">Published package prices</h3>
+                <h3 className="text-xs uppercase tracking-[0.2em] opacity-75">Package prices</h3>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {service.packages.map(offer=><div key={offer.name} className={`flex min-h-32 flex-col justify-between p-4 ${tone.price}`}>
                     <div>
