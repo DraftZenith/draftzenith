@@ -134,7 +134,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
@@ -153,7 +153,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
