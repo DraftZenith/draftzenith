@@ -21,6 +21,8 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SubmitRouteImport } from './routes/submit'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -84,6 +86,16 @@ const SubmitRoute = SubmitRouteImport.update({
   path: '/submit',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthorsSlugRoute = AuthorsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -108,6 +120,8 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/submit': typeof SubmitRoute
+  '/team': typeof TeamRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -159,6 +173,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/robots.txt'
     | '/submit'
+    | '/team'
+    | '/services/$slug'
     | '/authors/$slug'
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -208,6 +224,8 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SubmitRoute: typeof SubmitRoute
+  TeamRoute: typeof TeamRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -303,6 +321,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubmitRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/authors/$slug': {
       id: '/authors/$slug'
       path: '/$slug'
@@ -354,6 +386,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SubmitRoute: SubmitRoute,
+  TeamRoute: TeamRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
