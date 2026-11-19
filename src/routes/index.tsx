@@ -151,7 +151,7 @@ function HomePage() {
         <div className="mb-9 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div className="space-y-3"><SectionEyebrow>Selected work</SectionEyebrow><h2 className="font-serif text-3xl md:text-5xl">A few examples of our work.</h2></div><Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-medium hover:text-[#956a2e]">See the portfolio <ArrowRight size={15}/></Link></div>
         <div className="grid gap-3 sm:grid-cols-2">
           {PORTFOLIO_PROJECTS.map((project,i)=><div key={project.name} className="flex min-h-32 items-center justify-between gap-5 border-b border-[#d9c8a8] py-5">
-            <div><span className="text-xs text-[#956a2e]">PROJECT 0{i+1}</span><h3 className="mt-2 font-serif text-xl sm:text-2xl">{project.name}</h3></div>
+            <div><span className="text-xs text-[#956a2e]">PROJECT 0{i+1}</span><h3 className="mt-2 font-serif text-xl sm:text-2xl">{project.name}</h3><p className="mt-2 max-w-xl text-sm leading-relaxed text-[#566170]">{project.description}</p></div>
             {project.href && <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name}`} className="grid size-11 shrink-0 place-items-center rounded-full border border-[#a8752d] text-[#753e31] transition hover:bg-[#a8752d] hover:text-white"><ArrowUpRight size={18}/></a>}
           </div>)}
         </div>
