@@ -36,7 +36,7 @@ function ServiceDetailPage() {
   const isMonthly = service.category === "Ongoing Author Visibility Management";
   const isTrailer = service.category === "Book Trailers & Visual Promotion";
   const isBranding = service.category === "Author Branding & Digital Presence";
-  const faqs: [string, string][] = [
+  const faqs = [
     ["Can I commission this service on its own?", "Yes. You can ask for this service on its own. If another service would usefully support the same goal, we can explain that option without requiring you to add it."],
     ["How is the project scoped?", "We begin by learning about your book, current materials and objectives. The proposal confirms the agreed deliverables, fees and timing before work starts."],
     ["Do you guarantee sales, rankings or coverage?", isMedia ? "No. Publications make their own editorial decisions. We can prepare materials, research suitable outlets and manage submissions, but cannot guarantee publication, reviews or interviews. Paid placements are identified as sponsored." : "No. Results depend on factors outside our control, including reader behaviour and third-party platforms. We agree on the work and reporting in advance rather than promise a particular sales or visibility outcome."],
@@ -60,7 +60,7 @@ function ServiceDetailPage() {
       ["What materials should I provide for an author website or landing page?", "Please provide accurate biography information, book descriptions, book covers, photographs, awards, testimonials and any other approved content relevant to the project."],
       ["Are domain registration and hosting included?", "Domain registration, hosting subscriptions, premium software and other third-party expenses are separate unless the written project agreement expressly includes them."],
     ] : []),
-  ];
+  ] as [string, string][];
 
   return <SiteLayout>
     <section className="bg-[#001220] text-[#fdf6e6]">
