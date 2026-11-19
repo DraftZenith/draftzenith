@@ -33,10 +33,33 @@ function ServiceDetailPage() {
 
   const isMedia = service.category === "Media & Professional Recognition";
   const isPinterest = service.category === "Pinterest Marketing & Book Visibility";
+  const isMonthly = service.category === "Ongoing Author Visibility Management";
+  const isTrailer = service.category === "Book Trailers & Visual Promotion";
+  const isBranding = service.category === "Author Branding & Digital Presence";
   const faqs = [
     ["Can I commission this service on its own?", "Yes. You can ask for this service on its own. If another service would usefully support the same goal, we can explain that option without requiring you to add it."],
     ["How is the project scoped?", "We begin by learning about your book, current materials and objectives. The proposal confirms the agreed deliverables, fees and timing before work starts."],
     ["Do you guarantee sales, rankings or coverage?", isMedia ? "No. Publications make their own editorial decisions. We can prepare materials, research suitable outlets and manage submissions, but cannot guarantee publication, reviews or interviews. Paid placements are identified as sponsored." : "No. Results depend on factors outside our control, including reader behaviour and third-party platforms. We agree on the work and reporting in advance rather than promise a particular sales or visibility outcome."],
+    ...(isPinterest ? [
+      ["What is the difference between Pinterest Foundation and the campaigns?", "Foundation covers account setup or optimisation and the initial organisation of the account. It is not a managed campaign. Visibility Campaign includes 15 custom pins and 30 days of management; Growth Campaign includes 30 or more pins and 60 days of management."],
+      ["Do Pinterest impressions mean book sales?", "No. Impressions, saves and outbound clicks measure different kinds of activity. We report available indicators and do not treat them as guaranteed sales or reader conversions."],
+    ] : []),
+    ...(isMedia ? [
+      ["Are publication fees included in the service price?", "No. The listed fee is for Draft Zenith's press, research or outreach work. External publication charges and sponsored placement fees are separate and must be disclosed before you decide."],
+      ["Can you guarantee a review, interview or feature?", "No. Earned editorial coverage is decided by each publication. Paid sponsored placements are a separate option and are identified as paid."],
+    ] : []),
+    ...(isMonthly ? [
+      ["What is included each month?", "The monthly programme includes a visibility plan, 12 original Pinterest pins, publishing and scheduling, keyword and board optimisation, monitoring, recommendations and a monthly report. The selected level determines whether agreed Goodreads research and promotional content coordination are also included."],
+      ["When is the monthly fee due?", "Monthly management is paid in full in advance. Additional books, extra content, other platforms, video production and separate campaigns are scoped and quoted independently."],
+    ] : []),
+    ...(isTrailer ? [
+      ["How long is the finished trailer and how many revisions are included?", "Video duration, revision arrangements and delivery timing are confirmed in the written project scope. They are not fixed in the introductory price listing."],
+      ["Are voice talent and premium music licences included?", "Appropriately licensed music or sound is selected as part of production. Actors, voice talent, premium licences and other external production costs are separate where applicable unless expressly included."],
+    ] : []),
+    ...(isBranding ? [
+      ["What materials should I provide for an author website or landing page?", "Please provide accurate biography information, book descriptions, book covers, photographs, awards, testimonials and any other approved content relevant to the project."],
+      ["Are domain registration and hosting included?", "Domain registration, hosting subscriptions, premium software and other third-party expenses are separate unless the written project agreement expressly includes them."],
+    ] : []),
   ];
 
   return <SiteLayout>
