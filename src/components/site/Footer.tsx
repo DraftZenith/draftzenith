@@ -14,7 +14,7 @@ export function Footer() {
         <Link to="/get-started" className="inline-flex items-center gap-2 border border-primary px-4 py-3 text-sm text-background transition hover:bg-primary hover:text-primary-foreground">Tell us about your project <ArrowUpRight size={15} /></Link>
       </div>
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-4">
-        <FooterColumn title="Explore" links={[["About", "/about"], ["Our Team", "/team"], ["Services", "/services"], ["Portfolio", "/portfolio"]]} />
+        <FooterColumn title="Explore" links={[["About", "/about"], ["Our Team", "/team"], ["Services", "/services"], ["Pricing", "/pricing"], ["Portfolio", "/portfolio"]]} />
         <FooterColumn title="Work with us" links={[["How It Works", "/how-it-works"], ["Get Started", "/get-started"]]} />
       </div>
       <div className="space-y-4 md:col-span-3">
@@ -40,6 +40,6 @@ export function Footer() {
   </footer>;
 }
 
-function FooterColumn({ title, links }: { title: string; links: [string, "/about" | "/services" | "/portfolio" | "/how-it-works" | "/get-started" | "/team"][] }) {
+function FooterColumn({ title, links }: { title: string; links: [string, "/about" | "/services" | "/portfolio" | "/how-it-works" | "/get-started" | "/team" | "/pricing"][] }) {
   return <div className="space-y-4"><h2 className="text-xs uppercase text-primary">{title}</h2><ul className="space-y-3 text-sm text-background/70">{links.map(([label, href]) => <li key={href}><Link to={href} className="transition hover:text-primary">{label}</Link></li>)}</ul></div>;
 }
