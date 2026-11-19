@@ -18,7 +18,7 @@ export type Service = {
   notes?: readonly string[];
 };
 
-export const SERVICES = [
+export const SERVICES: readonly Service[] = [
   {
     category: "Author Branding & Digital Presence",
     intro: "Build an author identity and online home that present your work clearly. We can develop the brand, create a full author website or improve the pages and materials you already use.",
@@ -352,7 +352,7 @@ export const SERVICES = [
       "Additional books, content, platforms, video production and separate campaigns are quoted separately.",
     ],
   },
-] as const satisfies readonly Service[];
+];
 
 export const SERVICE_OPTIONS = [
   "Author Branding & Digital Presence",
