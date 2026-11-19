@@ -55,7 +55,7 @@ function PortfolioPage() {
         <ol className="border-t border-[#d6b9aa]">
           {PORTFOLIO_PROJECTS.map((project,i)=><li key={project.name} className="grid gap-3 border-b border-[#d6b9aa] py-6 sm:grid-cols-[4rem_1fr_auto] sm:items-center sm:gap-6">
             <span className="font-serif text-2xl text-[#a45d47]">0{i+1}</span>
-            <h3 className="font-serif text-2xl md:text-3xl">{project.name}</h3>
+            <div><h3 className="font-serif text-2xl md:text-3xl">{project.name}</h3><p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#715b53]">{project.description}</p></div>
             {project.href && <a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 justify-self-start text-sm font-medium text-[#4a302b] underline underline-offset-4 hover:text-[#a45d47] sm:justify-self-end">Open project <ArrowUpRight size={15}/></a>}
           </li>)}
         </ol>
