@@ -1,13 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Mail } from "lucide-react";
+import { SERVICES } from "@/data/services";
 
-const serviceLinks = [
-  ["Author Branding", "/services/author-branding-and-digital-presence"],
-  ["Pinterest Marketing", "/services/pinterest-marketing-and-book-visibility"],
-  ["Book Trailers", "/services/book-trailers-and-visual-promotion"],
-  ["Book Discovery", "/services/book-discovery-and-audience-development"],
-  ["Media & Recognition", "/services/media-and-professional-recognition"],
-  ["Visibility Management", "/services/ongoing-author-visibility-management"],
+const slugify = (value: string) => value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const exploreLinks = [
+  ["Home", "/"],
+  ["About", "/about"],
+  ["Services", "/services"],
+  ["Portfolio", "/portfolio"],
+  ["How It Works", "/how-it-works"],
+  ["Contact", "/get-started"],
 ] as const;
 
 export function Footer() {
@@ -24,13 +26,13 @@ export function Footer() {
       <div className="md:col-span-3">
         <h2 className="text-[10px] uppercase tracking-[0.2em] text-[#c5a77b]">Explore</h2>
         <ul className="mt-5 space-y-3 text-sm text-[#c7c5bc]">
-          {[[ "Home", "/" ],[ "About", "/about" ],[ "Services", "/services" ],[ "Portfolio", "/portfolio" ],[ "How It Works", "/how-it-works" ],[ "Contact", "/get-started" ]].map(([label,href])=><li key={href}><Link to={href} className="transition hover:text-[#c5a77b]">{label}</Link></li>)}
+          {exploreLinks.map(([label,href])=><li key={href}><Link to={href} className="transition hover:text-[#c5a77b]">{label}</Link></li>)}
         </ul>
       </div>
       <div className="md:col-span-3">
         <h2 className="text-[10px] uppercase tracking-[0.2em] text-[#c5a77b]">Our services</h2>
         <ul className="mt-5 space-y-3 text-sm text-[#c7c5bc]">
-          {serviceLinks.map(([label,href])=><li key={href}><Link to={href} className="transition hover:text-[#c5a77b]">{label}</Link></li>)}
+          {SERVICES.map(service=><li key={service.category}><Link to="/services/$slug" params={{slug:slugify(service.category)}} className="transition hover:text-[#c5a77b]">{service.category.replace(/ & /g, " and ")}</Link></li>)}
         </ul>
       </div>
       <div className="space-y-4 md:col-span-2">
