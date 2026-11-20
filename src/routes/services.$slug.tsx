@@ -80,7 +80,9 @@ function ServiceDetailPage() {
       </div>
     </section>
 
-    <section className="bg-[#fdf6e6]">
+    <section className="bg-[#001220]"><div className="relative"><img src={(()=>{const map={"Author Branding & Digital Presence":"photo-1497366754035-f200968a6e72","Pinterest Marketing & Book Visibility":"photo-1618005182384-a83a8bd57fbe","Book Trailers & Visual Promotion":"photo-1485846234645-a62644f84728","Book Discovery & Audience Development":"photo-1519682337058-a94d519337bc","Media & Professional Recognition":"photo-1455390582262-044cdead277a","Ongoing Author Visibility Management":"photo-1499750310107-5fef28a66643"};return "https://images.unsplash.com/"+map[service.category]+"?auto=format&fit=crop&w=2000&q=90"})()} alt={service.category} className="h-[40vh] min-h-[320px] w-full object-cover md:h-[65vh]"/><div className="absolute inset-0 bg-gradient-to-t from-[#001220]/80 via-transparent to-transparent"/><div className="absolute bottom-0 left-0 right-0"><div className="container-luxe pb-8"><p className="max-w-3xl font-serif text-2xl text-[#fdf6e6] md:text-4xl">Thoughtful work. Clear purpose. A presentation built around your book.</p></div></div></div></section>
+
+<section className="bg-[#fdf6e6]">
       <div className="container-luxe grid gap-8 py-16 md:grid-cols-12 md:gap-14 md:py-24">
         <div className="md:col-span-4"><SectionEyebrow>The need</SectionEyebrow><h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">Work that has a clear purpose.</h2></div>
         <div className="md:col-span-8"><p className="max-w-3xl text-lg leading-relaxed text-[#65584a]">{service.benefit}</p></div>
