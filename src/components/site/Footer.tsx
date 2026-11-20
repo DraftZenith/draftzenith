@@ -44,7 +44,7 @@ export function Footer() {
       </div>
     </div>
     <div className="border-t border-[#4a4c45]">
-      <div className="container-luxe flex flex-col gap-3 py-5 text-xs text-[#aead a4] sm:flex-row sm:items-center sm:justify-between">
+      <div className="container-luxe flex flex-col gap-3 py-5 text-xs text-[#aeada4] sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Draft Zenith. All rights reserved.</p>
         <div className="flex flex-wrap items-center gap-5"><Link to="/privacy" className="transition hover:text-[#c5a77b]">Privacy Notice</Link><span>Author services · Book visibility · Creative presence</span></div>
       </div>
