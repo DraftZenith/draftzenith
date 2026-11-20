@@ -59,8 +59,7 @@ function ServicesPage() {
                 <p className="mt-2 text-sm leading-relaxed">{service.benefit}</p>
               </div>
             </div>
-            <div className="md:col-span-8"><div className="mb-8 overflow-hidden"><img loading="lazy" src={["https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85","https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=85","https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=85","https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=85","https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=85","https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=85"][i]} alt={service.category} className="h-64 w-full object-cover md:h-80"/></div>
-
+            <div className="md:col-span-8">
               <h3 className="text-xs uppercase tracking-[0.2em] opacity-75">What we can deliver</h3>
               <ul className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {service.deliverables.map(item=><li key={item} className="flex gap-3 text-sm leading-relaxed"><Check size={16} className={`mt-0.5 shrink-0 ${tone.number}`} aria-hidden="true"/><span>{item}</span></li>)}
